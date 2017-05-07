@@ -82,9 +82,6 @@
 	font-weight: normal;
 }
 
-<<<<<<< HEAD
-/* Add lecture page*/
-=======
 .topic {
 	width: 250px;
 	margin: 5px auto;
@@ -117,7 +114,8 @@
 	display: inline-block;
 	width: 30px;
 }
->>>>>>> 58173a5651eb27f1bf50a5dc3f8c9ece5bdc29e8
+
+/* Add lecture page*/
 
 .lecture_add_input_title{
 	font-family: "Helvetica", serif;
