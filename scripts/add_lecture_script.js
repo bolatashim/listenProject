@@ -1,11 +1,14 @@
 var topics = [];
+var topicHTMLst = '<tr><td height="35px"></td><td><div class="topic_name">'
+var topicHTMLmid = '</div><button class="delete" id="'
+var topicHTMLend = '">&#10006</button></td></tr>'
 
 /* Add a topic in html if enter pressed or button clicked */
 
 $(document).ready(function(){
-	$("#add_topic").click(addTopic);
+	$(".lecture_add_button").click(addTopic);
 
-	$("#topic").on("keyup", function(e){
+	$("#topic_input").on("keyup", function(e){
 		if(e.keyCode == 13){
 			addTopic();
 		}
@@ -19,18 +22,18 @@ $(document).ready(function(){
 
 
 function addTopic(){
-	var topic = $("#topic").val();
+	var topic = $("#topic_input").val();
 	if(topic){
-		$("#topic_list").append('<div class="topic"><div class="topic_name">' + topic + '</div><div class="topic_btn"><button class="delete" id="' + topics.length + '">&#10006</button></div></div>');
+		$("#topic_list").append(topicHTMLst + topic + topicHTMLmid + topics.length +  topicHTMLend);
 		topics.push(topic);
-		$("#topic").val("");
-		$("#topic").focus();
+		$("#topic_input").val("");
+		$("#topic_input").focus();
 	}
 }
 
 function printList(){
 	$("#topic_list").empty();
 	for(var i = 0; i < topics.length; i++){
-		$("#topic_list").append('<div class="topic"><div class="topic_name">' + topics[i] + '</div><div class="topic_btn"><button class="delete" id="' + i + '">&#10006</button></div></div>')
+		$("#topic_list").append(topicHTMLst + topics[i] + topicHTMLmid + i + topicHTMLend)
 	}
 }
