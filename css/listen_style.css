@@ -85,11 +85,34 @@
 .topic {
 	width: 250px;
 	margin: 5px auto;
-	background-color: #266DD3;
-	color: white;
+	background-color: white;
+	border-style: solid;
+	border-color: #266DD3;
+	border-width: 2px;
+	border-radius: 3px;
+	color: black;
 	padding: 5px 10px;
 	font-size: 20px;
+}
+
+.delete {
 	border-radius: 5px;
+	border-style: solid;
+	background-color: red;
+	border-color: white;
+	color: white;
+	padding: 5px 12px;
+	font-size: 15px;
+}
+
+.topic_name {
+	display: inline-block;
+	width: 190px;
+}
+
+.topic_btn {
+	display: inline-block;
+	width: 30px;
 }
 
 
