@@ -1,59 +1,48 @@
 <html>
-  <head> 
-		<meta charset="UTF-8">
-		    <title>listen() project</title>
-				    <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
-						    <link href="css/listen_style.css" rel="stylesheet" />
-								    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<head> 
+  <meta charset="UTF-8">
+  <title>listen() project</title>
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
+  <link href="css/listen_style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<!--<h1 align="center" style="background-color:#0099ff; color:white; font-family:verdana">
       CS101 > New Lecture
-		</h1>-->
+    </h1>-->
   </head>
   <body>
     <div class="navbar listen-navbar navbar-static-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-		      <a class="navbar-brand" href="#">Listen Project <sup>beta</sup></a>
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Listen Project <sup>beta</sup></a>
         </div>
-				<ul class="nav navbar-right">
- 	 	  		<li><a href="#"><"avatar"> Gyosu Kim</a></li>
-				</ul>
-			</div>
-		</div>
-		<ul style="list-style-type:none">
-      <li>
-        <table align="center">
-          <tr>
-            <td style="text-align:left; font-family:verdana" width="50"><font size="5"> Title: </font></td>
-            <td> <input size="30"> </input> </td>
-          </tr>
-        </table>
-      </li>
-      <li>
-        <table align="center">
-          <tr> 
-            <td style="text-align:left; font-family:verdana" width="50"><font size="5"> Date: </font></td>
-            <td> <input size="5"> </input> </td>
-            <td> <input size="8"> </input> </td>
-            <td> <input size="10"> </input> </td>
-          </tr>
-        </table>
-      </li>
-      <li>
-        <table align="center">
-          <tr>
-            <td style="text-align:left; font-family:verdana" width="50"><font size="5"> Topic: </font></td>
-            <td> <input size="23"> </input><button style="background-color: #0099ff; color:white; border-radius:10px"><font size="4">+</font></button></td>
-          </tr>
-        </table>
-      </li>
-      <br/>
-      <br/>
-      <br/>
-      <br/>
-      <li align="center">
-        <button style="background-color:green; color:white; font-family: verdana; height: 50px; weight: 200px; size: 100"><font size="5"> Start Lecture </font></button>
-      </li>
-    </ul>
-  </body>
+        <ul class="nav navbar-right">
+          <li><a href="#"><"avatar"> Gyosu Kim</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <table align="center">
+      <tr>
+        <td class="labels"> Title:</td>
+        <td><input class="text_box"></td>
+      </tr>
+      <tr> 
+        <td class="labels">Date:</td>
+        <td><input id="lec_date" type="date" class="text_box"></td>
+      </tr>
+      <tr>
+        <td class="labels">Topic:</td>
+        <td><input class="text_box"><button class="add_btn">+</button></td>
+      </tr>
+    </table>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <button class="submit_btn">Start Lecture</button>
+
+    <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="scripts/add_lecture_script.js"></script>
+</body>
 </html

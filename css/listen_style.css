@@ -82,9 +82,48 @@
 	font-weight: normal;
 }
 
+/* General Styles */
+button {
+	background-color: #cacaca;
+	border-color: #eaeaea;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
 
+.text_box {
+	font-size: 25px;
+	font-family: verdana;
+}
+
+.labels {
+	text-align:left; 
+	width: 50px;
+	font-size: 25px;
+	font-family: verdana;
+}
+
+.submit_btn {
+	background-color: green;
+	border-color: #74ca74;
+	font-size: 25px;
+	color: white;
+	display: block;
+	margin: auto;
+}
+.add_btn {
+	background-color: #0099ff; 
+	border-color: #9cd8ff;
+	color:white;
+	padding: 3px 10px;
+	font-size: 25px;
+}
+
+
+/* Add Lecture Styles */
 
 /* Miscellaneous */
 a:link, a:visited, a:hover, a:active {
-  text-decoration:  none !important;
+	text-decoration:  none !important;
 } 
