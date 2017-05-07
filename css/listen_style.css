@@ -82,39 +82,6 @@
 	font-weight: normal;
 }
 
-.topic {
-	width: 250px;
-	margin: 5px auto;
-	background-color: white;
-	border-style: solid;
-	border-color: #266DD3;
-	border-width: 2px;
-	border-radius: 3px;
-	color: black;
-	padding: 5px 10px;
-	font-size: 20px;
-}
-
-.delete {
-	border-radius: 5px;
-	border-style: solid;
-	background-color: red;
-	border-color: white;
-	color: white;
-	padding: 5px 12px;
-	font-size: 15px;
-}
-
-.topic_name {
-	display: inline-block;
-	width: 190px;
-}
-
-.topic_btn {
-	display: inline-block;
-	width: 30px;
-}
-
 /* Add lecture page*/
 
 .lecture_add_input_title{
@@ -135,6 +102,7 @@
 .lecture_add_button{
 	background-color: #0099ff;
 	color: white;
+	width: 35px;
 	border-radius: 10px;
 	font-size: 24px; 
 }
@@ -151,8 +119,30 @@
 }
 
 .lecture_start_div{
-	margin: 10px auto 0px auto;
+	margin: 20px auto 0px auto;
 	text-align: center;
+}
+
+.delete {
+	border-style: none;
+	background-color: red;
+	padding: 5px 12px;
+	border-radius: 5px;
+	color: white;
+	font-size: 15px;
+}
+
+.topic_name {
+	font-size: 18px;
+	height: 30px;
+	border-style: none;
+	background-color: #ececec;
+	border-radius: 3px;
+	color: black;
+	width: 165px;
+	padding: 2px 5px;
+	display: inline-block;
+	vertical-align: bottom;
 }
 
 /* Miscellaneous */
