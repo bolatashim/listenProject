@@ -103,7 +103,7 @@
 
 .lecture_add_div{
 	position: relative;
-	top: 100px;
+	top: 50px;
 	left: -200px;
 	text-align: left;
 	text-align: center;
@@ -131,7 +131,7 @@
 .lecture_start_div{
 	position: absolute;
 	top: 185px;
-	left: 650px;
+	left: 700px;
 	text-align: left;
 	width: 250px;
 }
