@@ -117,10 +117,20 @@
 
 /* Add lecture page*/
 
+.lecture_add_title{
+	font-family: "Helvetica", serif;
+	font-size: 34px;
+	text-align: left;
+	position: absolute;
+	top: 75px;
+	left: 150;
+}
+
 .lecture_add_input_title{
 	font-family: "Helvetica", serif;
 	font-size: 30px;
 	text-align: left;
+	vertical-align: top;
 }
 
 .lecture_add_text_input{
@@ -130,14 +140,8 @@
 .lecture_add_div{
 	position: relative;
 	top: 100px;
-	text-align: center;
-}
-
-.lecture_add_button{
-	background-color: #0099ff;
-	color: white;
-	border-radius: 10px;
-	font-size: 24px; 
+	left: -200px;
+	text-align: left;
 }
 
 .lecture_start_button{
@@ -152,12 +156,51 @@
 }
 
 .lecture_start_div{
-	position: relative;
-	top: 275px;
+	position: absolute;
+	top: 185px;
+	left: 650px;
+	text-align: left;
+	width: 250px;
+}
+
+.added_topic{
+	list-style-type: none;
+	font-size: 20px;
+	font-family: "Helvetica", serif;
+	text-align: left;
+}
+
+/* Common buttons */
+.help_btn{
 	text-align: center;
+	background-color: #6d43d8;
+	color: white;
+	border-radius: 30px;
+	height: 30px;
+	width: 30px;
+	font-size: 20px;
+}
+
+.add_btn{
+	text-align: center;
+  background-color: #0099ff;
+	color: white;
+	border-radius: 10px;
+	height: 35px;
+	width: 30px;
+	font-size: 20px;
+}
+
+.remove_btn{
+	text-align: center;
+	background-color: #ff5454;
+	color: white;
+	border-radius: 30px;
+	height: 30px;
+	width: 30px;
+	font-size: 20px;
 }
 
 /* Miscellaneous */
 a:link, a:visited, a:hover, a:active {
   text-decoration:  none !important;
-} 

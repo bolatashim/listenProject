@@ -18,6 +18,13 @@ $( document ).ready(function() {
       $("#cs101content").toggleClass("listen-inactive-content listen-active-content");
     }
   });
+
+	$("#add_topic").click(function () {
+		var input = $("#input_topic").val();
+		$("#topic_list").append("<li>"+input+"</li>");
+		$("#input_topic").val("");
+		e.preventDefault();
+	});
 });
 
 
