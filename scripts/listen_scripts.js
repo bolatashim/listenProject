@@ -25,6 +25,17 @@ $( document ).ready(function() {
 		$("#input_topic").val("");
 		e.preventDefault();
 	});
+
+	$("#help_add_lecture_page").click(function (){
+		if(!$("#breadcrumb").data("status")){
+			$("#breadcrumb").append("<li id='explanation'>You can plan your lecture in this page.</li>");
+			$("#breadcrumb").data("status", true);
+		}
+		else{
+			$("#explanation").remove();
+			$("#breadcrumb").data("status", false);
+		}
+	});
 });
 
 
