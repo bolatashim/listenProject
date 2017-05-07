@@ -82,7 +82,47 @@
 	font-weight: normal;
 }
 
+/* Add lecture page*/
 
+.lecture_add_input_title{
+	font-family: "Helvetica", serif;
+	font-size: 30px;
+	text-align: left;
+}
+
+.lecture_add_text_input{
+	height: 30px;
+}
+
+.lecture_add_div{
+	position: relative;
+	top: 100px;
+	text-align: center;
+}
+
+.lecture_add_button{
+	background-color: #0099ff;
+	color: white;
+	border-radius: 10px;
+	font-size: 24px; 
+}
+
+.lecture_start_button{
+	background-color: green;
+	color: white;
+	font-family: "Helvetica", serif;
+	height: 80px;
+	width: 250px;
+	font-size: 30px;
+	text-align: center;
+	border-radius: 10px;
+}
+
+.lecture_start_div{
+	position: relative;
+	top: 275px;
+	text-align: center;
+}
 
 /* Miscellaneous */
 a:link, a:visited, a:hover, a:active {
