@@ -82,6 +82,15 @@
 	font-weight: normal;
 }
 
+.topic {
+	width: 250px;
+	margin: 5px auto;
+	background-color: #266DD3;
+	color: white;
+	padding: 5px 10px;
+	font-size: 20px;
+	border-radius: 5px;
+}
 
 
 /* Miscellaneous */
