@@ -1,0 +1,90 @@
+/* Navigation bar styles */
+
+.navbar-brand {
+	font-family: "Georgia", sans-serif;
+	color: white;
+}
+
+.listen-navbar {
+	background-color: #266DD3;
+	font-size: 20px;
+}
+
+.navbar-header a {
+	font-size: 24px;
+}
+
+.listen-navbar ul li a {
+	color: white;
+}
+
+
+
+/* Homepage vertical tabs styles */
+
+.listen-vert-nav li {
+	float: none;
+}
+
+.listen-vert-tabs-title {
+	margin:auto;
+	font-size: 24px;
+	text-align: center;
+	padding-left: 10px;
+}
+
+.listen-vert-tab-box{
+	padding-right: 0 !important;
+}
+
+.listen-vert-tab-box ul li{
+	padding: 10px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	border-bottom: 1px solid;
+}
+
+.listen-vert-tab-box ul li:hover{
+	background-color: #d8d8d8;   /*light gray*/
+}
+
+.listen-vert-tab-content {
+	padding: 0 !important;
+}
+
+.listen-active-tab {
+	background-color: #173753;  /*dark blue*/
+	color: #f2f2f2; /* white */
+}
+
+.listen-active-tab:hover {
+	background-color: #1D476B !important;  /*dark blue*/
+}
+.listen-inactive-tab {
+	background-color: #f2f2f2; /* gray */
+}
+
+.listen-active-content {
+}
+
+.listen-inactive-content {
+	display: none;
+}
+
+.tabs-course-code {
+	font-family: "Helvetica", serif;
+	font-weight: normal;
+	font-size: 24px;
+}
+
+.tabs-course-title {
+	font-family: "Helvetica", serif;
+	font-weight: normal;
+}
+
+
+
+/* Miscellaneous */
+a:link, a:visited, a:hover, a:active {
+  text-decoration:  none !important;
+} 
