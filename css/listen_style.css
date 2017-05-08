@@ -26,9 +26,10 @@
 
 .listen-vert-tabs-title {
 	margin:auto;
-	font-size: 24px;
+	font-size: 20px;
 	text-align: center;
 	padding-left: 10px;
+	line-height: 16px;
 }
 
 .listen-vert-tab-box{
@@ -37,13 +38,13 @@
 
 .listen-vert-tab-box ul li{
 	padding: 10px;
-	border-bottom-left-radius: 10px;
-	border-top-left-radius: 10px;
+	/*border-bottom-left-radius: 10px;*/
+	/*border-top-left-radius: 10px;*/
 	border-bottom: 1px solid;
 }
 
 .listen-vert-tab-box ul li:hover{
-	background-color: #d8d8d8;   /*light gray*/
+	background-color: #d8d8d8;   /* gray*/
 }
 
 .listen-vert-tab-content {
@@ -56,10 +57,10 @@
 }
 
 .listen-active-tab:hover {
-	background-color: #1D476B !important;  /*dark blue*/
+	background-color: #1D476B !important;  /*lighter blue*/
 }
 .listen-inactive-tab {
-	background-color: #f2f2f2; /* gray */
+	background-color: #f2f2f2; /* light gray */
 }
 
 .listen-active-content {
@@ -72,7 +73,7 @@
 .tabs-course-code {
 	font-family: "Helvetica", serif;
 	font-weight: normal;
-	font-size: 24px;
+	font-size: 16px;
 }
 
 .tabs-course-title {
@@ -219,6 +220,70 @@
 	padding: 2px 5px;
 	display: inline-block;
 	vertical-align: bottom;
+}
+
+
+
+.listen-table {
+	table-layout: fixed;
+
+}
+.listen-table tr td{
+	background-color: #f2f2f2;
+	
+}
+
+.listen-table tr th{
+	color: #f2f2f2;
+	background-color: #173753;
+	
+}
+
+.lect-list-date {
+	color: #545454;
+	font-size: 12px;
+	text-align: center;
+	vertical-align: middle !important;
+}
+
+
+.lect-list-title {
+	font-size: 20px;
+	
+}
+
+.small-row td {
+	color: #545454;
+	font-size: 12px;
+	padding-top: 0px !important; 
+}
+
+.small-row {
+	height: 10px;
+}
+
+.lect-list-arrow {
+	font-weight: bold;
+	vertical-align: middle !important;
+}
+
+.lect-list-add-but {
+	color: black !important;
+	margin: auto;
+	padding: 0px !important;
+	vertical-align: middle !important;
+	text-align: center;
+
+}
+
+.lect-list-add-new {
+	text-align: center;
+	vertical-align: middle !important;
+}
+
+
+.sample-lect-list-row {
+
 }
 
 /* Miscellaneous */
