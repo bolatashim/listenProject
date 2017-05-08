@@ -6,9 +6,9 @@ var topicHTMLend = '">&#10006</button></td></tr>'
 /* Add a topic in html if enter pressed or button clicked */
 
 $(document).ready(function(){
-	$(".lecture_add_button").click(addTopic);
+	$("#add_topic").click(addTopic);
 
-	$("#topic_input").on("keyup", function(e){
+	$("#input_topic").on("keyup", function(e){
 		if(e.keyCode == 13){
 			addTopic();
 		}
@@ -22,12 +22,12 @@ $(document).ready(function(){
 
 
 function addTopic(){
-	var topic = $("#topic_input").val();
+	var topic = $("#input_topic").val();
 	if(topic){
 		$("#topic_list").append(topicHTMLst + topic + topicHTMLmid + topics.length +  topicHTMLend);
 		topics.push(topic);
-		$("#topic_input").val("");
-		$("#topic_input").focus();
+		$("#input_topic").val("");
+		$("#input_topic").focus();
 	}
 }
 

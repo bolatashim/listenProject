@@ -1,61 +1,64 @@
 <html>
-  <head> 
-		<meta charset="UTF-8">
-		<title>listen() project</title>
-		<link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
-		<link href="css/listen_style.css" rel="stylesheet" />
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="navbar listen-navbar navbar-static-top" role="navigation">
-			<div class="container">
-				<div class="navbar-header">
-		      <a class="navbar-brand" href="#">Listen Project <sup>beta</sup></a>
-        </div>
-				<ul class="nav navbar-right">
- 	 	  		<li><a href="#"><"avatar"> Gyosu Kim</a></li>
-				</ul>
-			</div>
-	</div>
+<head> 
+  <meta charset="UTF-8">
+  <title>listen() project</title>
+  <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
+  <link href="css/listen_style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+  <div class="navbar listen-navbar navbar-static-top" role="navigation">
+   <div class="container">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Listen Project <sup>beta</sup></a>
+    </div>
+    <ul class="nav navbar-right">
+      <li><a href="#"><"avatar"> Gyosu Kim</a></li>
+    </ul>
+  </div>
+</div>
 
-		<div class="container">
-	  	<ol class="breadcrumb" id="breadcrumb">
-		  	<li><a href="#">Home</a> </li>
-			 	<li class="active">Add a New Lecture</li>
-				<button class="help_btn" id="help_add_lecture_page" data-status=false>?</button>
-			</ol>
+<div class="container">
+  <ol class="breadcrumb" id="breadcrumb">
+   <li><a href="#">Home</a> </li>
+   <li class="active">Add a New Lecture</li>
+   <button class="help_btn" id="help_add_lecture_page" data-status=false>?</button>
+ </ol>
 
-		<div class="col-md-12">
-			
-		
-		<div class="lecture_add_div">
-		<table align="center">
-      <tr>
-        <td width="100" class="lecture_add_input_title"> Title: </td>
-				<td> <input style="height:30px; width:300px"/></td>
-      </tr>
-      <tr> 
-        <td width="100" class="lecture_add_input_title"> Date: </td>
-				<td> <input type="date" style="height:30px; width:300px"/></td>
-      </tr>
-      <tr>
-        <td width="100" class="lecture_add_input_title"> Topics: </td>
-        <td> <input style="height:30px; width:265px" value="add your topics here" id="input_topic"/>
-					<button class="add_btn" id="add_topic">+</button>
-					<br/>
-					<ul id="topic_list" class="added_topic"></ul>
-				</td>      	
-			</tr>
-		</table>
-		</div>
+ <div class="col-md-12">
+   
+  
+  <div class="lecture_add_div">
+    <table align="center">
+      <thead>
+        <tr>
+          <td width="100" class="lecture_add_input_title"> Title: </td>
+          <td> <input style="height:30px; width:300px"/></td>
+        </tr>
+        <tr> 
+          <td width="100" class="lecture_add_input_title"> Date: </td>
+          <td> <input type="date" style="height:30px; width:300px"/></td>
+        </tr>
+        <tr>
+          <td width="100" class="lecture_add_input_title"> Topics: </td>
+          <td> <input style="height:30px; width:265px" value="add your topics here" id="input_topic"/>
+           <button class="add_btn" id="add_topic">+</button>
+         </td>      	
+       </tr>
+     </thead>
+     <tbody id="topic_list">
+     </tbody>
+   </table>
+ </div>
 
-		<div class="lecture_start_div">
-			<button class="lecture_start_button">Start Lecture</button>
-		</div>
-	</div>
-	
-	<script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
-	<script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-	<script src="scripts/listen_scripts.js"></script>
+ <div class="lecture_start_div">
+   <button class="lecture_start_button">Start Lecture</button>
+ </div>
+</div>
+
+<script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
+<script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+<script src="scripts/listen_scripts.js"></script>
+<script src="scripts/add_lecture_script.js"></script>
 </body>
 </html>
