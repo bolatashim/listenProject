@@ -144,10 +144,24 @@
 	text-align: left;
 }
 
+.topic_name {
+	font-size: 18px;
+	height: 30px;
+	border-style: none;
+	background-color: #ececec;
+	border-radius: 3px;
+	color: black;
+	width: 265px;
+	padding: 2px 5px;
+	display: inline-block;
+	vertical-align: bottom;
+}
+
+
 /* Lecture Review page */
-.questions_list{
+.q_list{
 	border-style: solid;
-	border-width: 1px;
+	border-width: 2px;
 	border-radius: 2px;
 	border-color: #848484;;
 	height: 600px;
@@ -156,14 +170,19 @@
 	margin: auto;
 }
 
-.question_entry{
-	padding: 5px 5px;
+.q_entry{
+	padding: 5px 8px;
 	font-size: 20px;
     border-color: #cacaca;
-    border-style: solid;
+    border-style: none none solid none;
     border-width: 1px;
     background-color: #ffffff;
     height: 60px;
+}
+
+.q_entry_sel{
+    background-color: #0084d9;
+    color: white;
 }
 
 /* Common buttons */
@@ -208,21 +227,6 @@
 	color: white;
 	font-size: 15px;
 }
-
-.topic_name {
-	font-size: 18px;
-	height: 30px;
-	border-style: none;
-	background-color: #ececec;
-	border-radius: 3px;
-	color: black;
-	width: 265px;
-	padding: 2px 5px;
-	display: inline-block;
-	vertical-align: bottom;
-}
-
-
 
 .listen-table {
 	table-layout: fixed;
