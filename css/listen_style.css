@@ -143,6 +143,28 @@
 	text-align: left;
 }
 
+/* Lecture Review page */
+.questions_list{
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 2px;
+	border-color: #848484;;
+	height: 600px;
+	background-color: #e0e0e0;
+	overflow: auto;
+	margin: auto;
+}
+
+.question_entry{
+	padding: 5px 5px;
+	font-size: 20px;
+    border-color: #cacaca;
+    border-style: solid;
+    border-width: 1px;
+    background-color: #ffffff;
+    height: 60px;
+}
+
 /* Common buttons */
 .help_btn{
 	text-align: center;
