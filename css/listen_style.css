@@ -247,13 +247,13 @@
 .question-area {
 	margin: auto;
 	color: black;
-	font-size: 30px;
+	font-size: 25px;
 	width: 80%;
 }
 
 .question-list {
 	border-collapse: separate;
-	border-spacing: 0 10px;
+	border-spacing: 0 15px;
 	margin: auto;
 	width: 100%;
 }
@@ -262,7 +262,7 @@
 	background-color: #f5f5f5;
 }
 .question-entry td {
-	padding: 5px 15px;
+	padding: 10px 10px;
 	border-style: solid;
 	border-color: #dddddd;
 }
@@ -281,19 +281,14 @@
 	background-color: #d0d0d0;
 	color: #484848;
 }
-.q-saved-txt {
-	border-width: 1px 0px 1px 1px;
-	border-radius: 5px 0 0 5px; 
+.q-answered-txt {
 	background-color: #0084d9;
-	text-align: center;
-	padding: 10px 0px;
 	color: white;
 }
-.q-saved-del {
+.q-answered-del {
 	border-radius: 0 5px 5px 0; 
 	border-width: 1px 1px 1px 0;
 	background-color: #0084d9;
-	padding: 10px 0px;
 }
 .show-more-btn {
 	margin: auto;
