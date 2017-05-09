@@ -214,7 +214,7 @@
 	border-color: #6d6d6d;
 	border-radius: 10px 0 0 10px;
 	height: 100%;
-	width: 90%;
+	width: 60%;
 	background-color: #77dd77;
 }
 
@@ -226,7 +226,7 @@
 	border-color: #6d6d6d;
 	border-radius: 0 10px 10px 0;
 	height: 100%;
-	width: 10%;
+	width: 40%;
 	background-color: #ea4537;
 }
 
@@ -248,13 +248,14 @@
 	margin: auto;
 	color: black;
 	font-size: 30px;
+	width: 80%;
 }
 
 .question-list {
 	border-collapse: separate;
 	border-spacing: 0 10px;
 	margin: auto;
-	width: 80%;
+	width: 100%;
 }
 
 .question-entry {
@@ -265,15 +266,38 @@
 	border-style: solid;
 	border-color: #dddddd;
 }
-.question-entry td:first-child { 
+.q-txt { 
 	border-radius: 5px 0 0 5px; 
-	border-width: 1px 1px 1px 1px;
+	border-width: 1px;
 	width: 95%;
 }
-.question-entry td:last-child { 
+.q-del-btn { 
 	border-radius: 0 5px 5px 0; 
 	border-width: 1px 1px 1px 0;
 	width: 5%;
+	color: #c0c0c0;
+}
+.q-del-btn:hover { 
+	background-color: #d0d0d0;
+	color: #484848;
+}
+.q-saved-txt {
+	border-width: 1px 0px 1px 1px;
+	border-radius: 5px 0 0 5px; 
+	background-color: #0084d9;
+	text-align: center;
+	padding: 10px 0px;
+	color: white;
+}
+.q-saved-del {
+	border-radius: 0 5px 5px 0; 
+	border-width: 1px 1px 1px 0;
+	background-color: #0084d9;
+	padding: 10px 0px;
+}
+.show-more-btn {
+	margin: auto;
+	width: 100%;
 }
 
 /* Common buttons */
