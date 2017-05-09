@@ -280,6 +280,7 @@
 .q-del-btn:hover { 
 	background-color: #d0d0d0;
 	color: #484848;
+	cursor: pointer;
 }
 .q-answered-txt {
 	background-color: #0084d9;
