@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>listen() project</title>
+    <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
+    <link href="css/listen_style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  
+  <body>
+	<div class="navbar listen-navbar navbar-static-top" role="navigation">
+	  <div class="container">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Listen Project <sup>beta</sup></a>
+	    </div>
+	    <ul class="nav navbar-right">
+	        <li><a href="#"><"avatar"> Gyosu Kim</a></li>
+	    </ul>
+	  </div>
+	</div>
+
+
+  <div class="container">
+	  <ol class="breadcrumb">
+	  	<li><a href="#">Home</a> </li>
+		  <li class="active">Courses</li>
+		</ol>
+
+		<div class="row area">
+		  <div class="col-md-3 listen-vert-tab-box">
+		  		<div class="listen-vert-tabs-title"><span>Courses</span></div>
+		      <ul class="list-unstyled listen-vert-nav">
+		          <a href="#"><li class="listen-active-tab" id="cs101tab"><span class="tabs-course-code">CS101</span><br><span class="tabs-course-title">Introduction to Computer Science</span></li></a>
+
+		          <a href="#"><li id="cs374tab" class="listen-inactive-tab"><span class="tabs-course-code">CS374</span><br><span class="tabs-course-title">Introduction to HCI</span></li></a>
+
+		          <a href="#"><li id="cs374tab2" class="listen-inactive-tab"><span class="tabs-course-code">CS374 (inactive)</span><br><span class="tabs-course-title">Introduction to HCI</span></li></a>
+
+		          <a href="#"><li class="listen-inactive-tab" id="cs101tab2"><span class="tabs-course-code">CS101 (inactive)</span><br><span class="tabs-course-title">Introduction to Computer Science</span></li></a>
+		      </ul>
+		  </div>
+		  <div class="col-md-9 listen-vert-tab-content">
+		      <div class="col-md-12">
+		      <div class="col-md-12" style="padding-bottom: 20px;"></div>
+		          
+		          <div class="listen-active-content" id="cs101content">
+		          <div class="col-md-4">
+			          <table class="table  listen-table">
+				          	<tr>
+				          		<th colspan="8" class="lect-list-add-new"><span>Add a New Lecture</span></th>
+				          		<th colspan="2" class="lect-list-add-but"><button>add</button></th>
+				          	</tr>
+				          	<div class="sample-lect-list-row">
+				          	<tr>
+				          		<td colspan="5" class="lect-list-title">Lecture 1</td>
+				          		<td colspan="4" rowspan="2" class="lect-list-date">26/04/2017</td>
+				          		<td rowspan="2" class="lect-list-arrow">></td>
+				          	</tr>
+				          	<tr class="small-row">
+				          		<td colspan="5">additional info</td>
+				          	</tr>
+			          		</div>
+			          		<div class="sample-lect-list-row">
+				          	<tr>
+				          		<td colspan="5" class="lect-list-title">Lecture 2</td>
+				          		<td colspan="4" rowspan="2" class="lect-list-date">27/04/2017</td>
+				          		<td rowspan="2" class="lect-list-arrow">></td>
+				          	</tr>
+				          	<tr class="small-row">
+				          		<td colspan="5">additional info</td>
+				          	</tr>
+			          		</div>
+			          		<div class="sample-lect-list-row">
+				          	<tr>
+				          		<td colspan="5" class="lect-list-title">Lecture 3</td>
+				          		<td colspan="4" rowspan="2" class="lect-list-date">28/04/2017</td>
+				          		<td rowspan="2" class="lect-list-arrow">></td>
+				          	</tr>
+				          	<tr class="small-row">
+				          		<td colspan="5">additional info</td>
+				          	</tr>
+			          		</div>
+			          		<div class="sample-lect-list-row">
+				          	<tr>
+				          		<td colspan="5" class="lect-list-title">Lecture 4</td>
+				          		<td colspan="4" rowspan="2" class="lect-list-date">29/04/2017</td>
+				          		<td rowspan="2" class="lect-list-arrow">></td>
+				          	</tr>
+				          	<tr class="small-row">
+				          		<td colspan="5">additional info</td>
+				          	</tr>
+			          		</div>
+			          		<div class="sample-lect-list-row">
+				          	<tr>
+				          		<td colspan="5" class="lect-list-title">Lecture 5</td>
+				          		<td colspan="4" rowspan="2" class="lect-list-date">30/04/2017</td>
+				          		<td rowspan="2" class="lect-list-arrow">></td>
+				          	</tr>
+				          	<tr class="small-row">
+				          		<td colspan="5">additional info</td>
+				          	</tr>
+			          		</div>
+			          </table>
+
+		          </div>
+
+				<div class="panel panel-default col-md-8">
+				  <div class="panel-body">
+				  <h3>Here goes the bar chart</h3>
+				  </div>
+				</div>
+
+		          </div>
+		          <div class="listen-inactive-content" id="cs374content">
+		          	<h3>HERE GOES CONTENT FOR INTRO TO HCI TAB</h3>
+		          </div>
+		      </div>
+		  </div>
+		</div>
+
+
+  </div>
+
+
+    <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="scripts/listen_scripts.js"></script>
+  </body>
+</html>
