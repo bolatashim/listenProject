@@ -8,6 +8,7 @@ var notAnsweredQuestions = [{"text": "Question 1 What are for loops used for?", 
 				{"text": "Question 8 What's the point of using while loops?", "time": 8, "understand": false},
 				{"text": "Question 9 What's the point of using while loops?", "time": 9, "understand": false}];
 var answeredQuestions = []
+var sorting = "Time";
 
 $(document).ready(function(){
 	$(".question-list").on("click", ".q-txt", function(){
@@ -53,7 +54,40 @@ $(document).ready(function(){
 		}
 		printQuestions();
 	})
+
+	$(".sorting").on("click", ".btn", function(){
+		if($(this).attr("id") != sorting){
+			$("#" + sorting).removeClass("active");
+			sorting = $(this).attr("id");
+			$(this).addClass("active");
+		}
+		sortQuestions();
+		printQuestions();
+	})
 })
+
+function timeCompareFunc(a, b){
+	return a.time - b.time;
+}
+function understandCompareFunc(a, b){
+	if(a.understand && !b.understand){
+		return 1;
+	}else if(!a.understand && b.understand){
+		return -1;
+	}else{
+		return 0;
+	}
+}
+
+function sortQuestions(){
+	if(sorting == "Time"){
+		notAnsweredQuestions.sort(timeCompareFunc);
+		answeredQuestions.sort(timeCompareFunc);
+	}else{
+		notAnsweredQuestions.sort(understandCompareFunc);
+		answeredQuestions.sort(understandCompareFunc);
+	}
+}
 
 function printQuestions(){
 	$(".question-list").empty();
