@@ -29,6 +29,7 @@
 	font-size: 20px;
 	text-align: center;
 	padding-left: 10px;
+	padding-bottom: 20px;
 	line-height: 16px;
 }
 
@@ -378,6 +379,85 @@
 
 .sample-lect-list-row {
 
+}
+
+
+.course-card {
+	width: 90%;
+	/*min-height: 300px;*/
+	/*max-height: 700px;*/
+	height: 400px;
+	/*border: 1px solid;*/
+	box-shadow: 0px 0px 3px 2px #d8d8d8 ;
+/*	margin-right: auto;
+	margin-left: auto;*/
+	margin: 10px auto;
+	overflow: hidden;
+	padding: 10px;
+
+}
+
+
+/*.course-card h1,
+.course-card h2 {
+	margin: 0px;kk
+
+}
+*/
+.course-card:hover {
+	box-shadow: 0px 0px 3px 2px gray ;
+	cursor: pointer;
+
+}
+
+
+.course-card-code {
+	margin: 10px auto;
+	text-align: center;
+	font-size: 32px;
+	font-weight: bold;
+	font-family: "Verdana";
+	color: #323232;
+
+}
+
+.course-card-title {
+	margin: 10px auto;
+	text-align: center;
+	font-size: 20px;
+	font-weight: normal;
+
+}
+
+.cards-parent {
+	overflow: auto;
+}
+
+.footer {
+	background-color: #266DD3;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    overflow:hidden;
+}
+
+.copyright {
+	color: #efefef;
+	margin: 15px auto;
+	vertical-align: middle;
+
+}
+.load-more-button {
+	margin: 20px auto;
+	text-align: center;
+}
+.course-card-bottom {
+	position: absolute;
+	padding: 10px;
+	bottom: 20px;
+	background-color: blue;
 }
 
 /* Miscellaneous */
