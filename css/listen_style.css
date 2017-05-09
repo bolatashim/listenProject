@@ -1,4 +1,8 @@
 /* Navigation bar styles */
+body{
+    height: 100% !important;
+}
+
 
 .navbar-brand {
 	font-family: "Georgia", sans-serif;
@@ -411,9 +415,10 @@
 	box-shadow: 0px 0px 3px 2px #d8d8d8 ;
 /*	margin-right: auto;
 	margin-left: auto;*/
-	margin: 10px auto;
+	margin: 30px auto;
 	overflow: hidden;
 	padding: 10px;
+	background-color: #f6f6f6;
 
 }
 
@@ -453,14 +458,11 @@
 	overflow: auto;
 }
 
-.footer {
+.listen-footer {
 	background-color: #266DD3;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 50px;
-    width: 100%;
-    overflow:hidden;
+	
+
+
 }
 
 .copyright {
@@ -474,11 +476,27 @@
 	text-align: center;
 }
 .course-card-bottom {
+	width: 100%;
+	bottom: 40px;
 	position: absolute;
-	padding: 10px;
-	bottom: 20px;
-	background-color: blue;
 }
+
+.course-card-bottom button {
+	width: 78%;
+	height: 50px;
+}
+
+.course-card-info ul{
+	font-size: 15px;
+	padding: 0px !important;
+}
+.course-card-info table th span{
+	display: block;
+	float: right;
+	padding-right: 10px;
+}
+
+
 
 /* Miscellaneous */
 a:link, a:visited, a:hover, a:active {
