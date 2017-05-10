@@ -190,24 +190,58 @@ body{
     color: white;
 }
 
+
 /* Active Lecture Page */
-.understanding-area {
+.part-name-area{
+	padding-bottom: 15px;
 	margin: auto;
+	width: 60%;
+}
+
+.goto-part-area{
+	background-color: #e6e6e6;
+	opacity: 0.5;
+	position: absolute;
+	z-index: 1;
+	height: 85%;
+	width: 5%;
+	padding-top: 15%;
+	text-align: center;
+	border-radius: 3px;
+}
+.goto-part-area:hover{
+	background-color: #cccccc;
+	color: gray;
+	opacity: 0.8;
+	box-shadow: 0px 0px 5px 1px gray;
+}
+.next-part-area{
+	margin-left: 55%;
+	z-index: 2;
+}
+
+.understanding-area {
+	border-bottom: solid 1px #dddddd;
+	border-top: solid 1px #dddddd;
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 10px;
+	width: 80%;
 }
 
 .area-label {
 	text-align: center;
 	margin: 10px 0 10px 0;
-	font-size: 35px;
+	font-size: 30px;
 	color: #444444;
 }
 
 .understanding-bar{
 	margin-top: 10px;
 	color: white;
-	height: 80px;
+	height: 60px;
 	border-style: none;
-	font-size: 40px;
+	font-size: 30px;
 }
 
 .understanding-bar-yes{
@@ -251,13 +285,13 @@ body{
 .question-area {
 	margin: auto;
 	color: black;
-	font-size: 25px;
+	font-size: 20px;
 	width: 80%;
 }
 
 .question-list {
 	border-collapse: separate;
-	border-spacing: 0 15px;
+	border-spacing: 0 10px;
 	margin: auto;
 	width: 100%;
 }
@@ -266,14 +300,14 @@ body{
 	background-color: #f5f5f5;
 }
 .question-entry td {
-	padding: 10px 10px;
+	padding: 8px 8px;
 	border-style: solid;
 }
 .q-txt { 
 	border-radius: 5px 0 0 5px; 
 	border-width: 1px 10px 1px 1px;
 	border-color: #dddddd;
-	width: 95%;
+	width: 98%;
 }
 .q-understand {
 	border-right-color: #77dd77;
@@ -285,7 +319,7 @@ body{
 	border-color: #dddddd;
 	border-radius: 0 5px 5px 0; 
 	border-width: 1px 1px 1px 0;
-	width: 5%;
+	width: 2%;
 	color: #c0c0c0;
 }
 .q-details {
