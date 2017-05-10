@@ -11,6 +11,7 @@ var answeredQuestions = []
 var sorting = "Time";
 
 $(document).ready(function(){
+	printQuestions();
 	$(".question-list").on("click", ".q-txt", function(){
 		if(!$("#q-" + $(this).data("id")).data("answered")){
 			$("#q-" + $(this).data("id")).animate({'opacity': 0}, 100, function(){
@@ -92,25 +93,48 @@ function sortQuestions(){
 function printQuestions(){
 	$(".question-list").empty();
 	if(!$(".show-more-btn").data("expanded")){
+		var class_type = `"`;
 		if(notAnsweredQuestions.length < 5){
 			var index = 5 - notAnsweredQuestions.length;
-			for(var i = 0; i < notAnsweredQuestions.length; i++){
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}"><td class="q-txt" data-id="${i}">${notAnsweredQuestions[i].text}</td><td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}
-			for(var i = 0; i < index; i++){
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}"><td class="q-txt q-answered-txt" data-id="${i}">${answeredQuestions[i].text}</td><td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}
+			printNotAnswered(notAnsweredQuestions.length);
+			printAnswered(index);
 		}else{
-			for(var i = 0; i < 5; i++){
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}"><td class="q-txt" data-id="${i}">${notAnsweredQuestions[i].text}</td><td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}
+			printNotAnswered(5)
 		}
 	}else{
-			for(var i = 0; i < notAnsweredQuestions.length; i++){
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}"><td class="q-txt" data-id="${i}">${notAnsweredQuestions[i].text}</td><td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}
-			for(var i = 0; i < answeredQuestions.length; i++){
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}"><td class="q-txt q-answered-txt" data-id="${i}">${answeredQuestions[i].text}</td><td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}
+		printNotAnswered(notAnsweredQuestions.length)
+		printAnswered(answeredQuestions.length)
+	}
+}
+
+function printNotAnswered(index){
+	for(var i = 0; i < index; i++){
+		if(notAnsweredQuestions[i].understand){
+			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
+				<td class="q-txt q-understand" data-id="${i}">${notAnsweredQuestions[i].text}
+				<p class="q-details"> Time: ${notAnsweredQuestions[i].time}</p></td>
+				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
+		}else{
+			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
+				<td class="q-txt q-not-understand" data-id="${i}">${notAnsweredQuestions[i].text}
+				<p class="q-details"> Time: ${notAnsweredQuestions[i].time}</p></td>
+				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
+		}
+	}
+}
+
+function printAnswered(index){
+	for(var i = 0; i < index; i++){
+		if(answeredQuestions[i].understand){
+			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
+				<td class="q-txt q-answered-txt q-understand" data-id="${i}">${answeredQuestions[i].text}
+				<p class="q-details" style="color: #efefef"> Time: ${answeredQuestions[i].time}</p>
+				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
+		}else{
+			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
+				<td class="q-txt q-answered-txt q-not-understand" data-id="${i}">${answeredQuestions[i].text}
+				<p class="q-details" style="color: #efefef"> Time: ${answeredQuestions[i].time}</p></td>
+				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
+		}
 	}
 }
