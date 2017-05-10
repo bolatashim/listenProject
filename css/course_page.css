@@ -1,0 +1,58 @@
+.navbar {
+	border-radius: 0px;
+	font-family: sans-serif;
+}
+.breadcrumb > li.active > span {
+	border-radius: 2px;
+	padding: 2px 10px;
+	background: #777;
+	color: #eee;
+}
+.course-title {
+	text-align: center;
+}	
+.lectures-all {
+	padding: 10px 50px;
+}
+.lectures-all > .row {
+    display: table;
+    width: 100%;
+}
+.lectures-all > .row [class*="col-"] {
+    float: none;
+    display: table-cell;
+}
+
+.lecture {
+	margin: 5px;
+	padding: 10px;
+	background: #f5f5f5;
+	border-radius: 5px;
+}
+.lecture .title {
+	font-weight: bold;
+	text-align: center;
+}
+.lecture .performance {
+}
+.lecture .performance-complete {
+	margin-top: auto;
+    margin-bottom: auto;
+    height: 6px;
+    width: 60%;
+    background: #38bd93;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 6px;
+}
+
+.lectures-all.zoomed-out .lecture {
+	margin: 0px;
+	padding: 5px;
+	background: #f5f5f5;
+	border-radius: 5px;
+}
+.lectures-all.zoomed-out .lecture .title {
+	font-weight: bold;
+	text-align: center;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>listen() project</title>
+    <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="css/listen_style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/course_page.css" rel="stylesheet" />
+    <style>
+    	/* Once I was stylish. Now I'm just empty. */
+    </style>
+</head>
+<body>
+    <!-- <ul class="navbar">
+        <div class="container">
+            <li class="navbar-entry"><a href="#">Listen Project <sup>beta</sup></a></li>
+            <li class="navbar-entry" style="float:right; font-family: Arial">
+                <a href="#">Gyosu Kim</a>
+            </li>
+        </div>
+    </ul> -->
+
+    <div class="container">
+        <ol class="breadcrumb" style="margin-top: 10px">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Courses</a></li>
+            <li class="active"><span>CS101</span></li>
+        </ol>
+
+        <h3 class="course-title">CS101: Introduction to Programming</h3>
+
+        <div class="lectures-all">
+        	<p style="text-align: center"><button class="zoom-out">Zoom Out</button></p>
+        	<a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 1
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 2
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 80%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 3
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 70%"></div>
+	        	</div>
+	        </a>
+
+	        <!-- !!! -->
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 1
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 2
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 80%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 3
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 70%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 1
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 2
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 80%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 3
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 70%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 1
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 2
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 80%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 3
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 70%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 1
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 2
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 80%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 3
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 70%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 1
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 2
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 80%"></div>
+	        	</div>
+	        </a>
+	        <a class="lecture row" href="#">
+        		<div class="title col-sm-2">
+        		Lecture 3
+        		</div>
+	        	<div class="performance col-sm-10">
+	        		<div class="performance-complete" style="width: 70%"></div>
+	        	</div>
+	        </a>
+	        <!-- !!! -->
+        </div>
+        <div class="progress-all col-sm-2">
+
+        </div>
+    </div>
+
+    <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
+    <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+    <script src="scripts/listen_scripts.js"></script>
+    <script>
+
+    </script>
+</body>
+</html>
