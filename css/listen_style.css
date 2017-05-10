@@ -1,21 +1,33 @@
 /* Navigation bar styles */
 
 
-.navbar-brand {
-	font-family: "Georgia", sans-serif;
-	color: white;
-}
-
-.listen-navbar {
-	background-color: #266DD3;
-	font-size: 20px;
-}
-
-.navbar-header a {
+.navbar {
 	font-size: 24px;
+	font-family: Georgia, sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #266dd3;
 }
 
-.listen-navbar ul li a {
+.navbar-entry {
+    float: left;
+}
+
+.navbar-entry a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.navbar-entry a:hover {
+	color: white;
+    background-color: #2059ab;
+}
+.navbar-entry a:focus {
 	color: white;
 }
 
@@ -96,7 +108,8 @@
 .lecture_add_input_title{
 	font-family: "Helvetica", serif;
 	font-size: 30px;
-	text-align: left;
+	text-align: right;
+	padding-right: 10px;
 	vertical-align: top;
 	padding: 5px;
 }
@@ -139,14 +152,14 @@
 	width: 250px;
 }
 
-.added_topic{
+.added_part{
 	list-style-type: none;
 	font-size: 20px;
 	font-family: "Helvetica", serif;
 	text-align: left;
 }
 
-.topic_name {
+.part_name {
 	font-size: 18px;
 	height: 30px;
 	border-style: none;
@@ -191,7 +204,7 @@
 }
 
 
-.topics-questions-area {
+.parts-questions-area {
 	background-color: #f2f2f2 !important;
 	padding-left: 0px !important;
 	padding-bottom: 0px !important;
@@ -284,20 +297,20 @@
 	font-weight: normal;
 }
 
-.progress-bar-topic {
+.progress-bar-part {
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
 }
 
-.progress-bar-topic td{
+.progress-bar-part td{
 	background-color: red;
 	color: white;
 	text-align: center;
 	width: 30%;
 }
 
-.progress-bar-topic th{
+.progress-bar-part th{
 	background-color: green;
 	color: white;
 	text-align: center;
@@ -305,20 +318,20 @@
 }
 
 
-.progress-bar-topic2 {
+.progress-bar-part2 {
 	padding: 0px;
 	margin: 0px;
 	width: 100%;
 }
 
-.progress-bar-topic2 td{
+.progress-bar-part2 td{
 	background-color: red;
 	color: white;
 	text-align: center;
 	width: 15%;
 }
 
-.progress-bar-topic2 th{
+.progress-bar-part2 th{
 	background-color: green;
 	color: white;
 	text-align: center;
