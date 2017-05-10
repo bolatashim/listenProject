@@ -217,7 +217,7 @@
 .listen-vert-tab-box ul li{
 	padding: 10px;
 	/*border-bottom-left-radius: 10px;*/
-	border-top-left-radius: 10px;
+	/*border-top-left-radius: 10px;*/
 	/*border-bottom: 1px solid;*/
 }
 
@@ -377,6 +377,7 @@
 	height: 100%;
 	width: 40%;
 	background-color: #ea4537;
+	text-align: right;
 }
 
 .understand-label{
