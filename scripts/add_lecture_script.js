@@ -7,7 +7,7 @@ var topicHTMLend = '">&#10006</button></td></tr>'
 
 $(document).ready(function(){
 	$("#add_topic").click(addTopic);
-
+	$("#input_title").select();
 	$("#input_topic").on("keyup", function(e){
 		if(e.keyCode == 13){
 			addTopic();
@@ -24,16 +24,12 @@ $(document).ready(function(){
 	})
 })
 
-$(function(){
-	$("table").tableDnD();
-})
-
 function addTopic(){
 	var topic = $("#input_topic").val();
 	if(topic){
 		$("#topic_list").append(topicHTMLst + topic + topicHTMLmid + topics.length +  topicHTMLend);
 		topics.push(topic);
-		$("#input_topic").val("add your topics here");
+		$("#input_topic").val("add your topic parts here");
 		$("#input_topic").select();
 		$("#input_topic").focus();
 	}

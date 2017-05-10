@@ -25,34 +25,42 @@
    <button class="help_btn" id="help_add_lecture_page" data-status=false>?</button>
  </ol>
 
- <div class="col-md-12">
+ <!--<div class="col-md-12"> -->
    
-  
-  <div class="lecture_add_div">
-    <table align="center">
-      <thead>
-        <tr>
-          <td width="100" class="lecture_add_input_title"> Title: </td>
-          <td> <input style="height:30px; width:300px"/></td>
-        </tr>
-        <tr> 
-          <td width="100" class="lecture_add_input_title"> Date: </td>
-          <td> <input type="date" style="height:30px; width:300px"/></td>
-        </tr>
-        <tr>
-          <td width="100" class="lecture_add_input_title"> Topics: </td>
-          <td> <input style="height:30px; width:265px" value="add your topics here" id="input_topic"/>
-           <button class="add_btn" id="add_topic">+</button>
-         	</td>      	
-       	</tr>
-     	</thead>
-			<tbody id="topic_list">
-   		</tbody>
-		</table>
- </div>
-
- <div class="lecture_start_div">
-   <button class="lecture_start_button">Start Lecture</button>
+	 <div class="background">
+		 <div class="title">Create a new lecture</div>
+			<div class="info">
+				<table align="center"> 
+					<tr><td align="center" colspan="2"><br/>
+							<button class="lecture_start_button">Start Lecture</button><br/><br/><br/><br/></td></tr>
+					<tr><td width="100" class="lecture_add_input_title">Title:</td>
+							<td><input style="height:30px; width:200px" value="Lecture 1" id="input_title"></td>
+					</tr>
+					<tr>
+						<td width="100" class="lecture_add_input_title">Date:</td>
+						<td><input type="date" style="height:30px; width:200px"></input></td>
+		     	</tr>
+					<tr>
+						<td width="100" class="lecture_add_input_title"></td>
+						<td><button>&#187; Details</button></td>
+					</tr>
+				</table>
+			</div>
+			<div class="parts">
+			<table>
+				<thead>
+					<tr>
+						<td width="100" class="lecture_add_input_title">Parts:</td>
+						<td><input style="height:30px; width:265px" value="add your topic parts here" id = "input_topic">
+							<button class="add_btn" id="add_topic">+</button></input></td>
+					</tr>
+				</thead>
+				<tbody id="topic_list">
+				</tbody>
+			</table>
+		</div>
+	</div>
+	</div>		
  </div>
 </div>
 

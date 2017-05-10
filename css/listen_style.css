@@ -59,13 +59,38 @@
 }
 
 /* Add lecture page*/
+.background{
+	float: left;
+	background-color: #f2f2f2;
+	width: 100%;
+	text-align: center;
+	height: 70%;
+}
+
+.title{
+	text-align: center;
+	width: 100%;
+	font-size: 24px;
+	height: 10%;
+}
+
+.info{
+	width: 50%;
+	float: left;
+}
+
+.parts{
+	width: 50%;
+	float: left;
+}
+
 .lecture_add_title{
 	font-family: "Helvetica", serif;
 	font-size: 34px;
 	text-align: left;
 	position: absolute;
 	top: 75px;
-	left: 150;
+	left: 150;;
 }
 
 .lecture_add_input_title{
@@ -73,6 +98,7 @@
 	font-size: 30px;
 	text-align: left;
 	vertical-align: top;
+	padding: 5px;
 }
 
 .lecture_add_text_input{
@@ -83,7 +109,6 @@
 	position: relative;
 	top: 50px;
 	left: -200px;
-	text-align: left;
 	text-align: center;
 }
 
