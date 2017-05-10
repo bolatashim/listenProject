@@ -1,21 +1,33 @@
 /* Navigation bar styles */
 
 
-.navbar-brand {
-	font-family: "Georgia", sans-serif;
-	color: white;
-}
-
-.listen-navbar {
-	background-color: #266DD3;
-	font-size: 20px;
-}
-
-.navbar-header a {
+.navbar {
 	font-size: 24px;
+	font-family: Georgia, sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #266dd3;
 }
 
-.listen-navbar ul li a {
+.navbar-entry {
+    float: left;
+}
+
+.navbar-entry a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.navbar-entry a:hover {
+	color: white;
+    background-color: #2059ab;
+}
+.navbar-entry a:focus {
 	color: white;
 }
 
