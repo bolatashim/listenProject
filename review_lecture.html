@@ -26,50 +26,91 @@
 			<li><a href="#">Home</a> </li>
 			<li><a href="#">Courses</a></li>
 			<li><a href="#">CS101</a></li>
-			<li class="active">Active Lecture</li>
+			<li class="active">Lecture 6 review</li>
 		</ol>
 
-		<div class="col-md-6">
-			Feedback
-		</div>
-		<div class="col-md-6">
-			Questions
+
+
+
+
+
+
+
+		<div class="col-md-12 topics-questions-area">
+			<div class="topics-questions-area">
+			<div class="listen-vert-tabs-title">Questions and feedback</div>
+			  <div class="col-md-3 listen-vert-tab-box">
+			  	<div class="listen-vert-tabs-wrapper">
+			      <ul class="list-unstyled listen-vert-nav">
+			      	 <div class="single-tab-wrap">
+			      	 <a href="#"><li class="listen-active-tab" id="cs101tab"><span class="tabs-course-code"><b>Part 1</b></span><br><span class="tabs-course-title">for & while loops</span></li><table class="progress-bar-topic"><tr><th>70%</th><td>30%</td></tr></table></a>
+
+			      	 </div>
+			          
+			      	 <div class="single-tab-wrap">
+			          <a href="#"><li id="cs374tab" class="listen-inactive-tab"><span class="tabs-course-code"><b>Part 2</b></span><br><span class="tabs-course-title">basic functions</span></li><table class="progress-bar-topic2"><tr><th>85%</th><td>15%</td></tr></table></a>
+			          </div>
+
+			          <div class="single-tab-wrap">
+			          <a href="#"><li id="cs374tab2" class="listen-inactive-tab"><span class="tabs-course-code"><b>Part 3</b></span><br><span class="tabs-course-title">OOP basics</span></li><table class="progress-bar-topic"><tr><th>70%</th><td>30%</td></tr></table></a>
+			          </div>
+			          <div class="single-tab-wrap">
+			          <a href="#"><li class="listen-inactive-tab" id="cs101tab2"><span class="tabs-course-code"><b>Part 4</b></span><br><span class="tabs-course-title">CS101 graphics</span></li><table class="progress-bar-topic"><tr><th>70%</th><td>30%</td></tr></table></a>
+			          </div>
+			      </ul>			  		
+			  	</div>
+
+			  </div>
+			  <div class="col-md-9 listen-vert-tab-content">
+			      <div class="col-md-12">
+			      <div class="col-md-12" style="padding-bottom: 20px;"></div>
+			          <div class="listen-active-content" id="cs101content">
 			<div class="q_list">
 				<div class="q_entry" data-selected="false">
-					What is the meaning of this?
+					Q: Why do we need for-loops when we can represent them as while-loops?
 				</div>
-				<div class="q_entry q_entry_sel" data-selected="true">
-					What are for loops?
-				</div>
-				<div class="q_entry" data-selected="false">
-					What are objects?
+				<div class="q_entry" data-selected="true">
+					Q: Can I do the ops and then check for the conditions in case of a while-loop?
 				</div>
 				<div class="q_entry" data-selected="false">
-					What is my name?
+					Q: Loops are so amazingly wonderful!!!
 				</div>
 				<div class="q_entry" data-selected="false">
-					random q
-				</div>
-				<div class="q_entry" data-selected="false">
-					generic_q_1
-				</div>
-				<div class="q_entry" data-selected="false">
-					generic_q_2
-				</div>
-				<div class="q_entry" data-selected="false">
-					hello
-				</div>
-				<div class="q_entry" data-selected="false">
-					my
-				</div>
-				<div class="q_entry" data-selected="false">
-					name
-				</div>
-				<div class="q_entry" data-selected="false">
-					is
+					Q: Questionssssss!
 				</div>
 			</div>
+
+
+
+
+			          </div>
+			          <div class="listen-inactive-content" id="cs374content">
+			<div class="q_list">
+				<div class="q_entry" data-selected="false">
+					Q: Where do I call my functions?
+				</div>
+				<div class="q_entry" data-selected="true">
+					Q: Why do I need a function when I can simply calculate this?
+				</div>
+
+				<div class="q_entry" data-selected="false">
+					Q: I get an error here when I am trying to make a function ㅠㅠ
+				</div>
+				<div class="q_entry" data-selected="false">
+					Q: Can I use my functions in a different program?
+				</div>
+				<div class="q_entry" data-selected="false">
+					Q: Do I need to import anything to create functions?
+				</div>
+
+
+			</div>
+			          </div>
+			      </div>
+			  </div>
+			</div>
 		</div>
+		
 	</div>
 
 
@@ -77,5 +118,6 @@
 	<script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
 	<script src="scripts/listen_scripts.js"></script>
 	<script src="scripts/review_lecture_script.js"></script>
+	<script src="scripts/active_lecture_script.js"></script>
 </body>
 </html>
