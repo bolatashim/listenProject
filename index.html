@@ -19,12 +19,12 @@
 
   <div class="container">
 	  <ol class="breadcrumb">
-	  	<li><a href="#">Home</a> </li>
+	  	<li class="active">Home</li>
 		  <li class="active">Courses</li>
 		</ol>
 		<div class="cards-parent">
 			<div class="col-md-4">
-			<div class="course-card" style="background-color: #ffc47f">
+			<div class="course-card" style="background-color: #ffc47f" onclick="location.href='course_page.html'">
 				<div class="course-card-code">CS101</div>
 				<div class="course-card-title">Introduction to Computer Science</div>
 
@@ -44,11 +44,11 @@
 						</tr>
 					</table>
 				</div>
-				<div class="course-card-bottom"><button>Go to: Lecture 6 review page</button></div>
+				<div class="course-card-bottom"><a href="review_lecture.html" style="color:black"><button>Go to Recent: Lecture 6 review page</button></a></div>
 			</div>
 			</div>
 			<div class="col-md-4">
-			<div class="course-card" style="background-color: #bfffe1">
+			<div class="course-card" style="background-color: #cccccc">  <!--"background-color: #bfffe1"-->
 				<div class="course-card-code">CS374</div>
 				<div class="course-card-title">Introduction to Computer Science</div>
 				<div class="course-card-info">
@@ -68,12 +68,12 @@
 					</table>
 
 				</div>
-				<div class="course-card-bottom"><button>Go to recent : Lecture 5 review page</button></div>
+				<div class="course-card-bottom"><button disabled>Go to Recent: Lecture 5 review page</button></div>
 
 			</div>
 			</div>
 			<div class="col-md-4">
-			<div class="course-card" style="background-color: #e1bfff">
+			<div class="course-card" style="background-color: #cccccc"> <!--"background-color: #e1bfff"-->
 				<div class="course-card-code">CS999</div>
 				<div class="course-card-title">Some Course in Computer Science</div>
 				<div class="course-card-info">
@@ -92,13 +92,13 @@
 						</tr>
 					</table>
 				</div>
-				<div class="course-card-bottom"><button>Go to: Lecture 3 review page</button></div>
+				<div class="course-card-bottom"><button disabled>Go to Recent: Lecture 3 review page</button></div>
 
 			</div>
 			</div>
 
 			<div class="col-md-4">
-			<div class="course-card" style="background-color: #f1a3a3">
+			<div class="course-card" style="background-color: #cccccc"> <!--"background-color: #f1a3a3"-->
 				<div class="course-card-code">CS111</div>
 				<div class="course-card-title">Some Other Course in Computer Science</div>
 				<div class="course-card-info">
@@ -117,15 +117,16 @@
 						</tr>
 					</table>
 				</div>
-				<div class="course-card-bottom"><button>Go to: Lecture 0 review page</button></div>
+				<div class="course-card-bottom"><button disabled>Go to Recent: Lecture 0 review page</button></div>
 
 			</div>
 			</div>
   </div>
-
+<!--
 			<div class="col-md-12">
 				<div class="load-more-button"><button class="btn btn-primary">I'm Falling Lucku {LOL}</button></div>
 			</div>
+-->
 
   </div>
 

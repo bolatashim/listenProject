@@ -86,15 +86,19 @@ $(document).ready(function(){
 	})
 
 	$("#next").on("click", function(){
-		$(".active-lecture-area").animate({'opacity': 0}, 200, function(){
-			part++;
-			notAnsweredQuestions = data[part].notAnsweredQ;
-			answeredQuestions = data[part].answeredQ;
-			sortQuestions();
-			printQuestions();
-			changeDisplayEles();
-			$(this).animate({'opacity': 1}, 200);
-		});
+		if($(this).children().first().text() == "End"){
+			window.location.href = "course_page.html"
+		}else{
+			$(".active-lecture-area").animate({'opacity': 0}, 200, function(){
+				part++;
+				notAnsweredQuestions = data[part].notAnsweredQ;
+				answeredQuestions = data[part].answeredQ;
+				sortQuestions();
+				printQuestions();
+				changeDisplayEles();
+				$(this).animate({'opacity': 1}, 200);
+			});
+		}
 	})
 
 	$("#prev").on("click", function(){
@@ -193,10 +197,12 @@ function changeDisplayEles(){
 	$("#next").css("visibility", "visible");
 	if(part == 0)
 		$("#prev").css("visibility", "hidden");
-	if(part + 1 == data.length)
-		$("#next").css("visibility", "hidden");
+	if(part + 1 == data.length){
+		$("#next").html("<h1>End</h1><h1> Lec </h1><h1>&#10006;</h1>")
+		$("#next").css({"background-color": "#f15c50", "color": "white"})
+	}
 
-	$("#part-number").html("Lecture 8: Part " + (part + 1));
+	$("#part-number").html("Lecture 7: Part " + (part + 1));
 	$("#part-name").html(data[part].name);
 	$(".understanding-bar-yes").css("width", data[part].understand_per + "%");
 	$(".understanding-bar-yes").html(data[part].understand_per + "%");
