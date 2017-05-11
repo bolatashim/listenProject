@@ -29,7 +29,7 @@ function addpart(){
 	if(part){
 		$("#part_list").append(partHTMLst + part + partHTMLmid + parts.length +  partHTMLend);
 		parts.push(part);
-		$("#input_part").val("add your part names here");
+		$("#input_part").val("");
 		$("#input_part").select();
 		$("#input_part").focus();
 	}

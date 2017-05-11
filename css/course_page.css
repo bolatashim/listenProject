@@ -1,6 +1,31 @@
 .navbar {
-	border-radius: 0px;
-	font-family: sans-serif;
+	font-size: 24px;
+	font-family: Georgia, sans-serif;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #266dd3;
+}
+
+.navbar-entry {
+    float: left;
+}
+
+.navbar-entry a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.navbar-entry a:hover {
+	color: white;
+    background-color: #2059ab;
+}
+.navbar-entry a:focus {
+	color: white;
 }
 .breadcrumb > li.active > span {
 	border-radius: 2px;
@@ -55,4 +80,15 @@
 .lectures-all.zoomed-out .lecture .title {
 	font-weight: bold;
 	text-align: center;
+}
+
+.add-lecture{
+	background-color: green;
+	color: white;
+	height: 40px;
+	width: 200px;
+	font-size: 20px;
+	text-align: center;
+	border-radius: 5px;
+	border-style: solid;
 }
