@@ -92,8 +92,10 @@
 }
 
 .parts{
-	width: 50%;
+	width: 40%;
+	height: 80%;
 	float: left;
+	background-color: #e0e0e0;
 }
 
 .lecture_add_title{
