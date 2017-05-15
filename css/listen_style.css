@@ -33,43 +33,6 @@
 
 /* Homepage vertical tabs styles */
 
-/* Add calender page*/
-
-.calender{
-	border-collapse: collapse;
-	width: 100%;
-	height: 70%;
-}
-
-.calender_day{
-	font-family: "Helvertica";
-	text-align: center;
-	color: #2563ab;
-	background-color: #f2f2f2;
-	width: 20%;
-	height: 10%;
-	border: 1px solid;
-}
-
-.calender_lecture{
-	font-family: "Helvertica";
-	font-size: 24px;
-	text-align: center;
-	color: gray;
-	background-color: #f9f9f9;
-	width: 20%;
-	height: 90%;
-	border: 1px solid #f1f1f1
-}
-
-.add_lecture_button_calender{
-	height: 50px;
-	width: 50px;
-	border-radius: 4px;
-	background-color: #f2f2f2;
-	border: 0;
-}
-
 /* Add lecture page*/
 .background{
 	float: left;

@@ -29,6 +29,28 @@ $( document ).ready(function() {
 			$("#breadcrumb").data("status", false);
 		}
 	});
+
+  $("#help_home").click(function (){
+    if(!$("#breadcrumb").data("status")){
+      $("#breadcrumb").append("<li id='explanation'>You can manage your courses in this page.</li>");
+      $("#breadcrumb").data("status", true);
+    }
+    else{
+      $("#explanation").remove();
+      $("#breadcrumb").data("status", false);
+    }
+  });
+
+  $("#help_review_lecture_page").click(function (){
+    if(!$("#breadcrumb").data("status")){
+      $("#breadcrumb").append("<li id='explanation'>You can review specific data on class.</li>");
+      $("#breadcrumb").data("status", true);
+    }
+    else{
+      $("#explanation").remove();
+      $("#breadcrumb").data("status", false);
+    }
+  });
 });
 
 
