@@ -1,17 +1,42 @@
-var data = {"notAnsweredQ": [{"text": "What are for loops used for?", "time": 1, "tag": "forloop"},
-															{"text": "Why does Hubo not move like I want him to?", "time": 2, "tag":"homework"},
-															{"text": "What's the purpose of creating objects?", "time": 3, "tag":"objects"},
-															{"text": "Random question because idk what to ask.", "time": 4, "tag":"forloop"},
-															{"text": "What's the point of learning CS101?", "time": 5, "tag":"general"},
-															{"text": "What's the point of using while loops instead of for?", "time": 6, "tag":"whileloop"},
-															{"text": "I am confused as to what range is.", "time": 7, "tag":"forloop"}],
-											"answeredQ": []}
+var data = [{"tagName": "forloop", "questions": [{"text": "What are for loops used for?", "time": 1},
+												{"text": "Random question because idk what to ask.", "time": 4},
+												{"text": "I am confused as to what range is.", "time": 7}]},
+			{"tagName": "homework", "questions": [{"text": "Why does Hubo not move like I want him to?", "time": 2}]},
+			{"tagName": "objects", "questions": [{"text": "What's the purpose of creating objects?", "time": 3}]},
+			{"tagName": "general", "questions": [{"text": "What's the point of learning CS101?", "time": 5}]},
+			{"tagName": "whileloop", "questions": [{"text": "What's the point of using while loops instead of for?", "time": 6, "tag":"whileloop"}]}]
 
-var notAnsweredQuestions = data.notAnsweredQ;
-var answeredQuestions = data.answeredQ;
+var tags = []
+var notAnsweredQuestions = []
+var answeredQuestions = []	
+
+data.forEach(function(tag){
+	tag.questions.forEach(function(question){
+		question.tag = tag.tagName
+		notAnsweredQuestions.push(question)
+	})
+	var obj = {"tagName": tag.tagName, "numQs": tag.questions.length}
+	tags.push(obj)
+})
+
+function sortQuestions(questions){
+	questions.sort(timeCompare)
+}
+
+function timeCompare(a, b){
+	return a.time - b.time
+}
+
+function tagsCompare(a, b){
+	return b.numQs - a.numQs
+}
+
+sortQuestions(notAnsweredQuestions)
+tags.sort(tagsCompare)
 
 $(document).ready(function(){
 	printQuestions();
+	printTags();
 	$(".question-list").on("click", ".q-txt", function(){
 		if(!$("#q-" + $(this).data("id")).data("answered")){
 			$("#q-" + $(this).data("id")).animate({'opacity': 0}, 100, function(){
@@ -57,10 +82,9 @@ $(document).ready(function(){
 	})
 })
 
-function printQuestions(){
+function printQuestions(name){
 	$(".question-list").empty();
 	if(!$(".show-more-btn").data("expanded")){
-		var class_type = `"`;
 		if(notAnsweredQuestions.length < 5){
 			var index = 5 - notAnsweredQuestions.length;
 			printNotAnswered(notAnsweredQuestions.length);
@@ -98,4 +122,10 @@ function printAnswered(index){
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}
 	}
+}
+
+function printTags(){
+	tags.forEach(function(tag){
+		$(".tag-area").append(`<h5 class="tag-entry" data-name="${tag.tagName}"><a>#${tag.tagName}</a> <span style="color: orange">(${tag.numQs})</span></h5>`)
+	})
 }
