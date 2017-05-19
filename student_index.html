@@ -2,42 +2,39 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>student listen</title>
-    <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
+    <title>listen() project</title>
+    <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
     <link href="css/student_style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   
   <body>
-	<div class="navbar listen-navbar navbar-static-top" role="navigation">
-	  <div class="container">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href="#">Listen Student <sup>beta</sup></a>
-	    </div>
-	    <ul class="nav navbar-right">
-	        <li><a href="#"><"avatar"> Hakseng Kim</a></li>
-	    </ul>
-	  </div>
-	</div>
-
+  <div class="navbar" style="padding-top: 20px">
+    <div class="container">
+      <div style="font-size: 20px; color: #6db2ce">Listen() Project</div>
+      <div style="font-size: 16px; float: right" id="student_profile" text-align="right"></div>
+    </div>
+  </div>
 
   <div class="container">
-	  <ol class="breadcrumb">
-	  	<li><a href="#">Home</a> </li>
-		  <li class="active">Courses</li>
-		</ol>
+    <div id="tags">
+      <h3>Tags</h3>
+      <button class="btn tag">About class</button>
+      <button class="btn tag">asdfadsfasdfadsfads</button>
+      <button class="btn tag createtag" id="createtag">Create tag</button>
+    </div>
+    <div class="form-group">
+      <h3>Your Question</h3>
+      <ul id="menu"><li style="vertical-align: middle;">Selected tag: </li><li id="selected_tag"></li></ul>
+      <textarea class="form-control" rows="5" id="inputarea"></textarea>
+      <button class="btn btn-default" style="width: 100%" id="submit">Submit</button>
+    </div>
   </div>
 
-
-  <div class="navbar-static-bottom listen-footer nav">
-  	<div class="container">
-		<div class="copyright">Copyright (c) some dudes</div>
-  	</div>
-  </div>
-
-
-    <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
-    <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="scripts/listen_scripts.js"></script>
+  <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
+  <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+  <script src="scripts/student_index.js"></script>
   </body>
 </html>
