@@ -34,6 +34,9 @@ ol > li {
 	color: #15305B !important;
 }
 
+.breadcrumb > li + li:before {
+	color: #15305B !important;	
+}
 
 .navbar{
 	background-color: #15305B;
@@ -41,7 +44,7 @@ ol > li {
 }
 
 .fixed-bottom {
-	display: none;
+
 }
 .navbar-brand {
 	color: white;
@@ -51,10 +54,6 @@ ol > li {
 .navbar-brand:focus {
 	text-decoration: none;
 	color: white;
-}
-
-.navbar-right {
-	margin-right: 30px !important;
 }
 
 .navbar.navbar-entry {
@@ -69,9 +68,9 @@ ol > li {
 	overflow: hidden;
 	padding: 10px;
 	background-color: white;
-  	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  	position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  position: relative;
 
 }
 
@@ -101,19 +100,12 @@ ol > li {
   font-weight: 500;
   margin: 15px 0 5px;
   padding: 10px;
-  /*background-color: gray;*/
 }
 
 .card-action-button:hover {
   background-color: rgba(33, 150, 243, .2);
 }
 
-/*.course-card h1,
-.course-card h2 {
-	margin: 0px;kk
-
-}
-*/
 .label {
 	background-color: blue !important;
 	height: 40px !important;

@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <title>listen() project</title>
     <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
-    <!-- <link href="css/listen_style.css" rel="stylesheet" /> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="css/llistp.css" rel="stylesheet" />
+    <link href="css/home_style.css" rel="stylesheet" />
 </head>
 <body>
-	<ul class="navbar">
-		<div class="container">
-			<!-- <li class="navbar-entry"><a href="#">Listen Project <sup>beta</sup></a></li> -->
-			<!-- <li class="navbar-entry" style=" float:right; font-family: Arial"><a href="#"><"avatar"> Gyosu Kim</a></li> -->
-		</div>
-	</ul>
+    <div class="navbar">
+        <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Listen() Project</a>
+        </div>
+        <div class="navbar-header navbar-right">
+          <a class="navbar-brand" href="#">Gyosu Kim</a>
+        </div>
+        </div>
+    </div>
 
     <div class="container">
         <ol class="breadcrumb" id="breadcrumb" style="margin-top: 20px">
             <li><a href="index.html">Home</a></li>
             <li class="active">CS101</li>
-            <!-- <button class="help_btn" id="help_add_lecture_page" data-status=false>?</button> -->
         </ol>
 
         <h2 class="course-title">CS101: Introduction to Programming</h2>
@@ -29,8 +32,8 @@
 
 <div id="demo">
   
-  <div class="table-responsive-vertical shadow-z-1">
-  <table id="table" class="table table-hover">
+  <div class="lectures-table">
+  <table class="table table-hover">
       <thead>
         <tr>
           <th class="number-col">Lecture</th>
@@ -65,97 +68,73 @@
           <td class="lQuestions">20</td>
         </tr>
         <tr>
-          <td class="lNumber">1</td>
+          <td class="lNumber">5</td>
           <td class="lTitle">Recursion</td>
           <td class="lDate">May 2, 2017</td>
           <td class="lQuestions">12</td>
         </tr>
         <tr>
-          <td class="lNumber">2</td>
+          <td class="lNumber">6</td>
           <td class="lTitle">Problem Solving with Abstract Data Types</td>
           <td class="lDate">May 4, 2017</td>
           <td class="lQuestions">8</td>
         </tr>
         <tr>
-          <td class="lNumber">3</td>
+          <td class="lNumber">7</td>
           <td class="lTitle">Algorithm Efficiency and Sorting</td>
           <td class="lDate">May 9, 2017</td>
           <td class="lQuestions">10</td>
         </tr>
         <tr>
-          <td class="lNumber">4</td>
+          <td class="lNumber">8</td>
           <td class="lTitle">Directed and Undirected Graphs</td>
           <td class="lDate">May 11, 2017</td>
           <td class="lQuestions">20</td>
         </tr>
         <tr>
-          <td class="lNumber">1</td>
+          <td class="lNumber">9</td>
           <td class="lTitle">Recursion</td>
           <td class="lDate">May 2, 2017</td>
           <td class="lQuestions">12</td>
         </tr>
         <tr>
-          <td class="lNumber">2</td>
+          <td class="lNumber">10</td>
           <td class="lTitle">Problem Solving with Abstract Data Types</td>
           <td class="lDate">May 4, 2017</td>
           <td class="lQuestions">8</td>
         </tr>
         <tr>
-          <td class="lNumber">3</td>
+          <td class="lNumber">11</td>
           <td class="lTitle">Algorithm Efficiency and Sorting</td>
           <td class="lDate">May 9, 2017</td>
           <td class="lQuestions">10</td>
         </tr>
         <tr>
-          <td class="lNumber">4</td>
+          <td class="lNumber">12</td>
           <td class="lTitle">Directed and Undirected Graphs</td>
           <td class="lDate">May 11, 2017</td>
           <td class="lQuestions">20</td>
         </tr>
         <tr>
-          <td class="lNumber">1</td>
+          <td class="lNumber">13</td>
           <td class="lTitle">Recursion</td>
           <td class="lDate">May 2, 2017</td>
           <td class="lQuestions">12</td>
         </tr>
         <tr>
-          <td class="lNumber">2</td>
+          <td class="lNumber">14</td>
           <td class="lTitle">Problem Solving with Abstract Data Types</td>
           <td class="lDate">May 4, 2017</td>
           <td class="lQuestions">8</td>
         </tr>
         <tr>
-          <td class="lNumber">3</td>
+          <td class="lNumber">15</td>
           <td class="lTitle">Algorithm Efficiency and Sorting</td>
           <td class="lDate">May 9, 2017</td>
           <td class="lQuestions">10</td>
         </tr>
         <tr>
-          <td class="lNumber">4</td>
-          <td class="lTitle">Directed and Undirected Graphs</td>
-          <td class="lDate">May 11, 2017</td>
-          <td class="lQuestions">20</td>
-        </tr>
-        <tr>
-          <td class="lNumber">1</td>
-          <td class="lTitle">Recursion</td>
-          <td class="lDate">May 2, 2017</td>
-          <td class="lQuestions">12</td>
-        </tr>
-        <tr>
-          <td class="lNumber">2</td>
-          <td class="lTitle">Problem Solving with Abstract Data Types</td>
-          <td class="lDate">May 4, 2017</td>
-          <td class="lQuestions">8</td>
-        </tr>
-        <tr>
-          <td class="lNumber">3</td>
-          <td class="lTitle">Algorithm Efficiency and Sorting</td>
-          <td class="lDate">May 9, 2017</td>
-          <td class="lQuestions">10</td>
-        </tr>
-        <tr>
-          <td class="lNumber">4</td>
+          <td class="lNumber">16</td>
           <td class="lTitle">Directed and Undirected Graphs</td>
           <td class="lDate">May 11, 2017</td>
           <td class="lQuestions">20</td>
@@ -164,13 +143,13 @@
     </table>
   </div>
 </div>
-
     </div>
+
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-database.js"></script>
     <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
     <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="scripts/listen_scripts.js"></script>
-    <script src="scripts/course_lectures.js"></script>
+    <!-- <script src="scripts/listen_scripts.js"></script> -->
+    <!-- <script src="scripts/course_lectures.js"></script> -->
 </body>
 </html>

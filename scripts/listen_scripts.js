@@ -19,6 +19,13 @@ $( document ).ready(function() {
     }
   });
 
+
+$("#cs101course").click(function(){
+  window.location.replace("./lectures_list_page.html");
+});
+
+
+
 	$("#help_add_lecture_page").click(function (){
 		if(!$("#breadcrumb").data("status")){
 			$("#breadcrumb").append("<li id='explanation'>You can plan your lecture in this page.</li>");
