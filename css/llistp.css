@@ -11,7 +11,8 @@ html, body {
 }
 
 ol > li > a {
-	color:#15305B
+	/*color:#15305B*/
+	color:   white
 }
 ol > li > a:hover {
 	text-decoration: none;
@@ -24,15 +25,6 @@ ol > li > a:hover {
 }
 
 
-
-.navbar{
-	background-color: #15305B;
-	border-radius: 0;
-}
-
-.navbar-entry {
-	vertical-align: middle;
-}
 
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {

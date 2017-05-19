@@ -21,7 +21,7 @@ $( document ).ready(function() {
 
 
 $("#cs101course").click(function(){
-  window.location.replace("./lectures_list_page.html");
+  window.location.href = "./lectures_list_page.html";
 });
 
 
