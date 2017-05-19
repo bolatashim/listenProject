@@ -4,34 +4,23 @@ var data = [{"tagName": "forloop", "questions": [{"text": "What are for loops us
 			{"tagName": "homework", "questions": [{"text": "Why does Hubo not move like I want him to?", "time": 2}]},
 			{"tagName": "objects", "questions": [{"text": "What's the purpose of creating objects?", "time": 3}]},
 			{"tagName": "general", "questions": [{"text": "What's the point of learning CS101?", "time": 5}]},
-			{"tagName": "whileloop", "questions": [{"text": "What's the point of using while loops instead of for?", "time": 6, "tag":"whileloop"}]}]
+			{"tagName": "whileloop", "questions": [{"text": "What's the point of using while loops instead of for?", "time": 6}]}]
 
 var tags = []
-var notAnsweredQuestions = []
-var answeredQuestions = []	
+var questions = []
+var name = ""
 
 data.forEach(function(tag){
 	tag.questions.forEach(function(question){
 		question.tag = tag.tagName
-		notAnsweredQuestions.push(question)
+		question.answered = false
+		questions.push(question)
 	})
 	var obj = {"tagName": tag.tagName, "numQs": tag.questions.length}
 	tags.push(obj)
 })
 
-function sortQuestions(questions){
-	questions.sort(timeCompare)
-}
-
-function timeCompare(a, b){
-	return a.time - b.time
-}
-
-function tagsCompare(a, b){
-	return b.numQs - a.numQs
-}
-
-sortQuestions(notAnsweredQuestions)
+sortQuestions()
 tags.sort(tagsCompare)
 
 $(document).ready(function(){
@@ -47,9 +36,7 @@ $(document).ready(function(){
 				text.html("Answered").addClass("q-answered-txt").css({"text-align": "center", "border-width": "1px 0px 1px 1px"});
 				$(this).animate({'opacity': 1}, 100).delay(300);
 
-				var entry = notAnsweredQuestions[text.data("id")];
-				notAnsweredQuestions.splice(text.data("id"), 1);
-				answeredQuestions.push(entry);
+				questions[text.data("id")].answered = true;
 				$(this).fadeOut(200, function(){
 					$(this).remove()
 					printQuestions();
@@ -61,11 +48,7 @@ $(document).ready(function(){
 	$(".question-list").on("click", ".q-del-btn", function(){
 		$("#q-" + $(this).data("id")).fadeOut(200, function(){
 			$(this).remove();
-			if($(this).parent().data("answered")){
-				answeredQuestions.splice($(this).data("id"), 1);
-			}else{
-				notAnsweredQuestions.splice($(this).data("id"), 1);
-			}
+			questions.splice($(this).data("id"), 1);
 			printQuestions();
 		});
 	})
@@ -80,49 +63,85 @@ $(document).ready(function(){
 		}
 		printQuestions();
 	})
+
+	$(".tag-area").on("click", ".tag-entry", function(){
+		if($(this).hasClass("selected-tag")){
+			name = ""
+			printQuestions()
+			$(this).removeClass("selected-tag")
+		}else{
+			$(".tag-area").find(".selected-tag").removeClass("selected-tag")
+			name = $(this).data("name")
+			printQuestions()
+			$(this).addClass("selected-tag")
+		}
+	})
 })
 
-function printQuestions(name){
+function sortQuestions(){
+	questions.sort(timeCompare)
+	questions.sort(answeredCompare)
+}
+
+function timeCompare(a, b){
+	return a.time - b.time
+}
+
+function answeredCompare(a, b){
+	if((a.answered && b.answered) || (!a.answered && !b.answered)){
+		return 0
+	}else if(a.answered && !b.answered){
+		return 1
+	}else{
+		return -1
+	}
+}
+
+function tagsCompare(a, b){
+	return b.numQs - a.numQs
+}
+
+function printQuestions(){
 	$(".question-list").empty();
+	sortQuestions()
 	if(!$(".show-more-btn").data("expanded")){
-		if(notAnsweredQuestions.length < 5){
-			var index = 5 - notAnsweredQuestions.length;
-			printNotAnswered(notAnsweredQuestions.length);
-			printAnswered(index);
-		}else{
-			printNotAnswered(5)
+		var i = 0
+		var printed = 0
+		while(printed < 5 && i < questions.length){
+			printed += printQ(i)
+			i++
 		}
 	}else{
-		printNotAnswered(notAnsweredQuestions.length)
-		printAnswered(answeredQuestions.length)
+		for(var i = 0; i < questions.length; i++)
+			printQ(i)
 	}
-	if(notAnsweredQuestions.length + answeredQuestions.length < 6)
+
+	if(questions.length < 6)
 		$(".show-more-btn").css("visibility", "hidden");
 	else
 		$(".show-more-btn").css("visibility", "visible");
 }
 
-function printNotAnswered(index){
-	for(var i = 0; i < index; i++){
-		$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-			<td class="q-txt" data-id="${i}">
-			<p class="q-details"> <span style="color:#337ab7">#${notAnsweredQuestions[i].tag}</span> 
-			Time: ${notAnsweredQuestions[i].time}</p>${notAnsweredQuestions[i].text}</td>
-			<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-	}
-}
-
-function printAnswered(index){
-	for(var i = 0; i < index; i++){
-		if(answeredQuestions[i]){
+function printQ(i){
+	if(!name || questions[i].tag == name){
+		if(!questions[i].answered){
+			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
+				<td class="q-txt" data-id="${i}">
+				<p class="q-details"> <span style="color:#337ab7">#${questions[i].tag}</span> 
+				Time: ${questions[i].time}</p>${questions[i].text}</td>
+				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
+		}else{
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
 				<td class="q-txt q-answered-txt q-understand" data-id="${i}">
-				<p class="q-details" style="color: #efefef"> #${answeredQuestions[i].tag}
-				Time: ${answeredQuestions[i].time}</p>${answeredQuestions[i].text}</td>
+				<p class="q-details" style="color: #efefef"> #${questions[i].tag}
+				Time: ${questions[i].time}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}
+		return 1
 	}
+	return 0
 }
+
 
 function printTags(){
 	tags.forEach(function(tag){

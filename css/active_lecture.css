@@ -197,3 +197,13 @@ ol > li {
 	background-color: #eff7fb;
 	cursor: pointer;
 }
+
+.selected-tag {
+	background-color: #0084d9;
+}
+.selected-tag a{
+	color: white;
+}
+.selected-tag:hover{
+	background-color: #49b8ff;
+}
