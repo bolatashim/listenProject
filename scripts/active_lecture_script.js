@@ -1,36 +1,17 @@
-var data = [{"name": "Objects and Loops", "notAnsweredQ": [{"text": "What are for loops used for?", "time": 1, "understand": true},
-															{"text": "Why does Hubo not move like I want him to?", "time": 2, "understand": false},
-															{"text": "What's the purpose of creating objects?", "time": 3, "understand": false},
-															{"text": "Random question because idk what to ask.", "time": 4, "understand": false},
-															{"text": "What's the point of learning CS101?", "time": 5, "understand": false},
-															{"text": "What's the point of using while loops instead of for?", "time": 6, "understand": true},
-															{"text": "I am confused as to what range is.", "time": 7, "understand": false}],
-											"answeredQ": [],
-											"understand_per": 60},
-			{"name": "Functions", "notAnsweredQ": [{"text": "What are parameters?", "time": 1, "understand": false},
-															{"text": "What is the difference between parameter and argument?", "time": 2, "understand": true},
-															{"text": "Why do you need to make functions?", "time": 3, "understand": true},
-															{"text": "What is the meaning of 'def'?", "time": 4, "understand": true}],
-											"answeredQ": [],
-											"understand_per": 90},
-			{"name": "Lists", "notAnsweredQ": [{"text": "How can I get a desired entry in a list?", "time": 1, "understand": false},
-															{"text": "Why do indexes start at the number 0?", "time": 2, "understand": true},
-															{"text": "How can I know if a certain thing is inside of a list?", "time": 3, "understand": false},
-															{"text": "Is it possible to just get a certain part of the list?", "time": 4, "understand": false},
-															{"text": "How do i delete something inside of a list?", "time": 5, "understand": false},
-															{"text": "How to add something into a list?", "time": 6, "understand": false}],
-											"answeredQ": [],
-											"understand_per": 30}];
-var sorting = "Time";
-var part = 0;
+var data = {"notAnsweredQ": [{"text": "What are for loops used for?", "time": 1, "tag": "forloop"},
+															{"text": "Why does Hubo not move like I want him to?", "time": 2, "tag":"homework"},
+															{"text": "What's the purpose of creating objects?", "time": 3, "tag":"objects"},
+															{"text": "Random question because idk what to ask.", "time": 4, "tag":"forloop"},
+															{"text": "What's the point of learning CS101?", "time": 5, "tag":"general"},
+															{"text": "What's the point of using while loops instead of for?", "time": 6, "tag":"whileloop"},
+															{"text": "I am confused as to what range is.", "time": 7, "tag":"forloop"}],
+											"answeredQ": []}
 
-var notAnsweredQuestions = data[part].notAnsweredQ;
-var answeredQuestions = data[part].answeredQ;
+var notAnsweredQuestions = data.notAnsweredQ;
+var answeredQuestions = data.answeredQ;
 
 $(document).ready(function(){
 	printQuestions();
-	changeDisplayEles();
-
 	$(".question-list").on("click", ".q-txt", function(){
 		if(!$("#q-" + $(this).data("id")).data("answered")){
 			$("#q-" + $(this).data("id")).animate({'opacity': 0}, 100, function(){
@@ -74,68 +55,7 @@ $(document).ready(function(){
 		}
 		printQuestions();
 	})
-
-	$(".sorting").on("click", ".btn", function(){
-		if($(this).attr("id") != sorting){
-			$("#" + sorting).removeClass("active");
-			sorting = $(this).attr("id");
-			$(this).addClass("active");
-		}
-		sortQuestions();
-		printQuestions();
-	})
-
-	$("#next").on("click", function(){
-		if($(this).children().first().text() == "End"){
-			window.location.href = "course_page.html"
-		}else{
-			$(".active-lecture-area").animate({'opacity': 0}, 200, function(){
-				part++;
-				notAnsweredQuestions = data[part].notAnsweredQ;
-				answeredQuestions = data[part].answeredQ;
-				sortQuestions();
-				printQuestions();
-				changeDisplayEles();
-				$(this).animate({'opacity': 1}, 200);
-			});
-		}
-	})
-
-	$("#prev").on("click", function(){
-		$(".active-lecture-area").animate({'opacity': 0}, 200, function(){
-			part--;
-			notAnsweredQuestions = data[part].notAnsweredQ;
-			answeredQuestions = data[part].answeredQ;
-			sortQuestions();
-			printQuestions();
-			changeDisplayEles();
-			$(this).animate({'opacity': 1}, 200);
-		});
-	})
 })
-
-function timeCompareFunc(a, b){
-	return a.time - b.time;
-}
-function understandCompareFunc(a, b){
-	if(a.understand && !b.understand){
-		return 1;
-	}else if(!a.understand && b.understand){
-		return -1;
-	}else{
-		return 0;
-	}
-}
-
-function sortQuestions(){
-	if(sorting == "Time"){
-		notAnsweredQuestions.sort(timeCompareFunc);
-		answeredQuestions.sort(timeCompareFunc);
-	}else{
-		notAnsweredQuestions.sort(understandCompareFunc);
-		answeredQuestions.sort(understandCompareFunc);
-	}
-}
 
 function printQuestions(){
 	$(".question-list").empty();
@@ -160,52 +80,22 @@ function printQuestions(){
 
 function printNotAnswered(index){
 	for(var i = 0; i < index; i++){
-		if(notAnsweredQuestions[i].understand){
-			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-				<td class="q-txt q-understand" data-id="${i}">${notAnsweredQuestions[i].text}
-				<p class="q-details"> Time: ${notAnsweredQuestions[i].time}</p></td>
-				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-		}else{
-			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-				<td class="q-txt q-not-understand" data-id="${i}">${notAnsweredQuestions[i].text}
-				<p class="q-details"> Time: ${notAnsweredQuestions[i].time}</p></td>
-				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-		}
+		$(".question-list").append(`<tr class="question-entry" id="q-${i}">
+			<td class="q-txt" data-id="${i}">
+			<p class="q-details"> <span style="color:#337ab7">#${notAnsweredQuestions[i].tag}</span> 
+			Time: ${notAnsweredQuestions[i].time}</p>${notAnsweredQuestions[i].text}</td>
+			<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 	}
 }
 
 function printAnswered(index){
 	for(var i = 0; i < index; i++){
 		if(answeredQuestions[i]){
-			if(answeredQuestions[i].understand){
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-					<td class="q-txt q-answered-txt q-understand" data-id="${i}">${answeredQuestions[i].text}
-					<p class="q-details" style="color: #efefef"> Time: ${answeredQuestions[i].time}</p>
-					<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}else{
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-					<td class="q-txt q-answered-txt q-not-understand" data-id="${i}">${answeredQuestions[i].text}
-					<p class="q-details" style="color: #efefef"> Time: ${answeredQuestions[i].time}</p></td>
-					<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}
+			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
+				<td class="q-txt q-answered-txt q-understand" data-id="${i}">
+				<p class="q-details" style="color: #efefef"> #${answeredQuestions[i].tag}
+				Time: ${answeredQuestions[i].time}</p>${answeredQuestions[i].text}</td>
+				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}
 	}
-}
-
-function changeDisplayEles(){
-	$("#prev").css("visibility", "visible");
-	$("#next").css("visibility", "visible");
-	if(part == 0)
-		$("#prev").css("visibility", "hidden");
-	if(part + 1 == data.length){
-		$("#next").html("<h1>End</h1><h1> Lec </h1><h1>&#10006;</h1>")
-		$("#next").css({"background-color": "#f15c50", "color": "white"})
-	}
-
-	$("#part-number").html("Lecture 7: Part " + (part + 1));
-	$("#part-name").html(data[part].name);
-	$(".understanding-bar-yes").css("width", data[part].understand_per + "%");
-	$(".understanding-bar-yes").html(data[part].understand_per + "%");
-	$(".understanding-bar-no").css("width", 100 - data[part].understand_per + "%")
-	$(".understanding-bar-no").html(100 - data[part].understand_per + "%");
 }
