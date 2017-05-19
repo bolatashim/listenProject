@@ -3,16 +3,22 @@
   <head>
     <meta charset="UTF-8">
     <title>listen() project</title>
-    <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
-    <link href="css/listen_style.css" rel="stylesheet" />
+    <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
+    <link href="css/home_style.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/llistp.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   
   <body>
 	<ul class="navbar">
 		<div class="container">
-			<li class="navbar-entry"><a href="#">Listen Project <sup>beta</sup></a></li>
-			<li class="navbar-entry" style="float:right; font-family: Arial"><a href="#"><"avatar"> Gyosu Kim</a></li>
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Listen() Project</a>
+	    </div>
+	    <div class="navbar-header navbar-right">
+	      <a class="navbar-brand" href="#">Gyosu Kim</a>
+	    </div>
 		</div>
 	</ul>
 
@@ -20,124 +26,44 @@
   <div class="container">
 	  <ol class="breadcrumb" id="breadcrumb">
 		  <li class="active">Home</li>
-		  <button class="help_btn" id="help_home" data-status=false>?</button>
+		  <!-- <button class="help_btn" id="help_home" data-status=false>?</button> -->
 		</ol>
-		<div class="cards-parent">
+		<div class="cards-parent row">	
 			<div class="col-md-4">
-			<div class="course-card" style="background-color: #ffc47f" onclick="location.href='course_page.html'">
+			<div class="course-card" style="border-left: 6px solid #328432 ;">
+				<div class="course-card-title">Introduction to Computer Science</div>
 				<div class="course-card-code">CS101</div>
-				<div class="course-card-title">Introduction to Computer Science</div>
-
-				<div class="course-card-info">
-					<table class="table table-unstyled">
-						<tr>
-							<th><span>Current Progress</span></th>
-							<td>Week 12</td>
-						</tr>
-						<tr>
-							<th><span>Class time</span></th>
-							<td>10:30 - 11:45 <b>M / W</b></td>
-						</tr>
-						<tr>
-							<th></th>
-							<td></td>
-						</tr>
-					</table>
+				<hr />
+				<div class="course-card-links">
+				<div class="card-action-button">Go to Lecture 6</div>
 				</div>
-				<div class="course-card-bottom"><a href="review_lecture.html" style="color:black"><button>Go to Recent: Lecture 6 review page</button></a></div>
 			</div>
 			</div>
 			<div class="col-md-4">
-			<div class="course-card" style="background-color: #cccccc">  <!--"background-color: #bfffe1"-->
+			<div class="course-card" style="border-left: 6px solid #EA5B23;">  <!--"background-color: #bfffe1"-->
+				<div class="course-card-title">Introduction to Human-Computer Interaction</div>
 				<div class="course-card-code">CS374</div>
-				<div class="course-card-title">Introduction to Computer Science</div>
-				<div class="course-card-info">
-					<table class="table table-unstyled">
-						<tr>
-							<th><span>Current Progress</span></th>
-							<td>Week 12</td>
-						</tr>
-						<tr>
-							<th><span>Class time</span></th>
-							<td>13:00 - 14:15 <b>M / W</b></td>
-						</tr>
-						<tr>
-							<th></th>
-							<td></td>
-						</tr>
-					</table>
-
+				<hr />
+				<div class="course-card-links">
+				<div class="card-action-button">Go to Lecture 11</div>
 				</div>
-				<div class="course-card-bottom"><button disabled>Go to Recent: Lecture 5 review page</button></div>
-
 			</div>
 			</div>
 			<div class="col-md-4">
-			<div class="course-card" style="background-color: #cccccc"> <!--"background-color: #e1bfff"-->
-				<div class="course-card-code">CS999</div>
-				<div class="course-card-title">Some Course in Computer Science</div>
-				<div class="course-card-info">
-					<table class="table table-unstyled">
-						<tr>
-							<th><span>Current Progress</span></th>
-							<td>Week 12</td>
-						</tr>
-						<tr>
-							<th><span>Class time</span></th>
-							<td>10:30 - 11:45 <b>T / Th</b></td>
-						</tr>
-						<tr>
-							<th></th>
-							<td></td>
-						</tr>
-					</table>
+			<div class="course-card" style="background-color: #eceff1"> <!--"background-color: #e1bfff"-->
+				<div class="add-course-icon"><i class="material-icons md-18 md-light">add</i><h1>Add a course</h1></div>
+
+				<div class="course-card-links">
 				</div>
-				<div class="course-card-bottom"><button disabled>Go to Recent: Lecture 3 review page</button></div>
-
-			</div>
-			</div>
-
-			<div class="col-md-4">
-			<div class="course-card" style="background-color: #cccccc"> <!--"background-color: #f1a3a3"-->
-				<div class="course-card-code">CS111</div>
-				<div class="course-card-title">Some Other Course in Computer Science</div>
-				<div class="course-card-info">
-					<table class="table table-unstyled">
-						<tr>
-							<th><span>Current Progress</span></th>
-							<td>Week 120</td>
-						</tr>
-						<tr>
-							<th><span>Class time</span></th>
-							<td>10:30 - 11:45 <b>T / Th</b></td>
-						</tr>
-						<tr>
-							<th></th>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-				<div class="course-card-bottom"><button disabled>Go to Recent: Lecture 0 review page</button></div>
-
 			</div>
 			</div>
   </div>
-<!--
-			<div class="col-md-12">
-				<div class="load-more-button"><button class="btn btn-primary">I'm Falling Lucku {LOL}</button></div>
-			</div>
--->
 
   </div>
 
-
-  <div class="navbar-static-bottom listen-footer nav">
-  	<div class="container">
-		<div class="copyright">Copyright (c) some dudes</div>
-  	</div>
-  </div>
-
-
+<nav class="navbar fixed-bottom navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Fixed bottom</a>
+</nav>
     <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
     <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
     <script src="scripts/listen_scripts.js"></script>

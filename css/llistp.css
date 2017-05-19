@@ -1,0 +1,84 @@
+html, body {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  font-family: Helvetica;
+}
+
+.table th {
+	border-bottom: 2px solid #15305B !important;
+	color: #15305B;
+}
+
+ol > li > a {
+	color:#15305B
+}
+ol > li > a:hover {
+	text-decoration: none;
+}
+
+
+.navbar{
+	background-color: #15305B;
+	border-radius: 0;
+}
+
+.navbar-entry {
+	vertical-align: middle;
+}
+
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #eff7fb;
+  /*color: ;*/
+}
+
+.course-title {
+	text-align: center;
+	color: #15305B;
+}
+
+.qnum-col,
+.date-col,
+.number-col,
+.title-col{
+	font-weight: 600;
+}
+
+.number-col {
+	width: 5%;
+}
+.lNumber {
+	/*text-align: center;*/
+}
+
+.lQuestions,
+.lDate{
+	color: gray;
+	font-weight: 200;
+}
+
+.lTitle {
+	font-weight: 500;	
+}
+
+
+table tr th{
+	padding: 16px !important;
+	font-size: 16px;
+}
+
+table tr td{
+	padding-top: 14px !important;
+	padding-bottom: 14px !important;
+	padding-right: 16px !important;
+	padding-left: 16px !important;
+	font-size: 16px;
+}
+
+table tr td {
+	cursor: pointer;
+}
+
+
+
