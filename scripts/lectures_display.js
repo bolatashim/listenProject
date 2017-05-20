@@ -106,6 +106,7 @@ $( document ).ready(function() {
       lectureStart(lectureKey, ltitle, lectureToday);
       localStorage.courseKey = courseKey;
       localStorage.lectureKey = lectureKey;
+      localStorage.lectureTitle = ltitle;
       document.location.href = './active_lecture.html';
   });
 

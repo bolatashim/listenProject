@@ -1,5 +1,6 @@
 var courseName = localStorage.courseKey
 var lectureName = localStorage.lectureKey
+var lectureTitle = localStorage.lectureTitle
 
 var tags = []
 var questions = []
@@ -19,13 +20,15 @@ var database = firebase.database()
 var courseRef = database.ref("courses/" + courseName)
 var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ lectureName)
 var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
-var updates = {}
-updates["/randomtag"] = [{asker: 20150531, text: "what is that", answered: false, time: 2, email: "gmail"}]
-tagsRef.update(updates)
+
+var activeRef = database.ref("activeLecture")
+activeRef.set(null)
+activeRef.push({course: courseName, lecture: lectureName})
 
 $(document).ready(function(){
 	$("#course-name").html(courseName)
-	$("#part-name").html(lectureName)
+	$("#lec-name").html(lectureName)
+	$("#lec-title").html(lectureTitle)
 	$(".question-list").on("click", ".q-txt", function(){
 		var info = $(this).data("info").split(",")
 		var index = info[0]
@@ -83,6 +86,13 @@ $(document).ready(function(){
 			name = $(this).data("name")
 			printQuestions()
 			$(this).addClass("selected-tag")
+		}
+	})
+
+	$("#end-btn").on("click", function(){
+		if(confirm("Do you really want to end the lecture?")){
+			activeRef.set(null)
+			document.location.href = './lectures_list_page.html'
 		}
 	})
 })
@@ -158,13 +168,13 @@ function printQ(i){
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
 				<td class="q-txt" data-info="${i},${questions[i].id},${questions[i].tag}">
 				<p class="q-details"> <span style="color:#337ab7">#${questions[i].tag}</span> 
-				Time: ${questions[i].time}</p>${questions[i].text}</td>
+				Time: ${questions[i].time.getHours() + ":" + questions[i].time.getMinutes()}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}else{
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}" data-answered="true">
 				<td class="q-txt q-answered-txt q-understand" data-info="${i},${questions[i].id},${questions[i].tag}">
 				<p class="q-details" style="color: #efefef"> #${questions[i].tag}
-				Time: ${questions[i].time}</p>${questions[i].text}</td>
+				Time: ${questions[i].time.getHours() + ":" + questions[i].time.getMinutes()}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}
 		return 1
