@@ -1,0 +1,156 @@
+* Basic Header and Breadcrumb **/
+html, body {
+  position: relative;
+  font-family: Helvetica !important;
+  background-color: #eceff1 !important;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+
+.table th {
+	border-bottom: 2px solid #15305B !important;
+	color: #15305B;
+}
+
+.breadcrumb {
+	background-color: #6FBFE0 !important;
+	border-radius: 0 !important;
+}
+
+ol > li > a {
+	color:#15305B
+}
+ol > li > a:hover {
+	text-decoration: none;
+}
+ol > li {
+	text-decoration: none;
+	color: #15305B !important;
+}
+
+.breadcrumb > li + li:before {
+	color: #15305B !important;	
+}
+
+.navbar{
+	background-color: #15305B;
+	border-radius: 0;	
+}
+
+.fixed-bottom {
+
+}
+.navbar-brand {
+	color: white;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+	text-decoration: none;
+	color: white;
+}
+
+.navbar.navbar-entry {
+	vertical-align: middle;
+}
+
+/** Top Info **/
+.part-name-area{
+	padding-bottom: 10px;
+	text-align: center;
+	border-bottom: solid 1px #15305b;
+	color: #15305b;
+	margin-bottom: 10px;
+}
+
+.active-lecture-area{
+	display: block;
+	margin: auto;
+	width: 100%;
+}
+
+.area-label {
+	text-align: center;
+	margin: 10px 0 10px 0;
+	font-size: 30px;
+	color: #15305b;
+}
+
+.accessed-area{
+	color: #15305b;
+	margin: 5px auto;
+	padding: 9px 0;
+	width: 30%;
+	text-align: center;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+#accessed-number{
+	margin: 0px;
+	padding: 0px 0px;
+}
+
+/* Question Explorer */
+
+.question-explorer {
+	padding: 10px;
+	background: rgba(0,0,0,.1);
+	/*border-radius: 5px;*/
+}
+
+	.tags {
+		border-bottom: rgba(0,0,0,.2);
+		margin-bottom: 30px;
+	}
+		.tags:before {
+			content: attr(data-legend);
+			text-transform: uppercase;
+			padding: 3px 6px;
+			margin-bottom: 3px;
+			font-size: .7em;
+			font-weight: bold;
+			display: block;
+		}
+
+		.tag {
+			display: inline-block;
+			padding: 10px 15px;
+			text-transform: uppercase;
+			font-size: .7em;
+			background: #c8d2d6;
+			border-radius: 2px;
+			cursor: pointer;
+		}
+
+		.tag.selected {
+			color: #c8d2d6;
+			background: #000;
+		}
+
+	.questions {
+		
+	}
+		.questions:before {
+			content: attr(data-legend);
+			text-transform: uppercase;
+			padding: 3px 6px;
+			font-size: .7em;
+			font-weight: bold;
+			display: block;
+		}
+
+		.question {
+			max-width: 700px;
+			background: #ccc;
+			padding: 10px 20px;
+			border-radius: 20px;
+			margin-bottom: 5px;
+		}
