@@ -1,5 +1,35 @@
 
 $( document ).ready(function() {
+
+  var config = {
+    apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
+    authDomain: "listen-f5fcf.firebaseapp.com",
+    databaseURL: "https://listen-f5fcf.firebaseio.com",
+    projectId: "listen-f5fcf",
+    storageBucket: "listen-f5fcf.appspot.com",
+    messagingSenderId: "913421957842"
+  };
+  
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+
+  var activelectureRef = database.ref("activeLecture");
+
+  var profsRef = database.ref("professors");
+  var coursesRef = database.ref("professors/courses");
+  var lecturesRef = database.ref("professors/courses/lectures");
+  var tagsRef = database.ref("professors/courses/lectures/tags");
+
+
+
+
+
+
+
+
+
   //Toggle active & inactive states
   $("#cs101tab").click(function () {
     if (!$(this).hasClass("listen-active-tab")) {
