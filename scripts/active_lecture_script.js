@@ -1,5 +1,5 @@
-var courseName = "CS101"
-var lectureName = "Lecture 9"
+var courseName = localStorage.courseKey
+var lectureName = localStorage.lectureKey
 
 var tags = []
 var questions = []
@@ -17,10 +17,15 @@ var config = {
 firebase.initializeApp(config)
 var database = firebase.database()
 var courseRef = database.ref("courses/" + courseName)
-var lectureRef = database.ref(courseName + "/" + "lectures" + "/"+ lectureName)
-var tagsRef = database.ref(courseName + "/lectures/" + lectureName + "/tags")
+var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ lectureName)
+var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
+var updates = {}
+updates["/randomtag"] = [{asker: 20150531, text: "what is that", answered: false, time: 2, email: "gmail"}]
+tagsRef.update(updates)
 
 $(document).ready(function(){
+	$("#course-name").html(courseName)
+	$("#part-name").html(lectureName)
 	$(".question-list").on("click", ".q-txt", function(){
 		var info = $(this).data("info").split(",")
 		var index = info[0]
