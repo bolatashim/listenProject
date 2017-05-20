@@ -1,34 +1,33 @@
-var data = [{"tagName": "forloop", "questions": [{"text": "What are for loops used for?", "time": 1},
-												{"text": "Random question because idk what to ask.", "time": 4},
-												{"text": "I am confused as to what range is.", "time": 7}]},
-			{"tagName": "homework", "questions": [{"text": "Why does Hubo not move like I want him to?", "time": 2}]},
-			{"tagName": "objects", "questions": [{"text": "What's the purpose of creating objects?", "time": 3}]},
-			{"tagName": "general", "questions": [{"text": "What's the point of learning CS101?", "time": 5}]},
-			{"tagName": "whileloop", "questions": [{"text": "What's the point of using while loops instead of for?", "time": 6}]}]
+var courseName = "CS101"
+var lectureName = "Lecture 9"
 
 var tags = []
 var questions = []
 var name = ""
 
-data.forEach(function(tag){
-	tag.questions.forEach(function(question){
-		question.tag = tag.tagName
-		question.answered = false
-		questions.push(question)
-	})
-	var obj = {"tagName": tag.tagName, "numQs": tag.questions.length}
-	tags.push(obj)
-})
+var config = {
+    apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
+    authDomain: "listen-f5fcf.firebaseapp.com",
+    databaseURL: "https://listen-f5fcf.firebaseio.com",
+    projectId: "listen-f5fcf",
+    storageBucket: "listen-f5fcf.appspot.com",
+    messagingSenderId: "913421957842"
+};
 
-sortQuestions()
-tags.sort(tagsCompare)
+firebase.initializeApp(config)
+var database = firebase.database()
+var courseRef = database.ref("courses/" + courseName)
+var lectureRef = database.ref(courseName + "/" + "lectures" + "/"+ lectureName)
+var tagsRef = database.ref(courseName + "/lectures/" + lectureName + "/tags")
 
 $(document).ready(function(){
-	printQuestions();
-	printTags();
 	$(".question-list").on("click", ".q-txt", function(){
-		if(!$("#q-" + $(this).data("id")).data("answered")){
-			$("#q-" + $(this).data("id")).animate({'opacity': 0}, 100, function(){
+		var info = $(this).data("info").split(",")
+		var index = info[0]
+		var id = info[1]
+		var tag = info[2]
+		if(!$("#q-" + index).data("answered")){
+			$("#q-" + index).animate({'opacity': 0}, 100, function(){
 				var del_btn = $(this).children().last();
 				del_btn.html("");
 				del_btn.removeClass("q-del-btn").addClass("q-answered-del");
@@ -36,10 +35,11 @@ $(document).ready(function(){
 				text.html("Answered").addClass("q-answered-txt").css({"text-align": "center", "border-width": "1px 0px 1px 1px"});
 				$(this).animate({'opacity': 1}, 100).delay(300);
 
-				questions[text.data("id")].answered = true;
+				questions[index].answered = true;
+
 				$(this).fadeOut(200, function(){
 					$(this).remove()
-					printQuestions();
+					tagsRef.child(tag + "/" + id + "/answered").set(true)
 				})
 			})
 		}
@@ -47,9 +47,13 @@ $(document).ready(function(){
 
 	$(".question-list").on("click", ".q-del-btn", function(){
 		$("#q-" + $(this).data("id")).fadeOut(200, function(){
+			var info = $(this).find(".q-txt").data("info").split(",")
+			var index = info[0]
+			var id = info[1]
+			var tag = info[2]
 			$(this).remove();
-			questions.splice($(this).data("id"), 1);
-			printQuestions();
+			questions.splice(index, 1);
+			tagsRef.child(tag + "/" + id).remove()
 		});
 	})
 
@@ -64,18 +68,39 @@ $(document).ready(function(){
 		printQuestions();
 	})
 
-	$(".tag-area").on("click", ".tag-entry", function(){
+	$("#tag-list").on("click", ".tag-entry", function(){
 		if($(this).hasClass("selected-tag")){
 			name = ""
 			printQuestions()
 			$(this).removeClass("selected-tag")
 		}else{
-			$(".tag-area").find(".selected-tag").removeClass("selected-tag")
+			$("#tag-list").find(".selected-tag").removeClass("selected-tag")
 			name = $(this).data("name")
 			printQuestions()
 			$(this).addClass("selected-tag")
 		}
 	})
+})
+
+tagsRef.on("value", function(snapshot){
+	questions = []
+	tags = []
+	snapshot.forEach(function(childSnap){
+		var tag = childSnap.key
+		var ques_list = childSnap.val()
+		console.log(ques_list)
+		for (var i = 0; i < ques_list.length; i++){
+			var question = ques_list[i]
+			if(question){
+				question.tag = tag
+				question.id = i
+				questions.push(question)
+			}
+		}
+		tags.push({tagName: tag, numQs: i})
+	})
+	printQuestions()
+	printTags()
 })
 
 function sortQuestions(){
@@ -126,13 +151,13 @@ function printQ(i){
 	if(!name || questions[i].tag == name){
 		if(!questions[i].answered){
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-				<td class="q-txt" data-id="${i}">
+				<td class="q-txt" data-info="${i},${questions[i].id},${questions[i].tag}">
 				<p class="q-details"> <span style="color:#337ab7">#${questions[i].tag}</span> 
 				Time: ${questions[i].time}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}else{
-			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-				<td class="q-txt q-answered-txt q-understand" data-id="${i}">
+			$(".question-list").append(`<tr class="question-entry" id="q-${i}" data-answered="true">
+				<td class="q-txt q-answered-txt q-understand" data-info="${i},${questions[i].id},${questions[i].tag}">
 				<p class="q-details" style="color: #efefef"> #${questions[i].tag}
 				Time: ${questions[i].time}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
@@ -144,7 +169,9 @@ function printQ(i){
 
 
 function printTags(){
+	$("#tag-list").empty()
+	tags.sort(tagsCompare)
 	tags.forEach(function(tag){
-		$(".tag-area").append(`<h5 class="tag-entry" data-name="${tag.tagName}"><a>#${tag.tagName}</a> <span style="color: orange">(${tag.numQs})</span></h5>`)
+		$("#tag-list").append(`<h5 class="tag-entry" data-name="${tag.tagName}"><a>#${tag.tagName}</a> <span style="color: orange">(${tag.numQs})</span></h5>`)
 	})
 }
