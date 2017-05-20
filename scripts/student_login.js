@@ -1,34 +1,56 @@
 var config={
-	apiKey: "AIzaSyBUROLOtK8FwnXVlCvcLJIz-HN07Q3sxEk",
-	databaseURL: "https://listen-1887f.firebaseio.com/",
+	apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
+	databaseURL: "https://listen-f5fcf.firebaseio.com/",
 }
 firebase.initializeApp(config);
 var database = firebase.database();
 var activeLectureRef = database.ref("activeLecture");
-var studentListRef = database.ref("studentList");
 var activeLecture = [];
+
+/*
+var studentRef = database.ref("courses/CS101/students");
+studentRef.update({
+	20150000: "hcilisten@gmail.com",
+	20150001: "hcilisten@gmail.com",
+	20150002: "hcilisten@gmail.com",
+});
+*/
 
 $( document ).ready(function() {
 	$("#join").click(function(){
 		var id = $("#student_id").val();
 		var email = $("#student_email").val();
 		var course = $("#student_course").val();
-
-		if(jQuery.inArray(id, studentList) != -1){
-			localStorage.setItem("id", id);
-			localStorage.setItem("email", email);
-			localStorage.setItem("course", course);
-			document.location.href = 'file:student_index.html';
-		}
-		else{
-			alert("You are not registered in course "+course+". Tell your instructor to add you in this course");
-		}
+		var studentRef = database.ref("courses/"+course.split(" ")[0]+"/students");
+		
+  		studentRef.once('value', function(snapshot){
+  			if(snapshot.hasChild(id)){
+  				localStorage.setItem("id", id);
+				localStorage.setItem("email", email);
+				localStorage.setItem("course", course);
+				localStorage.setItem("lecture", find_lecture(course));
+				document.location.href = 'file:student_index.html';
+  			}
+  			else{
+  				alert("You cannot join course "+course+". The course is not activated yet, or you are not registered in the course");
+  			}
+  		});
 	});
 })
 
 activeLectureRef.on('child_added', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
-	activeLecture.push(value["course"]);
-	$("#student_course").html("<option>"+value["course"]+"</option>");
+	activeLecture.push({course: value["course"], lecture: value["lecture"]});
+	$("#student_course").append("<option>"+value["course"]+"</option>");
 });
+
+function find_lecture(course){
+	for(var i = 0; i < activeLecture.length; i++){
+		if(activeLecture[i]["course"] == course){
+			return activeLecture[i]["lecture"];
+		}
+	}
+	alert("no such course found!");
+	return -1;
+}

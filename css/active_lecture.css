@@ -83,20 +83,6 @@ ol > li {
 	color: #15305b;
 }
 
-.accessed-area{
-	color: #15305b;
-	margin: 5px auto;
-	padding: 9px 0;
-	width: 30%;
-	text-align: center;
-	background-color: white;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-
-#accessed-number{
-	margin: 0px;
-	padding: 0px 0px;
-}
 
 /** Questions **/
 .question-area {
@@ -166,6 +152,7 @@ ol > li {
 	margin: auto;
 	width: 100%;
 	color: #15305b;
+	visibility: "hidden";
 }
 
 /** Tags **/
