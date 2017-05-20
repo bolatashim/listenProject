@@ -14,17 +14,19 @@
     <div>
     <h4 style="color: #6db2ce">Listen() Project</h4>
     </div>
-    <div class="idpass">
+    <div class="container idpass" style="width: 100%">
       <div class="inputpadding">
-        <input class="inputtext" placeholder="student id" id="student_id" ></input>
-        <input class="inputtext" placeholder="e-mail address" id="student_email"></input>
+        <input class="form-control" placeholder="student id" id="student_id"></input>
+        <input class="form-control" placeholder="e-mail address" id="student_email"></input>
+        <select class="form-control" id="student_course"></select>
       </div>
-      <button type="button" class="btn btn-default" style="color: gray" id="join">Join Lecture</button>
+      <button type="button" class="btn btn-default" style="color: gray; width: 100%" id="join">Join Lecture</button>
     </div>
   </div>
 
   <script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
   <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
   <script src="scripts/student_login.js"></script>
   </body>
 </html>
