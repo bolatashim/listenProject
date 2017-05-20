@@ -8,9 +8,11 @@ var tagRef = database.ref("tags");
 var tags = [];
 var student_id = localStorage.id;
 var student_email = localStorage.email;
+var student_course = localStorage.course;
 
 $( document ).ready(function(){
 	$("#student_profile").text("ID: "+student_id);
+	$("#student_course").text("Course: "+student_course);
 
 	$(".tag").click(function(){
 		if($(this).text()=="Create tag"){
@@ -28,7 +30,6 @@ $( document ).ready(function(){
 	});
 	*/
 	$("#submit").click(function(){
-		alert($("#inputarea").val());
 		tagRef.push({
 			id: student_id,
 			email: student_email,

@@ -14,16 +14,10 @@
 .idpass{
 	align-items: center;
 	position: relative;
-	top: 15%;
-}
-
-.inputtext{
-	border-radius: 2px;
-	width: 70%;
 }
 
 .inputpadding{
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 .tag{
