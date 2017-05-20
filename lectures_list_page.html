@@ -5,7 +5,7 @@
     <title>listen() project</title>
     <link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href="css/llistp.css" rel="stylesheet" />
     <link href="css/home_style.css" rel="stylesheet" />
@@ -24,11 +24,11 @@
     <div class="container">
         <ol class="breadcrumb" id="breadcrumb">
             <li><a href="index.html">Home</a></li>
-            <li class="active">CS101</li>
+            <li class="active" id="breadcode"></li>
         </ol>
 
   <div class="quickstart-lecture col-md-12">
-    <h2 class="course-title">CS101: Introduction to Programming</h2>
+    <h2 class="course-title" id="course-title-current"></h2>
     <div class="col-md-6">
       <table class="table">
         <thead>
@@ -62,10 +62,11 @@
       <tbody>
         <tr>
           <td>
+            <h4 class="course-title" id="lecture-today">Lecture</h4>
             
-            <h4 class="course-title">Lecture 21</h4>
-            <h4 class="course-title"><b>Introduction to Object-Oriented Programming </b></h4>
-            <button class="btn btn-default lecture-start-button btn-success">Start Lecture</button>
+            <input class="form-control input-md" id="today-lecture-title" placeholder="Lecture title" type="text">
+
+            <button class="btn btn-default lecture-start-button btn-success" id="start-lecture-today">Start Lecture</button>
           </td>
         </tr>
       </tbody>
@@ -88,7 +89,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
+        <tr class="starterclass"></tr>
+ <!--        <tr>
           <td class="lNumber">1</td>
           <td class="lTitle">Recursion</td>
           <td class="lDate">May 2, 2017</td>
@@ -183,7 +185,7 @@
           <td class="lTitle">Directed and Undirected Graphs</td>
           <td class="lDate">May 11, 2017</td>
           <td class="lQuestions">20</td>
-        </tr>
+        </tr> -->
       </tbody>
     </table>
   </div>
@@ -195,5 +197,6 @@
     <script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
     <!-- <script src="scripts/listen_scripts.js"></script> -->
     <!-- <script src="scripts/course_lectures.js"></script> -->
+    <script src="scripts/lectures_display.js"></script>
 </body>
 </html>
