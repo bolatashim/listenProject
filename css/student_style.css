@@ -1,0 +1,48 @@
+.center{
+	position: absolute;
+  	margin: auto;
+  	top: 0;
+  	right: 0;
+  	bottom: 0;
+  	left: 0;
+  	width: 300px;
+  	height: 200px;
+  	box-shadow: 0px 0px 3px 2px #d8d8d8 ;
+  	padding-top: 10px;
+}
+
+.idpass{
+	align-items: center;
+	position: relative;
+	top: 15%;
+}
+
+.inputtext{
+	border-radius: 2px;
+	width: 70%;
+}
+
+.inputpadding{
+	padding-bottom: 20px;
+}
+
+.tag{
+  background-color: #e5efff;
+}
+
+.createtag{
+  background-color: #e2e2e2;
+}
+
+.selecttag{
+  height: 40px;
+}
+
+ul#menu li{
+  display: inline;
+}
+
+.cur_tag{
+  background-color: #e5efff;
+  border: 0px;
+}

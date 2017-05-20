@@ -4,62 +4,51 @@
 	<meta charset="UTF-8">
 	<title>listen() project</title>
 	<link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
-	<link href="css/listen_style.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link href="css/active_lecture.css" rel="stylesheet" />
 </head>
 
 <body>
-	<ul class="navbar">
-		<div class="container">
-			<li class="navbar-entry"><a href="#">Listen Project <sup>beta</sup></a></li>
-			<li class="navbar-entry" style="float:right; font-family: Arial"><a href="#"><"avatar"> Gyosu Kim</a></li>
-		</div>
-	</ul>
+    <div class="navbar">
+        <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Listen() Project</a>
+        </div>
+        <div class="navbar-header navbar-right">
+          <a class="navbar-brand" href="#">Gyosu Kim</a>
+        </div>
+        </div>
+    </div>
 
 	<div class="container">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Home: Courses</a> </li>
-			<li><a href="course_page.html">CS101</a> </li>
+			<li><a href="index.html">Home</a> </li>
+			<li><a href="lectures_list_page.html">CS101</a> </li>
 			<li class="active">Active Lecture</li>
 		</ol>
 
-		<div class="goto-part-area" id="prev">
-			<h1> Prev </h1>
-			<h1> Part </h1>
-			<h1> &#10094; </h1>
-		</div>
 		<div class="active-lecture-area">
 			<div class="part-name-area">
-				<h5 id="part-number" style="margin-bottom: 5px"> Lecture 7: Part 1 </h4>
-				<h1 id="part-name" style="margin: 0px"> Loops and Objects </h1>
-			</div>
-			<div class="understanding-area">
-				<h1 class="area-label">Level of Understanding</h1>
-				<div class="understanding-bar">
-					<div class="understanding-bar-yes">60%</div><div class="understanding-bar-no">40%</div>
-				</div>
-				<p class="understand-label"> Understand </h1>
-				<p class="not-understand-label"> Not Understand </h1>
+				<h1 id="part-name" style="margin: 0px"> Lecture 8 </h1>
 			</div>
 
-			<div class="question-area">
-				<h1 class="area-label">Questions</h1>
+			<div class="accessed-area">
+				<h3 id="accessed-number"> Accessed Students: <span style="color:green">46</span>/50</h3>
+			</div>
 
-				<p style="display: inline-block"> Sort by: </p>
-				<div class="btn-group sorting">
-					<button type="button" class="btn btn-primary active" id="Time"> Time </button>
-					<button type="button" class="btn btn-primary" id="Understanding"> Understanding </button>
+			<div class="joint-area">
+				<div class="question-area">
+					<h1 class="area-label">Questions</h1>
+
+					<table class="question-list">
+					</table>
+					<button class="btn btn-lg btn-default show-more-btn" data-expanded="false"> Show More </button>
 				</div>
 
-				<table class="question-list">
-				</table>
-				<button class="btn btn-lg btn-default show-more-btn" data-expanded="false"> Show More </button>
+				<div class="tag-area">
+					<h1 class="tag-label">Tags</h1>
+				</div>
 			</div>
-		</div>
-		<div class="goto-part-area" id="next">
-			<h1> Next </h1>
-			<h1> Part </h1>
-			<h1> &#10095; </h1>
 		</div>
 	</div>
 

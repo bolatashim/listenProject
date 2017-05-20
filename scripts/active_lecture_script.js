@@ -1,36 +1,31 @@
-var data = [{"name": "Objects and Loops", "notAnsweredQ": [{"text": "What are for loops used for?", "time": 1, "understand": true},
-															{"text": "Why does Hubo not move like I want him to?", "time": 2, "understand": false},
-															{"text": "What's the purpose of creating objects?", "time": 3, "understand": false},
-															{"text": "Random question because idk what to ask.", "time": 4, "understand": false},
-															{"text": "What's the point of learning CS101?", "time": 5, "understand": false},
-															{"text": "What's the point of using while loops instead of for?", "time": 6, "understand": true},
-															{"text": "I am confused as to what range is.", "time": 7, "understand": false}],
-											"answeredQ": [],
-											"understand_per": 60},
-			{"name": "Functions", "notAnsweredQ": [{"text": "What are parameters?", "time": 1, "understand": false},
-															{"text": "What is the difference between parameter and argument?", "time": 2, "understand": true},
-															{"text": "Why do you need to make functions?", "time": 3, "understand": true},
-															{"text": "What is the meaning of 'def'?", "time": 4, "understand": true}],
-											"answeredQ": [],
-											"understand_per": 90},
-			{"name": "Lists", "notAnsweredQ": [{"text": "How can I get a desired entry in a list?", "time": 1, "understand": false},
-															{"text": "Why do indexes start at the number 0?", "time": 2, "understand": true},
-															{"text": "How can I know if a certain thing is inside of a list?", "time": 3, "understand": false},
-															{"text": "Is it possible to just get a certain part of the list?", "time": 4, "understand": false},
-															{"text": "How do i delete something inside of a list?", "time": 5, "understand": false},
-															{"text": "How to add something into a list?", "time": 6, "understand": false}],
-											"answeredQ": [],
-											"understand_per": 30}];
-var sorting = "Time";
-var part = 0;
+var data = [{"tagName": "forloop", "questions": [{"text": "What are for loops used for?", "time": 1},
+												{"text": "Random question because idk what to ask.", "time": 4},
+												{"text": "I am confused as to what range is.", "time": 7}]},
+			{"tagName": "homework", "questions": [{"text": "Why does Hubo not move like I want him to?", "time": 2}]},
+			{"tagName": "objects", "questions": [{"text": "What's the purpose of creating objects?", "time": 3}]},
+			{"tagName": "general", "questions": [{"text": "What's the point of learning CS101?", "time": 5}]},
+			{"tagName": "whileloop", "questions": [{"text": "What's the point of using while loops instead of for?", "time": 6}]}]
 
-var notAnsweredQuestions = data[part].notAnsweredQ;
-var answeredQuestions = data[part].answeredQ;
+var tags = []
+var questions = []
+var name = ""
+
+data.forEach(function(tag){
+	tag.questions.forEach(function(question){
+		question.tag = tag.tagName
+		question.answered = false
+		questions.push(question)
+	})
+	var obj = {"tagName": tag.tagName, "numQs": tag.questions.length}
+	tags.push(obj)
+})
+
+sortQuestions()
+tags.sort(tagsCompare)
 
 $(document).ready(function(){
 	printQuestions();
-	changeDisplayEles();
-
+	printTags();
 	$(".question-list").on("click", ".q-txt", function(){
 		if(!$("#q-" + $(this).data("id")).data("answered")){
 			$("#q-" + $(this).data("id")).animate({'opacity': 0}, 100, function(){
@@ -41,9 +36,7 @@ $(document).ready(function(){
 				text.html("Answered").addClass("q-answered-txt").css({"text-align": "center", "border-width": "1px 0px 1px 1px"});
 				$(this).animate({'opacity': 1}, 100).delay(300);
 
-				var entry = notAnsweredQuestions[text.data("id")];
-				notAnsweredQuestions.splice(text.data("id"), 1);
-				answeredQuestions.push(entry);
+				questions[text.data("id")].answered = true;
 				$(this).fadeOut(200, function(){
 					$(this).remove()
 					printQuestions();
@@ -55,11 +48,7 @@ $(document).ready(function(){
 	$(".question-list").on("click", ".q-del-btn", function(){
 		$("#q-" + $(this).data("id")).fadeOut(200, function(){
 			$(this).remove();
-			if($(this).parent().data("answered")){
-				answeredQuestions.splice($(this).data("id"), 1);
-			}else{
-				notAnsweredQuestions.splice($(this).data("id"), 1);
-			}
+			questions.splice($(this).data("id"), 1);
 			printQuestions();
 		});
 	})
@@ -75,137 +64,87 @@ $(document).ready(function(){
 		printQuestions();
 	})
 
-	$(".sorting").on("click", ".btn", function(){
-		if($(this).attr("id") != sorting){
-			$("#" + sorting).removeClass("active");
-			sorting = $(this).attr("id");
-			$(this).addClass("active");
-		}
-		sortQuestions();
-		printQuestions();
-	})
-
-	$("#next").on("click", function(){
-		if($(this).children().first().text() == "End"){
-			window.location.href = "course_page.html"
+	$(".tag-area").on("click", ".tag-entry", function(){
+		if($(this).hasClass("selected-tag")){
+			name = ""
+			printQuestions()
+			$(this).removeClass("selected-tag")
 		}else{
-			$(".active-lecture-area").animate({'opacity': 0}, 200, function(){
-				part++;
-				notAnsweredQuestions = data[part].notAnsweredQ;
-				answeredQuestions = data[part].answeredQ;
-				sortQuestions();
-				printQuestions();
-				changeDisplayEles();
-				$(this).animate({'opacity': 1}, 200);
-			});
+			$(".tag-area").find(".selected-tag").removeClass("selected-tag")
+			name = $(this).data("name")
+			printQuestions()
+			$(this).addClass("selected-tag")
 		}
-	})
-
-	$("#prev").on("click", function(){
-		$(".active-lecture-area").animate({'opacity': 0}, 200, function(){
-			part--;
-			notAnsweredQuestions = data[part].notAnsweredQ;
-			answeredQuestions = data[part].answeredQ;
-			sortQuestions();
-			printQuestions();
-			changeDisplayEles();
-			$(this).animate({'opacity': 1}, 200);
-		});
 	})
 })
 
-function timeCompareFunc(a, b){
-	return a.time - b.time;
+function sortQuestions(){
+	questions.sort(timeCompare)
+	questions.sort(answeredCompare)
 }
-function understandCompareFunc(a, b){
-	if(a.understand && !b.understand){
-		return 1;
-	}else if(!a.understand && b.understand){
-		return -1;
+
+function timeCompare(a, b){
+	return a.time - b.time
+}
+
+function answeredCompare(a, b){
+	if((a.answered && b.answered) || (!a.answered && !b.answered)){
+		return 0
+	}else if(a.answered && !b.answered){
+		return 1
 	}else{
-		return 0;
+		return -1
 	}
 }
 
-function sortQuestions(){
-	if(sorting == "Time"){
-		notAnsweredQuestions.sort(timeCompareFunc);
-		answeredQuestions.sort(timeCompareFunc);
-	}else{
-		notAnsweredQuestions.sort(understandCompareFunc);
-		answeredQuestions.sort(understandCompareFunc);
-	}
+function tagsCompare(a, b){
+	return b.numQs - a.numQs
 }
 
 function printQuestions(){
 	$(".question-list").empty();
+	sortQuestions()
 	if(!$(".show-more-btn").data("expanded")){
-		var class_type = `"`;
-		if(notAnsweredQuestions.length < 5){
-			var index = 5 - notAnsweredQuestions.length;
-			printNotAnswered(notAnsweredQuestions.length);
-			printAnswered(index);
-		}else{
-			printNotAnswered(5)
+		var i = 0
+		var printed = 0
+		while(printed < 5 && i < questions.length){
+			printed += printQ(i)
+			i++
 		}
 	}else{
-		printNotAnswered(notAnsweredQuestions.length)
-		printAnswered(answeredQuestions.length)
+		for(var i = 0; i < questions.length; i++)
+			printQ(i)
 	}
-	if(notAnsweredQuestions.length + answeredQuestions.length < 6)
+
+	if(questions.length < 6)
 		$(".show-more-btn").css("visibility", "hidden");
 	else
 		$(".show-more-btn").css("visibility", "visible");
 }
 
-function printNotAnswered(index){
-	for(var i = 0; i < index; i++){
-		if(notAnsweredQuestions[i].understand){
+function printQ(i){
+	if(!name || questions[i].tag == name){
+		if(!questions[i].answered){
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-				<td class="q-txt q-understand" data-id="${i}">${notAnsweredQuestions[i].text}
-				<p class="q-details"> Time: ${notAnsweredQuestions[i].time}</p></td>
+				<td class="q-txt" data-id="${i}">
+				<p class="q-details"> <span style="color:#337ab7">#${questions[i].tag}</span> 
+				Time: ${questions[i].time}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}else{
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-				<td class="q-txt q-not-understand" data-id="${i}">${notAnsweredQuestions[i].text}
-				<p class="q-details"> Time: ${notAnsweredQuestions[i].time}</p></td>
+				<td class="q-txt q-answered-txt q-understand" data-id="${i}">
+				<p class="q-details" style="color: #efefef"> #${questions[i].tag}
+				Time: ${questions[i].time}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}
+		return 1
 	}
+	return 0
 }
 
-function printAnswered(index){
-	for(var i = 0; i < index; i++){
-		if(answeredQuestions[i]){
-			if(answeredQuestions[i].understand){
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-					<td class="q-txt q-answered-txt q-understand" data-id="${i}">${answeredQuestions[i].text}
-					<p class="q-details" style="color: #efefef"> Time: ${answeredQuestions[i].time}</p>
-					<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}else{
-				$(".question-list").append(`<tr class="question-entry" id="q-${i}">
-					<td class="q-txt q-answered-txt q-not-understand" data-id="${i}">${answeredQuestions[i].text}
-					<p class="q-details" style="color: #efefef"> Time: ${answeredQuestions[i].time}</p></td>
-					<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
-			}
-		}
-	}
-}
 
-function changeDisplayEles(){
-	$("#prev").css("visibility", "visible");
-	$("#next").css("visibility", "visible");
-	if(part == 0)
-		$("#prev").css("visibility", "hidden");
-	if(part + 1 == data.length){
-		$("#next").html("<h1>End</h1><h1> Lec </h1><h1>&#10006;</h1>")
-		$("#next").css({"background-color": "#f15c50", "color": "white"})
-	}
-
-	$("#part-number").html("Lecture 7: Part " + (part + 1));
-	$("#part-name").html(data[part].name);
-	$(".understanding-bar-yes").css("width", data[part].understand_per + "%");
-	$(".understanding-bar-yes").html(data[part].understand_per + "%");
-	$(".understanding-bar-no").css("width", 100 - data[part].understand_per + "%")
-	$(".understanding-bar-no").html(100 - data[part].understand_per + "%");
+function printTags(){
+	tags.forEach(function(tag){
+		$(".tag-area").append(`<h5 class="tag-entry" data-name="${tag.tagName}"><a>#${tag.tagName}</a> <span style="color: orange">(${tag.numQs})</span></h5>`)
+	})
 }
