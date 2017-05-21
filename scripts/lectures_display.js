@@ -102,25 +102,12 @@ $( document ).ready(function() {
   $("#start-lecture-today").click(function() {
       console.log("here");
       if ($("#today-lecture-title").val() == "") {
-        $.confirm({
-            title: 'Lecture Title Empty',
-            content: 'Do you want to proceed without providing lecture title?',
-            confirmButton: 'Yes',
-            cancelButton: 'No',
-            confirm: function(){
-              setTodayLectureLabel();
-              console.log(lectureToday);
-              var ltitle = $("#today-lecture-title").val();
-              lectureStart(lectureKey, ltitle, lectureToday);
-              localStorage.courseKey = courseKey;
-              localStorage.lectureKey = lectureKey;
-              document.location.href = './active_lecture.html';   
-            },
-            cancel: function(){
-              $("#today-lecture-title").select();   
-            }
-        });
-      }else {
+        if(confirm("Do you wish to proceed without setting the lecture title?")){
+          document.location.href = './lectures_list_page.html'
+        }else{
+          $("#today-lecture-title").focus();
+          return;
+        }
       }
       setTodayLectureLabel();
       console.log(lectureToday);
