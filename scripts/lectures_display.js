@@ -19,11 +19,14 @@ $( document ).ready(function() {
 
   var courseKey = localStorage.courseCode;
   console.log(localStorage.courseCode);
+  
   var coursesRef = database.ref("courses/" + courseKey);
+  var studentsRef = database.ref("courses/" + courseKey + "/students");
   var lecturesRef = database.ref("courses/" + courseKey + "/lectures");
   var lectureToday = 0;
   var lectureKey;
-
+  var qTotal = 0;
+  var allStudents = 0;
 
   function setLectureTodayKey() {
     lecturesRef.once("value", function(data) {
@@ -37,6 +40,13 @@ $( document ).ready(function() {
     });
   }
 
+  function setTotalStudentsNum() {
+    studentsRef.once("value", function(data) {
+      $.when(allStudents = data.numChildren()).done(function() {
+        $("#students-registered").text(allStudents);
+      });
+    }); 
+  }
   
 
   function todayDateGet() {
@@ -69,9 +79,14 @@ $( document ).ready(function() {
     lecturesRef.once("value", function(data) {
       $.when(
         data.forEach(function(lecture) {
-          all.push({num: lecture.val().number, title: lecture.val().title, date: lecture.val().time});
+          var q = lecture.val().totalQuestions;
+          qTotal += q;
+          console.log(q);
+          all.push({num: lecture.val().number, title: lecture.val().title, date: lecture.val().time, questions: q});
         })
         ).done(function() {
+          console.log(qTotal);
+        $("#questions-asked").text(qTotal);
         pushPrevLecture(all);
       });
     });
@@ -91,6 +106,10 @@ $( document ).ready(function() {
   function setTodayLectureLabel() {
     var txt = "Lecture " + lectureToday;
     $("#lecture-today").text(txt);
+    var currweek = lectureToday/2;
+    if (lectureToday%2 != 0)
+      currweek = (lectureToday+1)/2
+    $("#current-week").text(currweek);
   }
 
   function setSomeElements() {
@@ -120,6 +139,7 @@ $( document ).ready(function() {
   });
 
   setLectureTodayKey();
+  setTotalStudentsNum();
   setSomeElements();
   displayPrevLectures();
 });
