@@ -34,9 +34,9 @@ $( document ).ready(function(){
 			asker: student_id,
 			email: student_email,
 			text: $("#inputarea").val(),
-			time: Date($.now()),
+			time: $.now(),
 		})
-		alert("submited");
+		alert("Submitted!");
 		$("#inputarea").val("");
 	});
 })

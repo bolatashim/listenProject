@@ -32,7 +32,7 @@ $( document ).ready(function() {
 				document.location.href = 'file:student_index.html';
   			}
   			else{
-  				alert("You cannot join course "+course+". The course is not activated yet, or you are not registered in the course");
+  				alert("We are sorry! Currently, you cannot join course "+course+". The course is not activated yet, or you are not registered in the course");
   			}
   		});
 	});
@@ -51,6 +51,6 @@ function find_lecture(course){
 			return activeLecture[i]["lecture"];
 		}
 	}
-	alert("no such course found!");
+	alert("No such course found!");
 	return -1;
 }

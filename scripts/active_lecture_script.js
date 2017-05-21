@@ -107,15 +107,15 @@ lectureRef.on("value", function(snap){
 		var tag = childSnap.key
 		var ques_list = childSnap.val()
 		var numQs = 0
-		for (var i = 0; i < ques_list.length; i++){
-			var question = ques_list[i]
+		Object.keys(ques_list).forEach(function(key){
+			var question = ques_list[key]
 			if(question){
 				question.tag = tag
-				question.id = i
+				question.id = key
 				questions.push(question)
 				numQs++
 			}
-		}
+		})
 		tags.push({tagName: tag, numQs: numQs})
 		totalNumQs += numQs
 	})
