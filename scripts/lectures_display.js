@@ -12,14 +12,9 @@ $( document ).ready(function() {
   };
   
   firebase.initializeApp(config);
-
-  var database = firebase.database();
-
-
-
-  var courseKey = localStorage.courseCode;
-  console.log(localStorage.courseCode);
   
+  var database = firebase.database();
+  var courseKey = localStorage.courseCode;
   var coursesRef = database.ref("courses/" + courseKey);
   var studentsRef = database.ref("courses/" + courseKey + "/students");
   var lecturesRef = database.ref("courses/" + courseKey + "/lectures");
@@ -48,17 +43,13 @@ $( document ).ready(function() {
     }); 
   }
   
-
   function todayDateGet() {
     var months = ["", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    
     var dateObj = new Date();
     var month = dateObj.getUTCMonth() + 1;
     var day = dateObj.getUTCDate();
     var year = dateObj.getUTCFullYear();
-
     return months[month] + " " + day + ", " + year;
-
   }
 
   function pushPrevLecture(all) {
@@ -81,11 +72,9 @@ $( document ).ready(function() {
         data.forEach(function(lecture) {
           var q = lecture.val().totalQuestions;
           qTotal += q;
-          console.log(q);
           all.push({num: lecture.val().number, title: lecture.val().title, date: lecture.val().time, questions: q});
         })
         ).done(function() {
-          console.log(qTotal);
         $("#questions-asked").text(qTotal);
         pushPrevLecture(all);
       });
@@ -96,12 +85,9 @@ $( document ).ready(function() {
   function lectureStart(key, title, number) {
     lectureRef = database.ref("courses/" + courseKey + "/lectures/" + key);
     lectureRef.set({time: todayDateGet(), title: title, number: number});
-
     var activeLecture = database.ref("activeLecture");
     $.when(activeLecture.remove()).done(activeLecture.push({course: localStorage.courseCode + " " + localStorage.courseTitle, lecture: lectureKey}));
-
   }
-
 
   function setTodayLectureLabel() {
     var txt = "Lecture " + lectureToday;
@@ -115,6 +101,7 @@ $( document ).ready(function() {
   function setSomeElements() {
     $("#course-title-current").text(localStorage.courseCode + ": " + localStorage.courseTitle);
     $("#breadcode").text(localStorage.courseCode);
+    $("#today-lecture-tablehead").text("Today's Lecture (" + todayDateGet() +")");
   }
 
 
