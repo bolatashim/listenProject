@@ -18,7 +18,7 @@ $( document ).ready(function() {
   var activelectureRef = database.ref("activeLecture");
 
   var profsRef = database.ref("professors");
-  var coursesRef = database.ref("professors/courses");
+  var coursesRef = database.ref("professors/" );
   var lecturesRef = database.ref("professors/courses/lectures");
   var tagsRef = database.ref("professors/courses/lectures/tags");
 

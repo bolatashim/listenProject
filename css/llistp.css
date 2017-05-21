@@ -58,9 +58,9 @@ ol > li > a:hover {
 
 .lecture-start-button {
 	padding: 5px 10px;
-	font-size: 25px;
+	font-size: 20px;
 	float: right;
-	margin: 5px 25px;
+	margin: 15px 0;*/
 	text-align: center;
 	/*background-color: green;*/
 	/*border-radius: 2px;*/
@@ -86,7 +86,8 @@ ol > li > a:hover {
 }
 
 .lTitle {
-	font-weight: 500;	
+	font-weight: 500;
+	min-width: 60%;	
 }
 
 

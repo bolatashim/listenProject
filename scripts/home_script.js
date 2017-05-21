@@ -1,37 +1,22 @@
 
 $( document ).ready(function() {
 
-  var config = {
-    apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
-    authDomain: "listen-f5fcf.firebaseapp.com",
-    databaseURL: "https://listen-f5fcf.firebaseio.com",
-    projectId: "listen-f5fcf",
-    storageBucket: "listen-f5fcf.appspot.com",
-    messagingSenderId: "913421957842"
-  };
-  
-  firebase.initializeApp(config);
-
-  var courseKey = "none";
-  var lectureKey = "none";
 
 
+  $(".clickable-course-card").click(function() {
+    var code = $(this).children(".course-card-code").text();
+    var title = $(this).children(".course-card-title").text();
 
-  var database = firebase.database();
-  var activelectureRef = database.ref("activeLecture")
-  var courseRef = database.ref("courses/" + courseKey);
-  var lectureRef = database.ref("courses/" + courseKey + "/lectures" + lectureKey);
+    localStorage.courseCode = code;
+    localStorage.courseTitle = title;
 
-
-
-  function addLecture(number, title) {
-    lectureKey = "lecture " + number;
-    lectureRef.set({title: title});
-    
-  }
+    document.location.href = './lectures_list_page.html';
+  });
 
 
-
+  $(".clickingbad-course-card").click(function() {
+  	alert("It is not 'Add a course' period. Please refer to team Listen() for assistance.");
+  });
 
 });
 

@@ -1,5 +1,6 @@
-var courseName = "CS101"
-var lectureName = "Lecture 9"
+var courseName = localStorage.courseKey
+var lectureName = localStorage.lectureKey
+var lectureTitle = localStorage.lectureTitle
 
 var tags = []
 var questions = []
@@ -17,10 +18,18 @@ var config = {
 firebase.initializeApp(config)
 var database = firebase.database()
 var courseRef = database.ref("courses/" + courseName)
-var lectureRef = database.ref(courseName + "/" + "lectures" + "/"+ lectureName)
-var tagsRef = database.ref(courseName + "/lectures/" + lectureName + "/tags")
+var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ lectureName)
+var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
+
+var activeRef = database.ref("activeLecture")
+activeRef.set(null)
+activeRef.push({course: courseName, lecture: lectureName})
 
 $(document).ready(function(){
+	console.log($.now())
+	$("#course-name").html(courseName)
+	$("#lec-name").html(lectureName)
+	$("#lec-title").html(lectureTitle)
 	$(".question-list").on("click", ".q-txt", function(){
 		var info = $(this).data("info").split(",")
 		var index = info[0]
@@ -80,25 +89,37 @@ $(document).ready(function(){
 			$(this).addClass("selected-tag")
 		}
 	})
+
+	$("#end-btn").on("click", function(){
+		if(confirm("Do you really want to end the lecture?")){
+			activeRef.set(null)
+			document.location.href = './lectures_list_page.html'
+		}
+	})
 })
 
-tagsRef.on("value", function(snapshot){
+lectureRef.on("value", function(snap){
+	var snapshot = snap.child("tags")
+	var totalNumQs = 0
 	questions = []
 	tags = []
 	snapshot.forEach(function(childSnap){
 		var tag = childSnap.key
 		var ques_list = childSnap.val()
-		console.log(ques_list)
-		for (var i = 0; i < ques_list.length; i++){
-			var question = ques_list[i]
+		var numQs = 0
+		Object.keys(ques_list).forEach(function(key){
+			var question = ques_list[key]
 			if(question){
 				question.tag = tag
-				question.id = i
+				question.id = key
 				questions.push(question)
+				numQs++
 			}
-		}
-		tags.push({tagName: tag, numQs: i})
+		})
+		tags.push({tagName: tag, numQs: numQs})
+		totalNumQs += numQs
 	})
+	lectureRef.update({totalQuestions: totalNumQs})
 	printQuestions()
 	printTags()
 })
@@ -153,13 +174,13 @@ function printQ(i){
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
 				<td class="q-txt" data-info="${i},${questions[i].id},${questions[i].tag}">
 				<p class="q-details"> <span style="color:#337ab7">#${questions[i].tag}</span> 
-				Time: ${questions[i].time}</p>${questions[i].text}</td>
+				Time: ${formatTime(questions[i].time)}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}else{
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}" data-answered="true">
 				<td class="q-txt q-answered-txt q-understand" data-info="${i},${questions[i].id},${questions[i].tag}">
 				<p class="q-details" style="color: #efefef"> #${questions[i].tag}
-				Time: ${questions[i].time}</p>${questions[i].text}</td>
+				Time: ${formatTime(questions[i].time)}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}
 		return 1
@@ -174,4 +195,15 @@ function printTags(){
 	tags.forEach(function(tag){
 		$("#tag-list").append(`<h5 class="tag-entry" data-name="${tag.tagName}"><a>#${tag.tagName}</a> <span style="color: orange">(${tag.numQs})</span></h5>`)
 	})
+}
+
+function formatTime(millis) {
+	var totalSecElapsed = ((Math.floor(millis / 1000)  + 9*3600) % 86400);
+	var minutes = Math.floor(totalSecElapsed / 60) % 60;
+	var hours = Math.floor(totalSecElapsed / 3600);
+	var AMorPM = (hours > 11 ? " PM" : " AM")
+	hours = (hours%12 == 0 ? 12 : hours % 12)
+
+	return (hours < 10 ? "0" : "") + hours + (minutes < 10 ? ":0" : ":")
+	  + minutes + AMorPM
 }
