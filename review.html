@@ -5,6 +5,7 @@
 	<title>listen() project</title>
 	<link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<link href="css/listen_style.css" rel="stylesheet" /> <!-- global project styles -->
 	<link href="css/review.css" rel="stylesheet" /> <!-- page styles -->
@@ -23,11 +24,25 @@
 			<li><a href="index.html">Home</a> </li>
 			<li><a href="course_page.html">CS101</a></li>
 			<li class="active">Lecture 6: Review</li>
-			<button class="help_btn" id="help_review_lecture_page" data-status=false>?</button>
 		</ul>
 		
 		<div class="question-explorer">
-			<div class="tags" data-legend="Tags">
+			<div class="actions">
+				<span class="action">
+					<button role="checkbox" aria-checked="mixed" id="selectall"></button>
+				</span>
+				<span class="action">
+					<button><i class="fa fa-envelope-o"></i> Reply <i class="fa fa-angle-down"></i></button>
+				</span>
+				<span class="action">
+					<button><i class="fa fa-envelope-o"></i> Send to TA</button>
+				</span>
+				<span class="action">
+					<button><i class="fa fa-trash-o"></i></a>
+				</span>
+			</div>
+
+			<div class="tags" data-legend="Filter by tags">
 				<a href="#" class="tag">forloop</a>
 				<a href="#" class="tag">twice</a>
 				<a href="#" class="tag selected">please</a>
@@ -37,31 +52,38 @@
 				<a href="#" class="tag">sudden</a>
 				<a href="#" class="tag">moves</a>
 			</div>
-			<div class="questions" data-legend="Questions">
-				<div class="question">What is that even why?</div>
-				<div class="question">Why the heck would someone do that?</div>
-				<div class="question">Why do we even need objects?</div>
-				<div class="question">What is that even why?</div>
-				<div class="question">Why the heck would someone do that?</div>
-				<div class="question">Why do we even need objects?</div>
-				<div class="question">What is that even why?</div>
-				<div class="question">Why the heck would someone do that?</div>
-				<div class="question">Why do we even need objects?</div>
-				<div class="question">What is that even why?</div>
-				<div class="question">Why the heck would someone do that?</div>
-				<div class="question">Why do we even need objects?</div>
-				<div class="question">What is that even why?</div>
-				<div class="question">Fuck this shit</div>
-				<div class="question">Why do we even need objects?</div>
-				<div class="question">What is that even why?</div>
-				<div class="question">Why the heck would someone do that?</div>
-				<div class="question">Why do we even need objects?</div>
-				<div class="question">What is that even why?</div>
-				<div class="question">Why the heck would someone do that?</div>
-				<div class="question">Why do we even need objects?</div>
-				<div class="question">What is that even why?</div>
-				<div class="question">Why the heck would someone do that?</div>
-				<div class="question">Why do we even need objects?</div>
+			<div class="questions">
+				<div class="question">
+					<button role="checkbox" aria-checked="false" id="selectall"></button>
+					<a href="#" class="tag">family</a>
+					Who does the momma love most?
+				</div>
+				<div class="question">
+					<button role="checkbox" aria-checked="false" id="selectall"></button>
+					<a href="#" class="tag">terminal</a>
+					Who does the momma love most?
+				</div>
+				<div class="question">
+					<button role="checkbox" aria-checked="false" id="selectall"></button>
+					<span class="tag">oop</span>
+					Who does the momma love most?
+				</div>
+				<div class="question">
+					<button role="checkbox" aria-checked="false" id="selectall"></button>
+					<span class="tag">please</span>
+					Who does the momma love most?
+				</div>
+				<div class="question">
+					<button role="checkbox" aria-checked="false" id="selectall"></button>
+					<span class="tag">dont</span>
+					Who does the momma love most? <button>Reply <i class="fa fa-angle-up"></i></button>
+					<div style="margin: 10px"><textarea style="width:400px"></textarea><button><i class="fa fa-envelope-o"></i> Send</div>
+				</div>
+				<div class="question">
+					<button role="checkbox" aria-checked="false" id="selectall"></button>
+					<span class="tag">any</span>
+					Who does the momma love most?
+				</div>
 			</div>
 		</div>
 	</div>
@@ -72,5 +94,15 @@
 	<script src="scripts/listen_scripts.js"></script>
 	<script src="scripts/review_lecture_script.js"></script>
 	<script src="scripts/active_lecture_script.js"></script>
+	<script>
+		$('.tags .tag').click(function() {
+			$(this).toggleClass('selected');
+		})
+
+		$('button[role=checkbox]').click(function() {
+			let checked = $(this).attr('aria-checked');
+			$(this).attr('aria-checked', checked == 'true' ?'false' :'true');
+		})
+	</script>
 </body>
 </html>

@@ -101,56 +101,93 @@ ol > li {
 /* Question Explorer */
 
 .question-explorer {
-	padding: 10px;
-	background: rgba(0,0,0,.1);
+	/*background: rgba(0,0,0,.1);*/
+	background: #fff;
+	border: 5px solid #eee;
+	overflow: hidden;
+	margin-bottom: 40px;
 	/*border-radius: 5px;*/
 }
+	.actions {
+		padding: 20px 10px;
+		background: #fff;
+		/*border-bottom: 1px solid rgba(0,0,0,.1);*/
+	}
+		.action {
+			margin-left: 10px;
+			margin-right: 10px;
+		}
 
 	.tags {
-		border-bottom: rgba(0,0,0,.2);
-		margin-bottom: 30px;
+		padding: 5px 10px;
+		background: #eee;
+		/*box-shadow: 0px 3px 3px rgba(0,0,0,.3);*/
 	}
 		.tags:before {
-			content: attr(data-legend);
+			content: attr(data-legend) ':';
 			text-transform: uppercase;
-			padding: 3px 6px;
-			margin-bottom: 3px;
+			margin-right: 10px;
 			font-size: .7em;
 			font-weight: bold;
-			display: block;
+			/*display: block;*/
 		}
 
 		.tag {
 			display: inline-block;
-			padding: 10px 15px;
+			padding: 5px 15px;
 			text-transform: uppercase;
 			font-size: .7em;
-			background: #c8d2d6;
+			background: #ddd;
+			color: #333;
+			font-weight: bold;
 			border-radius: 2px;
+		}
+		.tags .tag {
 			cursor: pointer;
 		}
 
 		.tag.selected {
-			color: #c8d2d6;
-			background: #000;
+			color: #eee;
+			background: #777;
 		}
 
 	.questions {
-		
+		margin: 10px;
 	}
-		.questions:before {
-			content: attr(data-legend);
-			text-transform: uppercase;
-			padding: 3px 6px;
-			font-size: .7em;
-			font-weight: bold;
-			display: block;
-		}
-
 		.question {
-			max-width: 700px;
-			background: #ccc;
-			padding: 10px 20px;
-			border-radius: 20px;
-			margin-bottom: 5px;
+			padding: 10px;
+			border-bottom: 1px solid #eee;
+		}
+			.question:last-of-type {
+				border-bottom: none;
+			}
+			.question .text {
+				padding: 10px;
+				margin-bottom: 5px;
+			}
+			.question button[role=checkbox] {
+				margin-right: 10px;
+			}
+
+	button[role=checkbox]:focus {
+		outline: unset;
+		border-color: #07e;
+		box-shadow: 0 0 0 3px #99C6F3;
+	}
+	button[role=checkbox] {
+		width: 20px;
+		height: 20px;
+		background: #fff;
+		border-radius: 2px;
+		border: 1px solid #ddd;
+		padding: 0px;
+		vertical-align: middle;
+	}
+		button[role=checkbox][aria-checked=true] {
+			background: #07e;
+			border-color: #07e;
+		}
+		button[role=checkbox][aria-checked=mixed] {
+			background: #07e;
+			border-color: #07e;
 		}
