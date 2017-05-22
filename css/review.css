@@ -142,8 +142,6 @@ ol > li {
 			font-weight: bold;
 			border-radius: 2px;
 			border: none;
-		}
-		.tags .tag {
 			cursor: pointer;
 		}
 
@@ -152,6 +150,8 @@ ol > li {
 			background: #777;
 		}
 
+	/* TODO: change question dom structure to something more stable. */
+	/* Right now it is full of hacks. */
 	.questions {
 		margin: 10px;
 	}
@@ -162,6 +162,12 @@ ol > li {
 			.question:last-of-type {
 				border-bottom: none;
 			}
+			.question .tag {
+				background: #eee;
+				padding: 5px 10px;
+				margin-right: 10px;
+				cursor: unset;
+			}
 			.question .text {
 				padding: 10px;
 				margin-bottom: 5px;
@@ -169,6 +175,40 @@ ol > li {
 			.question button[role=checkbox] {
 				margin-right: 10px;
 			}
+			.question .reply {
+				padding: 5px 15px;
+				font-size: .7em;
+				font-weight: bold;
+				display: none;
+			}
+			.question:hover .reply {
+				display: unset;
+			}
+			.question .reply-box {
+				margin-top: 10px;
+				margin-left: 30px;
+				position: relative;
+				width: 400px;
+				height: 200px;
+				display: none;
+			}
+				.question .reply-box textarea {
+					width: 100%;
+					height: 100%;
+					resize: none;
+					border: 1px solid #ddd;
+				}
+				.question .reply-box .send {
+					position: absolute;
+					bottom: 5px;
+					right: 5px;
+					padding: 5px 15px;
+					font-size: .7em;
+					font-weight: bold;
+					border-radius: 2px;
+					border: 1px solid #ddd;
+					background: #fff;
+				}
 
 	button[role=checkbox]:focus {
 		outline: unset;
