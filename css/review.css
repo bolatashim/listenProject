@@ -159,6 +159,11 @@ ol > li {
 			padding: 10px;
 			border-bottom: 1px solid #eee;
 		}
+
+		.question.answered {
+			background: #f9f9f9;
+		}
+
 			.question:last-of-type {
 				border-bottom: none;
 			}
@@ -170,11 +175,22 @@ ol > li {
 			}
 			.question .text {
 				padding: 10px;
-				margin-bottom: 5px;
+			}
+			.question.answered .text {
+				font-style: italic;
 			}
 			.question button[role=checkbox] {
 				margin-right: 10px;
 			}
+			.question .answered-label {
+				text-transform: uppercase;
+				font-weight: bold;
+				font-size: .7em;
+				display: none;
+			}
+				.question.answered .answered-label {
+					display: unset;
+				}
 			.question .reply {
 				padding: 5px 15px;
 				font-size: .7em;

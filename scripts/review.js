@@ -6,8 +6,8 @@ firebase.initializeApp(config);
 database = firebase.database();
 
 /* dynamic data. hardcoded for now */
-var course_code = 'CS101'
-var lecture_title = 'Lecture 13'
+var course_code = localStorage.courseCode;
+var lecture_title = localStorage.lectureKey;
 
 tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_title}/tags/`);
 
@@ -62,6 +62,11 @@ function setQuestionsAndTagsUpdater() {
 	tagsRef.on('value', function(snapshot) {
 		tags = snapshot.val();
 
+		console.log(tags);
+
+		if (tags == null)
+			return;
+
 		// Update tags
 		Object.keys(tags).forEach(function (tag_key) {
 			var tag = tags[tag_key];
@@ -76,13 +81,15 @@ function setQuestionsAndTagsUpdater() {
 				console.log(question);
 
 				$('.questions').append(`
-					<div class="question" data-tag="${tag_key}">
+					<div class="question ${question.answered ?'answered' :''}" data-tag="${tag_key}">
 						<button role="checkbox" aria-checked="false" id="selectall"></button>
 						<span class="tag">${tag_key}</span>
-						${question.text}
+						<span class="text">${question.text}</span>
+						<span class="answered-label">Answered</span>
+
 						<a href="#" class="reply">Reply</a>
 						<div class="reply-box">
-							<textarea placeholder="Reply here"></textarea>
+							<textarea placeholder="Your reply message"></textarea>
 							<button class="send">Send</button>
 						</div>
 					</div>
