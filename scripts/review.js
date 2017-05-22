@@ -63,12 +63,12 @@ function setQuestionsAndTagsUpdater() {
 
 		console.log(tags);
 
-		if (tags == null)
-			return;
-
 		// Clear tags and questions
 		$('.tags').empty();
 		$('.questions').empty();
+
+		if (tags == null)
+			return;
 
 		// Update tags
 		Object.keys(tags).forEach(function (tag_key) {
