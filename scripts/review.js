@@ -18,6 +18,7 @@ $(document).ready(function () {
 	setQuestionsAndTagsUpdater();
 	setCheckboxListeners();
 	setTagFilterListeners();
+	setReplyBoxTogglers();
 });
 
 function setCheckboxListeners() {
@@ -47,6 +48,16 @@ function setTagFilterListeners() {
 	});
 }
 
+function setReplyBoxTogglers() {
+	$('body').on('click', '.reply', function () {
+		$(this).parent('.question').children('.reply-box').toggle();
+	});
+
+	$('body').on('click', '.send', function () {
+		alert('That doesnt work yet ¯\\_(ツ)_/¯');
+	});
+}
+
 function setQuestionsAndTagsUpdater() {
 	tagsRef.on('value', function(snapshot) {
 		tags = snapshot.val();
@@ -67,8 +78,13 @@ function setQuestionsAndTagsUpdater() {
 				$('.questions').append(`
 					<div class="question" data-tag="${tag_key}">
 						<button role="checkbox" aria-checked="false" id="selectall"></button>
-						<button class="tag">${tag_key}</button>
+						<span class="tag">${tag_key}</span>
 						${question.text}
+						<a href="#" class="reply">Reply</a>
+						<div class="reply-box">
+							<textarea placeholder="Reply here"></textarea>
+							<button class="send">Send</button>
+						</div>
 					</div>
 				`);
 			});
