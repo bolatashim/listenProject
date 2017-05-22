@@ -1,0 +1,170 @@
+{
+  "courses" : {
+    "CS101" : {
+      "lectures" : {
+        "Lecture 1" : {
+          "number" : 1,
+          "time" : "May 20, 2017",
+          "title" : "Objects and Loops",
+          "totalQuestions" : 10
+        },
+        "Lecture 10" : {
+          "number" : 10,
+          "time" : "May 22, 2017",
+          "title" : "",
+          "totalQuestions" : 0
+        },
+        "Lecture 11" : {
+          "number" : 11,
+          "time" : "May 22, 2017",
+          "title" : "",
+          "totalQuestions" : 0
+        },
+        "Lecture 12" : {
+          "number" : 12,
+          "time" : "May 22, 2017",
+          "title" : "This is a lecture",
+          "totalQuestions" : 0
+        },
+        "Lecture 2" : {
+          "number" : 2,
+          "time" : "May 21, 2017",
+          "title" : "Introduction to graphics",
+          "totalQuestions" : 19
+        },
+        "Lecture 3" : {
+          "number" : 3,
+          "time" : "May 21, 2017",
+          "title" : "Simple Algorithms on strings",
+          "totalQuestions" : 3
+        },
+        "Lecture 4" : {
+          "number" : 4,
+          "tags" : {
+            "kaist_is_best" : {
+              "-KkdMNN8L9Vu14mieD3h" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "Hello This is  a test comment",
+                "time" : "Sun May 21 2017 13:56:54 GMT+0900 (KST)"
+              },
+              "-KkdMW3jEcxnXmnVa0zI" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "Another question",
+                "time" : "Sun May 21 2017 13:57:29 GMT+0900 (KST)"
+              }
+            },
+            "yet another tag n question" : {
+              "-KkdMa7rFQCL_D40A19L" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "Thi is a question",
+                "time" : "Sun May 21 2017 13:57:50 GMT+0900 (KST)"
+              }
+            }
+          },
+          "time" : "May 21, 2017",
+          "title" : "Data structures for string matching",
+          "totalQuestions" : 4
+        },
+        "Lecture 5" : {
+          "number" : 5,
+          "time" : "May 21, 2017",
+          "title" : "Recursion",
+          "totalQuestions" : 0
+        },
+        "Lecture 6" : {
+          "number" : 6,
+          "time" : "May 22, 2017",
+          "title" : "New Lecture",
+          "totalQuestions" : 0
+        },
+        "Lecture 7" : {
+          "number" : 7,
+          "time" : "May 22, 2017",
+          "title" : "Testing a lecture",
+          "totalQuestions" : 0
+        },
+        "Lecture 8" : {
+          "number" : 8,
+          "time" : "May 22, 2017",
+          "title" : "Another lecture",
+          "totalQuestions" : 0
+        },
+        "Lecture 9" : {
+          "number" : 9,
+          "time" : "May 22, 2017",
+          "title" : "",
+          "totalQuestions" : 0
+        }
+      },
+      "students" : {
+        "20150000" : "hcilisten@gmail.com",
+        "20150001" : "hcilisten@gmail.com",
+        "20150002" : "hcilisten@gmail.com"
+      }
+    },
+    "CS374" : {
+      "lectures" : {
+        "Lecture 1" : {
+          "number" : 1,
+          "time" : "May 21, 2017",
+          "title" : "Wizard of OZ",
+          "totalQuestions" : 5
+        },
+        "Lecture 2" : {
+          "number" : 2,
+          "time" : "May 21, 2017",
+          "title" : "asd",
+          "totalQuestions" : 3
+        },
+        "Lecture 3" : {
+          "number" : 3,
+          "time" : "May 21, 2017",
+          "title" : "asdd",
+          "totalQuestions" : 2
+        },
+        "Lecture 4" : {
+          "number" : 4,
+          "time" : "May 21, 2017",
+          "title" : "asd",
+          "totalQuestions" : 8
+        },
+        "Lecture 5" : {
+          "number" : 5,
+          "time" : "May 22, 2017",
+          "title" : "",
+          "totalQuestions" : 0
+        },
+        "Lecture 6" : {
+          "number" : 6,
+          "time" : "May 22, 2017",
+          "title" : "",
+          "totalQuestions" : 0
+        },
+        "Lecture 7" : {
+          "number" : 7,
+          "time" : "May 22, 2017",
+          "title" : "",
+          "totalQuestions" : 0
+        },
+        "Lecture 8" : {
+          "number" : 8,
+          "time" : "May 22, 2017",
+          "title" : "aa",
+          "totalQuestions" : 0
+        },
+        "Lecture 9" : {
+          "number" : 9,
+          "time" : "May 22, 2017",
+          "title" : "",
+          "totalQuestions" : 0
+        }
+      }
+    }
+  }
+}
