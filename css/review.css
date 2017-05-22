@@ -141,6 +141,7 @@ ol > li {
 			color: #333;
 			font-weight: bold;
 			border-radius: 2px;
+			border: none;
 		}
 		.tags .tag {
 			cursor: pointer;

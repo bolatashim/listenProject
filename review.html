@@ -73,17 +73,12 @@
 					<span class="tag">please</span>
 					Who does the momma love most?
 				</div>
-				<div class="question">
+				<!-- <div class="question">
 					<button role="checkbox" aria-checked="false" id="selectall"></button>
 					<span class="tag">dont</span>
 					Who does the momma love most? <button>Reply <i class="fa fa-angle-up"></i></button>
 					<div style="margin: 10px"><textarea style="width:400px"></textarea><button><i class="fa fa-envelope-o"></i> Send</div>
-				</div>
-				<div class="question">
-					<button role="checkbox" aria-checked="false" id="selectall"></button>
-					<span class="tag">any</span>
-					Who does the momma love most?
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
@@ -91,18 +86,11 @@
 
 	<script src="scripts/jquery/js/jquery-1.9.0.min.js"></script>
 	<script src="scripts/jquery/js/jquery-ui-1.10.0.custom.min.js"></script>
-	<script src="scripts/listen_scripts.js"></script>
-	<script src="scripts/review_lecture_script.js"></script>
-	<script src="scripts/active_lecture_script.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.6.2/firebase.js"></script>
+	<script src="scripts/review.js"></script>
+	<!-- <script src="scripts/listen_scripts.js"></script> -->
+	<!-- TODO: add handlebars.js -->
 	<script>
-		$('.tags .tag').click(function() {
-			$(this).toggleClass('selected');
-		})
-
-		$('button[role=checkbox]').click(function() {
-			let checked = $(this).attr('aria-checked');
-			$(this).attr('aria-checked', checked == 'true' ?'false' :'true');
-		})
 	</script>
 </body>
 </html>
