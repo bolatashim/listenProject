@@ -12,6 +12,8 @@ var lecture_title = localStorage.lectureKey;
 tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_title}/tags/`);
 
 $(document).ready(function () {
+	$("#course-code").html(course_code)
+	$("#lecture-name").html(lecture_title)
 	setQuestionsAndTagsUpdater();
 	setCheckboxListeners();
 	setTagFilterListeners();

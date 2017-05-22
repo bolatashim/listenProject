@@ -1,7 +1,7 @@
-* Basic Header and Breadcrumb **/
+/** Basic Header and Breadcrumb **/
 html, body {
   position: relative;
-  font-family: Helvetica !important;
+  font-family: verdana !important;
   background-color: #eceff1 !important;
 }
 
@@ -12,6 +12,7 @@ html {
 body {
 	min-height: 100%;
 }
+
 
 
 .table th {
@@ -25,23 +26,29 @@ body {
 }
 
 ol > li > a {
-	color:#15305B
+	/*color:#15305B*/
+	color:   white; /*#EA5B23;*/
 }
 ol > li > a:hover {
 	text-decoration: none;
+	/*color: #EA5B23;*/
+	color:   white
 }
 ol > li {
 	text-decoration: none;
-	color: #15305B !important;
+	/*color: #15305B !important;*/
+	/*color: #EA5B23;*/
+	color:   white !important;
 }
 
 .breadcrumb > li + li:before {
-	color: #15305B !important;	
+	/*color: #15305B !important;	*/
+	color:   white !important;
 }
 
 .navbar{
 	background-color: #15305B;
-	border-radius: 0;	
+	border-radius: 0 !important;	
 }
 
 .fixed-bottom {
