@@ -1,5 +1,4 @@
 
-// var lectureTime1 = localStorage.lectureTime;
 $( document ).ready(function() {
   var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
