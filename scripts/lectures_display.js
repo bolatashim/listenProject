@@ -1,7 +1,7 @@
 
 // var lectureTime1 = localStorage.lectureTime;
 $( document ).ready(function() {
-console.log(localStorage.courseTitle);
+
   var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
     authDomain: "listen-f5fcf.firebaseapp.com",
@@ -53,16 +53,31 @@ console.log(localStorage.courseTitle);
   }
 
   function pushPrevLecture(all) {
-    for (var i = all.length-1; i >= 0; i--) {
-      var html = '<tr>' + 
+    all = all.sort(function(a,b) {
+      if(a.num < b.num)
+        return 1;
+      if(a.num > b.num)
+        return -1;
+      return 0;
+    });
+
+    for (var i = 0; i < all.length; i++) {
+      var html = '<tr class="takemetoreviewpage">' + 
                   '<td class="lNumber">' + all[i].num + '</td>' +
                   '<td class="lTitle">' + all[i].title + '</td>' +
                   '<td class="lDate">' + all[i].date + '</td>' +
                   '<td class="lQuestions">' + all[i].questions + '</td>' +
                 '</tr>'
-      $(html).insertAfter(".starterclass");
+      $(html).insertAfter(".starterclassrow");
     }
   }
+
+  $("#prev-lectures-table").on("click", ".takemetoreviewpage", function() {
+    var lecNum = $(this).find("td").eq(0).text();
+    localStorage.lectureKey = "Lecture " + lecNum;
+    document.location.href = './review.html'
+  });
+
 
 
   function displayPrevLectures() {
@@ -86,9 +101,7 @@ console.log(localStorage.courseTitle);
     lectureRef = database.ref("courses/" + courseKey + "/lectures/" + key);
     lectureRef.set({time: todayDateGet(), title: title, number: number});
     var activeLecture = database.ref("activeLecture");
-    console.log("here i am");
-    var courseName = (localStorage.courseCode + " " + localStorage.courseTitle);
-    $.when(activeLecture.remove()).done(activeLecture.push({course: courseName, lecture: lectureKey, test: localStorage.courseTitle}));
+    $.when(activeLecture.remove()).done(activeLecture.push({course: localStorage.courseCode + " " + localStorage.courseTitle, lecture: lectureKey}));
   }
 
   function setTodayLectureLabel() {
@@ -104,8 +117,10 @@ console.log(localStorage.courseTitle);
     $("#course-title-current").text(localStorage.courseCode + ": " + localStorage.courseTitle);
     $("#breadcode").text(localStorage.courseCode);
     $("#today-lecture-tablehead").text("Today's Lecture (" + todayDateGet() +")");
+    if (localStorage.courseCode == "CS374") {
+      $(".quickstart-lecture").css("border-top", "6px solid #EA5B23");
+    }
   }
-
 
   $("#start-lecture-today").click(function() {
       console.log("here");
