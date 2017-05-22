@@ -1,7 +1,7 @@
 
 // var lectureTime1 = localStorage.lectureTime;
 $( document ).ready(function() {
-
+console.log(localStorage.courseTitle);
   var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
     authDomain: "listen-f5fcf.firebaseapp.com",
@@ -86,7 +86,9 @@ $( document ).ready(function() {
     lectureRef = database.ref("courses/" + courseKey + "/lectures/" + key);
     lectureRef.set({time: todayDateGet(), title: title, number: number});
     var activeLecture = database.ref("activeLecture");
-    $.when(activeLecture.remove()).done(activeLecture.push({course: localStorage.courseCode + " " + localStorage.courseTitle, lecture: lectureKey}));
+    console.log("here i am");
+    var courseName = (localStorage.courseCode + " " + localStorage.courseTitle);
+    $.when(activeLecture.remove()).done(activeLecture.push({course: courseName, lecture: lectureKey, test: localStorage.courseTitle}));
   }
 
   function setTodayLectureLabel() {
