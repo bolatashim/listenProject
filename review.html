@@ -29,11 +29,11 @@
 		<div class="question-explorer">
 			<div class="actions">
 				<span class="action">
-					<button role="checkbox" aria-checked="mixed" id="selectall"></button>
+					<button role="checkbox" aria-checked="false" id="selectall"></button>
 				</span>
-				<span class="action">
+				<!-- <span class="action">
 					<button><i class="fa fa-envelope-o"></i> Reply Selected</button>
-				</span>
+				</span> -->
 				<span class="action">
 					<button><i class="fa fa-envelope-o"></i> Forward to TA</button>
 				</span>
@@ -53,32 +53,18 @@
 				<a href="#" class="tag">moves</a>
 			</div>
 			<div class="questions">
-				<div class="question">
-					<button role="checkbox" aria-checked="false" id="selectall"></button>
-					<a href="#" class="tag">family</a>
-					Who does the momma love most?
-				</div>
-				<div class="question">
-					<button role="checkbox" aria-checked="false" id="selectall"></button>
-					<a href="#" class="tag">terminal</a>
-					Who does the momma love most?
-				</div>
-				<div class="question">
-					<button role="checkbox" aria-checked="false" id="selectall"></button>
-					<span class="tag">oop</span>
-					Who does the momma love most?
-				</div>
-				<div class="question">
-					<button role="checkbox" aria-checked="false" id="selectall"></button>
-					<span class="tag">please</span>
-					Who does the momma love most?
-				</div>
-				<!-- <div class="question">
-					<button role="checkbox" aria-checked="false" id="selectall"></button>
-					<span class="tag">dont</span>
-					Who does the momma love most? <button>Reply <i class="fa fa-angle-up"></i></button>
-					<div style="margin: 10px"><textarea style="width:400px"></textarea><button><i class="fa fa-envelope-o"></i> Send</div>
-				</div> -->
+				<div class="question answered" data-tag="hahaha">
+						<button role="checkbox" aria-checked="false" id="selectall"></button>
+						<span class="tag">hahaha</span>
+						<span class="text">So why do we do what we do in the last part?</span>
+						<span class="answered-label">Answered</span>
+
+						<a href="#" class="reply">Reply</a>
+						<div class="reply-box">
+							<textarea placeholder="Your reply message"></textarea>
+							<button class="send">Send</button>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div>
