@@ -1,7 +1,7 @@
 
 // var lectureTime1 = localStorage.lectureTime;
 $( document ).ready(function() {
-console.log(localStorage.courseTitle);
+  console.log(localStorage.courseTitle);
   var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
     authDomain: "listen-f5fcf.firebaseapp.com",
@@ -78,6 +78,7 @@ console.log(localStorage.courseTitle);
         $("#questions-asked").text(qTotal);
         pushPrevLecture(all);
       });
+      $(".progress").hide()
     });
   }
   
@@ -132,3 +133,4 @@ console.log(localStorage.courseTitle);
   setSomeElements();
   displayPrevLectures();
 });
+
