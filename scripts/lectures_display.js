@@ -1,11 +1,6 @@
 
 // var lectureTime1 = localStorage.lectureTime;
 $( document ).ready(function() {
-<<<<<<< HEAD
-
-=======
-  console.log(localStorage.courseTitle);
->>>>>>> a2946b6e00e654649e4e485e0e40a45594fad661
   var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
     authDomain: "listen-f5fcf.firebaseapp.com",
