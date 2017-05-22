@@ -22,11 +22,8 @@ var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ 
 var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
 
 var activeRef = database.ref("activeLecture")
-activeRef.set(null)
-activeRef.push({course: courseName, lecture: lectureName})
 
 $(document).ready(function(){
-	console.log($.now())
 	$("#course-name").html(courseName)
 	$("#lec-name").html(lectureName)
 	$("#lec-title").html(lectureTitle)
@@ -90,7 +87,16 @@ $(document).ready(function(){
 		}
 	})
 
+	$(window).bind('beforeunload', function(){
+		return "Do you really want to leave now?";
+	});
+
+	$(window).unload(function(){
+		activeRef.set(null)
+	})
+
 	$("#end-btn").on("click", function(){
+		$(window).unbind("beforeunload")
 		if(confirm("Do you really want to end the lecture?")){
 			activeRef.set(null)
 			document.location.href = './lectures_list_page.html'

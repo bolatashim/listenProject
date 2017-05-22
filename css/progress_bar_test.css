@@ -1,0 +1,55 @@
+.progress{
+	height: 5px;
+	margin: 0;
+}
+
+.progress-bar{
+	position: absolute;
+	height: 5px;
+}
+
+#progress-bar1{
+	-webkit-animation: loading1 2s infinite;
+    animation: loading1 2s infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    z-index: 2;
+}
+
+#progress-bar2{
+	-webkit-animation: loading2 2s infinite;
+    animation: loading2 2s infinite;
+    -webkit-animation-timing-function: linear;
+    animation-timing-function: linear;
+    z-index: 1;
+}
+
+@-webkit-keyframes loading1 {
+    0%   {margin-left: 0%;}
+    50%  {margin-left: 50%; width: 50%;}
+    60%  {margin-left: 60%; width: 40%;}
+    70%  {margin-left: 70%; width: 30%;}
+    80%  {margin-left: 80%; width: 20%;}
+    90%  {margin-left: 90%; width: 10%;}
+    100% {margin-left: 100%; width: 0%;}
+}
+
+@keyframes loading1 {
+    0%   {margin-left: 0%;}
+    50%  {margin-left: 50%; width: 50%;}
+    60%  {margin-left: 60%; width: 40%;}
+    70%  {margin-left: 70%; width: 30%;}
+    80%  {margin-left: 80%; width: 20%;}
+    90%  {margin-left: 90%; width: 10%;}
+    100% {margin-left: 100%; width: 0%;}
+}
+
+@-webkit-keyframes loading2 {
+    0%   {margin-left: -100%;}
+    100% {margin-left: 0%;}
+}
+
+@keyframes loading2 {
+    0%   {margin-left: -100%;}
+    100% {margin-left: 0%;}
+}
