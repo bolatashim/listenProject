@@ -12,9 +12,6 @@ var lecture_title = localStorage.lectureKey;
 tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_title}/tags/`);
 
 $(document).ready(function () {
-	$('.questions').empty();
-	$('.tags').empty();
-
 	setQuestionsAndTagsUpdater();
 	setCheckboxListeners();
 	setTagFilterListeners();
@@ -67,6 +64,10 @@ function setQuestionsAndTagsUpdater() {
 		if (tags == null)
 			return;
 
+		// Clear tags and questions
+		$('.tags').empty();
+		$('.questions').empty();
+
 		// Update tags
 		Object.keys(tags).forEach(function (tag_key) {
 			var tag = tags[tag_key];
@@ -82,7 +83,7 @@ function setQuestionsAndTagsUpdater() {
 
 				$('.questions').append(`
 					<div class="question ${question.answered ?'answered' :''}" data-tag="${tag_key}">
-						<button role="checkbox" aria-checked="false" id="selectall"></button>
+						<button role="checkbox" aria-checked="false"></button>
 						<span class="tag">${tag_key}</span>
 						<span class="text">${question.text}</span>
 						<span class="answered-label">Answered</span>
