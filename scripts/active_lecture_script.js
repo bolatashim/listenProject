@@ -102,6 +102,28 @@ $(document).ready(function(){
 			document.location.href = './lectures_list_page.html'
 		}
 	})
+
+	$("#start-quiz").on("click", function(){
+		$(".joint-area").hide()
+		$(".quiz-area").show()
+		var curSec = 5
+		var countdown = setInterval(function(){
+			curSec--
+			if(curSec == 0){
+				clearInterval(countdown)
+				$(".counter").hide()
+				$(".current-quiz").show()
+			}else
+				$("#countdown").html(curSec)
+		}, 1000)
+	})
+
+	$("#end-quiz").on("click", function(){
+		$(".quiz-area").hide()
+		$(".joint-area").show()
+		printQuestions()
+		printTags()
+	})
 })
 
 lectureRef.on("value", function(snap){

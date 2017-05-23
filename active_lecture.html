@@ -51,9 +51,106 @@
 					<button class="btn btn-lg btn-default show-more-btn" data-expanded="false"> Show More </button>
 				</div>
 
-				<div class="tag-area">
-					<h1 class="tag-label">Tags</h1>
-					<div id="tag-list">
+				<div class="extra-area">
+					<div class="sel-quiz-area">
+						<h1 class="sel-quiz-label">Start a Quiz</h1>
+						<div class="form-group sel-quiz-form">
+							<label for="sel-quiz-opt">Select a quiz:</label>
+							<select class="form-control" id="sel-quiz-opt">
+								<option value="" disabled selected hidden>Please Choose...</option>
+								<option> Lecture 8: Objects and Loops </option>
+								<option> Lecture 7: Random </option>
+							</select>
+							<label for="sel-quiz-opt">Time Allowed (mins):</label>
+							<select class="form-control" id="sel-quiz-time" style="width: 75px">
+								<option value="" disabled selected hidden>Min</option>
+								<option> 1 </option>
+								<option> 2 </option>
+								<option> 3 </option>
+								<option> 4 </option>
+								<option> 5 </option>
+								<option> 6 </option>
+								<option> 7 </option>
+								<option> 8 </option>
+								<option> 9 </option>
+								<option> 10 </option>
+								<option> 15 </option>
+								<option> 20 </option>
+							</select>
+						</div>
+						<div style="text-align: center">
+							<h1 id="start-quiz">Start</h1>
+						</div>
+					</div>
+						<div class="tag-area">
+							<h1 class="tag-label">Tags</h1>
+							<div id="tag-list">
+							</div>
+						</div>
+				</div>
+			</div>
+			<div class="quiz-area" hidden>
+				<div class="counter">
+					<h1> Quiz Starts in...</h1>
+					<h1 id="countdown"> 5 </h1>
+				</div>
+				<div class="current-quiz" hidden>
+					<div class="current-quiz-qtn">
+						<div class="quiz-label">
+							<h1 style="margin: 0; font-size: 30px"> Quiz: Lecture 8: Objects and Loops </h1>
+						</div>
+						<div class="quiz-question">
+							<div class="quiz-question-num"> 1
+							</div>
+							<div class="quiz-question-ans">
+								<h1> a) something </h1>
+								<h1> b) something else </h1>
+								<h1> c) something else </h1>
+								<h1> d) something else </h1>
+							</div>
+						</div>
+						<div class="quiz-question">
+							<div class="quiz-question-num"> 2
+							</div>
+							<div class="quiz-question-ans">
+								<h1> a) something </h1>
+								<h1> b) something else </h1>
+								<h1> c) something else </h1>
+								<h1> d) something else </h1>
+							</div>
+						</div>
+						<div class="quiz-question">
+							<div class="quiz-question-num"> 3
+							</div>
+							<div class="quiz-question-ans">
+								<h1> a) something </h1>
+								<h1> b) something else </h1>
+								<h1> c) something else </h1>
+								<h1> d) something else </h1>
+							</div>
+						</div>
+						<div class="quiz-question">
+							<div class="quiz-question-num"> 4
+							</div>
+							<div class="quiz-question-ans">
+								<h1> a) something </h1>
+								<h1> b) something else </h1>
+								<h1> c) something else </h1>
+								<h1> d) something else </h1>
+							</div>
+						</div>
+					</div>
+
+					<div class="quiz-extra-area">
+						<div class="quiz-info">
+							<h1 class="quiz-info-label" style="font-size: 40px"> Timer </h1>
+							<h1 class="quiz-info-details" id="timer"> 5:00 </h1>
+						</div>
+						<div class="quiz-info">
+							<h1 class="quiz-info-label"> Number of Answers </h1>
+							<h1 class="quiz-info-details"> 40 </h1>
+						</div>
+						<button class="btn btn-danger" style="width: 100%; font-size: 20px" id="end-quiz">Finish Quiz</button>
 					</div>
 				</div>
 			</div>
