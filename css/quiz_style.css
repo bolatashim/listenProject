@@ -1,0 +1,161 @@
+ol.options-listing > li { 
+	list-style: upper-alpha; 
+	margin-left: 30px;
+	margin-top: 5px;
+	padding: 10px;
+}
+
+
+.glyphicon-remove {
+	float: right;  
+	color: gray;
+}
+
+
+.btn-save-quiz {
+	float: right;
+	margin-bottom: 30px;
+	font-size: 20px !important; 
+	background-color: #15305b !important;
+}
+
+.glyphicon-remove:hover {
+	color: black !important;
+	float: right;  
+	color: gray;
+}
+
+
+table.options-table tr.option-row td.variant-order {
+	width: 5%;
+}
+
+table.options-table tr.option-row  td {
+	border-bottom: 1px solid gray;
+	border-top: 0px solid black;
+	padding-bottom: 3px !important;
+	padding-left: 0px !important;
+}
+
+table.options-table {
+	width: 60%;
+
+}
+
+.mainquizmaker {
+	padding: 20px 50px !important;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  	background-color: white;
+}
+
+.quiz-question-text {
+	font-size: 18px;
+}
+
+.new-quiz-option {
+	font-size: 16px;
+	font-weight: bold;
+	/*border-left: 5px solid green;*/
+	border-bottom: 2px solid gray;
+	width: 57.5%;
+
+}
+
+.option-add-btn {
+	background-color: #6fbfe0 !important;
+	border-color: gray !important	;
+}
+
+.btn-secondary {
+	background-color: white;
+}
+
+.option-text-box {
+	border-left: 0px solid green !important;
+	border-right: 0px solid green !important;
+	border-top: 0px solid green !important;
+	border-bottom: 2px solid gray !important;
+
+	width: 60%;
+	padding: 7px;
+	font-size: 16px;
+}
+.incorrect-option {
+	border-left: 0px solid red !important;
+	border-right: 0px solid red !important;
+	border-top: 0px solid red !important;
+	border-bottom: 2px solid red !important;
+}
+
+
+ul.options-listing > li {
+	padding: 4px;
+}
+
+
+html, body {
+  position: relative;
+  font-family: verdana !important;
+  background-color: #eceff1 !important;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+
+.breadcrumb {
+	background-color: #6FBFE0 !important;
+	border-radius: 0 !important;
+}
+
+ol.breadcrumb > li > a {
+	/*color:#15305B*/
+	color:   white; /*#EA5B23;*/
+}
+ol.breadcrumb > li > a:hover {
+	text-decoration: none;
+	/*color: #EA5B23;*/
+	color:   white
+}
+ol.breadcrumb > li {
+	text-decoration: none;
+	/*color: #15305B !important;*/
+	/*color: #EA5B23;*/
+	color:   white !important;
+}
+
+.breadcrumb > li + li:before {
+	/*color: #15305B !important;	*/
+	color:   white !important;
+}
+
+
+.navbar{
+	background-color: #15305B;
+	border-radius: 0 !important;	
+}
+
+.fixed-bottom {
+
+}
+.navbar-brand {
+	color: white;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+	text-decoration: none;
+	color: white;
+}
+
+.navbar.navbar-entry {
+	vertical-align: middle;
+}
+
+
