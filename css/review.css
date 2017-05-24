@@ -152,6 +152,10 @@ ol > li {
 			cursor: pointer;
 		}
 
+		.tag:focus {
+			outline: none;
+		}
+
 		.tag.selected {
 			color: #eee;
 			background: #777;
@@ -159,11 +163,13 @@ ol > li {
 
 	/* TODO: change question dom structure to something more stable. */
 	/* Right now it is full of hacks. */
+	.questions-table {
+		width: 100%;
+	}
 	.questions {
 		margin: 10px;
 	}
 		.question {
-			padding: 10px;
 			border-bottom: 1px solid #eee;
 		}
 
@@ -171,23 +177,34 @@ ol > li {
 			background: #f9f9f9;
 		}
 
+			.question td {
+				vertical-align: top;
+				padding: 10px;
+			}
+				.question td:nth-child(1) {
+					width: 10px;
+				}
+				.question td:nth-child(2) {
+					width: 10px;
+				}
+
 			.question:last-of-type {
 				border-bottom: none;
 			}
 			.question .tag {
 				background: #eee;
 				padding: 5px 10px;
-				margin-right: 10px;
 				cursor: unset;
 			}
 			.question .text {
-				padding: 10px;
+				/*padding: 10px;*/
+				/*display: inline-block;*/
 			}
 			.question.answered .text {
 				font-style: italic;
 			}
 			.question button[role=checkbox] {
-				margin-right: 10px;
+				margin-left: 10px;
 			}
 			.question .answered-label {
 				text-transform: uppercase;
@@ -199,17 +216,24 @@ ol > li {
 					display: unset;
 				}
 			.question .reply {
-				padding: 5px 15px;
+				padding: 5px;
 				font-size: .7em;
 				font-weight: bold;
-				display: none;
+				/*display: none;*/
+				opacity: 0;
+				cursor: pointer;
+				-webkit-user-select: none;
+				   -moz-user-select: none;
+				    -ms-user-select: none;
+				        user-select: none;
+
 			}
 			.question:hover .reply {
-				display: unset;
+				/*display: unset;*/
+				opacity: 1;
 			}
 			.question .reply-box {
-				margin-top: 10px;
-				margin-left: 30px;
+				padding: 10px;
 				position: relative;
 				width: 400px;
 				height: 200px;
@@ -223,8 +247,8 @@ ol > li {
 				}
 				.question .reply-box .send {
 					position: absolute;
-					bottom: 5px;
-					right: 5px;
+					bottom: 15px;
+					right: 15px;
 					padding: 5px 15px;
 					font-size: .7em;
 					font-weight: bold;
@@ -233,25 +257,34 @@ ol > li {
 					background: #fff;
 				}
 
-	button[role=checkbox]:focus {
-		outline: unset;
-		border-color: #07e;
-		box-shadow: 0 0 0 3px #99C6F3;
-	}
 	button[role=checkbox] {
 		width: 20px;
 		height: 20px;
-		background: #fff;
+		background-color: #fff;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-image: url('../images/check-gray.png');
 		border-radius: 2px;
 		border: 1px solid #ddd;
 		padding: 0px;
 		vertical-align: middle;
 	}
+	button[role=checkbox]:focus {
+		outline: unset;
+		border-color: #07e;
+		box-shadow: 0 0 0 3px #99C6F3;
+	}
+	button[role=checkbox][aria-checked=false]:hover {
+		background-image: url('../images/check-blue.png');
+	}
+		button[role=checkbox][aria-checked=mixed],
 		button[role=checkbox][aria-checked=true] {
-			background: #07e;
+			background-color: #07e;
 			border-color: #07e;
 		}
+		button[role=checkbox][aria-checked=true] {
+			background-image: url('../images/check-white.png');
+		}
 		button[role=checkbox][aria-checked=mixed] {
-			background: #07e;
-			border-color: #07e;
+			background-image: url('../images/dash-white.png');
 		}

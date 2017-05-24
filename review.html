@@ -32,43 +32,44 @@
 		<div class="question-explorer">
 			<div class="actions">
 				<span class="action">
-					<button role="checkbox" aria-checked="false" id="selectall"></button>
+					<button role="checkbox" aria-checked="false" id="select-all-action"></button>
 				</span>
 				<!-- <span class="action">
 					<button><i class="fa fa-envelope-o"></i> Reply Selected</button>
 				</span> -->
 				<span class="action">
-					<button><i class="fa fa-envelope-o"></i> Forward to TA</button>
+					Mark as:
+					<button id="mark-answered-action">Answered</button>
+					<button id="mark-unanswered-action">Unanswered</button>
 				</span>
 				<span class="action">
-					<button><i class="fa fa-trash-o"></i></a>
+					<button>Forward to TA</button>
+				</span>
+				<span class="action">
+					<button id='delete-action'><i class="fa fa-trash-o"></i></a>
 				</span>
 			</div>
 
 			<div class="tags" data-legend="Filter by tags">
-				<a href="#" class="tag">forloop</a>
-				<a href="#" class="tag">twice</a>
-				<a href="#" class="tag selected">please</a>
-				<a href="#" class="tag">dont</a>
-				<a href="#" class="tag">make</a>
-				<a href="#" class="tag">any</a>
-				<a href="#" class="tag">sudden</a>
-				<a href="#" class="tag">moves</a>
+				(No tags)
 			</div>
-			<div class="questions">
-				<div class="question answered" data-tag="hahaha">
-						<button role="checkbox" aria-checked="false" id="selectall"></button>
-						<span class="tag">hahaha</span>
-						<span class="text">So why do we do what we do in the last part?</span>
-						<span class="answered-label">Answered</span>
 
-						<a href="#" class="reply">Reply</a>
-						<div class="reply-box">
-							<textarea placeholder="Your reply message"></textarea>
-							<button class="send">Send</button>
-						</div>
-					</div>
-			</div>
+			<!-- <div class="questions">
+				<p style="text-align: center; padding: 10px">(No questions)</p>
+			</div> -->
+
+			<table class="questions-table">
+				<colgroup>
+			       <col style="width: 0%;">
+			       <col style="width: 0%;">
+			       <col>
+			    </colgroup>
+			    <tbody class="questions">
+					<tr>
+						<td><p style="text-align: center; padding: 10px">(No questions)</p></td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 	</div>
 

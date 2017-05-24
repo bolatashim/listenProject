@@ -8,6 +8,7 @@ database = firebase.database();
 /* dynamic data. hardcoded for now */
 var course_code = localStorage.courseCode;
 var lecture_title = localStorage.lectureKey;
+var keyToChecked = new Map();
 
 tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_title}/tags/`);
 
@@ -16,15 +17,89 @@ $(document).ready(function () {
 	$("#lecture-name").html(lecture_title)
 	setQuestionsAndTagsUpdater();
 	setCheckboxListeners();
+	setActionButtonListeners();
 	setTagFilterListeners();
 	setReplyBoxTogglers();
 });
 
 function setCheckboxListeners() {
-	$('body').on('click', 'button[role=checkbox]', function() {
+	$('body').on('click', 'button[role=checkbox]', function () {
 		let checked = $(this).attr('aria-checked');
-		$(this).attr('aria-checked', checked == 'true' ?'false' :'true');
+		$(this).attr('aria-checked', checked == 'false' ?'true' :'false');
 	});
+
+	$('body').on('click', '.question button[role=checkbox]', function () {
+		key = $(this).parents('.question').data('key');
+		checked = $(this).attr('aria-checked');
+		keyToChecked.set(key, checked);
+		updateSelectAllCheckbox();
+	});
+}
+
+function updateSelectAllCheckbox() {
+	numAll = $('.question button[role=checkbox]').length;
+	numChecked = $('.question button[role=checkbox][aria-checked=true]').length;
+
+	if (numChecked == 0)
+		$('#select-all-action').attr('aria-checked', 'false');
+	else if (numChecked == numAll)
+		$('#select-all-action').attr('aria-checked', 'true');
+	else
+		$('#select-all-action').attr('aria-checked', 'mixed');
+}
+
+function setActionButtonListeners() {
+	$('#select-all-action').click(function () {
+		let checked = $(this).attr('aria-checked');
+
+		if (checked == 'false') {
+			$('.question button[role=checkbox]').attr('aria-checked', 'true');
+		}
+		else {
+			$('.question button[role=checkbox]').attr('aria-checked', 'false');
+		}
+	});
+
+	$('#delete-action').click(function () {
+		if (confirm('Delete selected questions FOREVER?\n')) {
+			deleteAction();
+		}
+	});
+
+	$('#mark-answered-action').click(function () {
+		changeAnsweredAction(true);
+	});
+
+	$('#mark-unanswered-action').click(function () {
+		changeAnsweredAction(false);
+	});
+}
+
+function changeAnsweredAction(answered) {
+	$('.question button[role=checkbox][aria-checked=true]').each(function () {
+		questionDiv = $(this).parents('.question');
+
+		if (questionDiv == null) {
+			console.log('questionDiv is null');
+			return;
+		}
+
+		tag = questionDiv.data('tag');
+		key = questionDiv.data('key');
+		tagsRef.child(`${tag}/${key}/answered`).set(answered);
+	});
+}
+
+
+function deleteAction() {
+	$('.question button[role=checkbox][aria-checked=true]').each(function () {
+		questionDiv = $(this).parents('.question');
+		tag = questionDiv.data('tag');
+		key = questionDiv.data('key');
+		tagsRef.child(`${tag}/${key}`).remove();
+	});
+
+	updateSelectAllCheckbox();
 }
 
 function setTagFilterListeners() {
@@ -49,7 +124,9 @@ function setTagFilterListeners() {
 
 function setReplyBoxTogglers() {
 	$('body').on('click', '.reply', function () {
-		$(this).parent('.question').children('.reply-box').toggle();
+		$(this).find('i').toggleClass('fa-angle-up');
+		$(this).find('i').toggleClass('fa-angle-down');
+		$(this).parents('.question').find('.reply-box').toggle(400);
 	});
 
 	$('body').on('click', '.send', function () {
@@ -67,8 +144,16 @@ function setQuestionsAndTagsUpdater() {
 		$('.tags').empty();
 		$('.questions').empty();
 
-		if (tags == null)
+		if (tags == null) {
+			$('.tags').append(`
+				(No tags)
+			`);
+
+			$('.questions').append(`
+				<tr><td><p style="text-align: center; padding: 10px">(No questions)</p></td></tr>
+			`);
 			return;
+		}
 
 		// Update tags
 		Object.keys(tags).forEach(function (tag_key) {
@@ -84,20 +169,30 @@ function setQuestionsAndTagsUpdater() {
 				console.log(question);
 
 				$('.questions').append(`
-					<div class="question ${question.answered ?'answered' :''}" data-tag="${tag_key}">
-						<button role="checkbox" aria-checked="false"></button>
-						<span class="tag">${tag_key}</span>
-						<span class="text">${question.text}</span>
-						<span class="answered-label">Answered</span>
+					<tr class="question ${question.answered ?'answered' :''}" data-tag="${tag_key}"
+						data-key="${question_key}">
+						<td>
+							<button role="checkbox"
+								aria-checked="${keyToChecked.get(question_key) || 'false'}"></button>
+						</td>
+						<td><span class="tag">${tag_key}</span></td>
+						<td>
+							<span class="text">${question.text} An automatic table layout algorithm is commonly used by most browsers for table layout. The widths of the table and its cells depend on the content thereof.
+</span>
+							<span class="answered-label">Answered</span>
 
-						<a href="#" class="reply">Reply</a>
-						<div class="reply-box">
-							<textarea placeholder="Your reply message"></textarea>
-							<button class="send">Send</button>
-						</div>
-					</div>
+							<span class="reply">Reply <i class="fa fa-angle-down"></i></span>
+							<div class="reply-box">
+								<textarea placeholder="Your reply message"></textarea>
+								<button class="send">Send</button>
+							</div>
+						</td>
+					</tr>
 				`);
 			});
 		});
+
+		// After updating DOM for questions update checkboxes
+		updateSelectAllCheckbox();
 	})
 }
