@@ -61,22 +61,11 @@
 								<option> Lecture 8: Objects and Loops </option>
 								<option> Lecture 7: Random </option>
 							</select>
-							<label for="sel-quiz-opt">Time Allowed (mins):</label>
-							<select class="form-control" id="sel-quiz-time" style="width: 75px">
-								<option value="" disabled selected hidden>Min</option>
-								<option> 1 </option>
-								<option> 2 </option>
-								<option> 3 </option>
-								<option> 4 </option>
-								<option> 5 </option>
-								<option> 6 </option>
-								<option> 7 </option>
-								<option> 8 </option>
-								<option> 9 </option>
-								<option> 10 </option>
-								<option> 15 </option>
-								<option> 20 </option>
-							</select>
+							<label for="sel-quiz-opt">Time Allowed:</label>
+							<div style="margin-bottom: 10px">
+								<input class="form-control" id="sel-quiz-min" placeholder="Min" type="number" min=0>
+								<input class="form-control" id="sel-quiz-sec" placeholder="Sec" type="number" min=0>
+							</div>
 						</div>
 						<div style="text-align: center">
 							<h1 id="start-quiz">Start</h1>
@@ -95,9 +84,20 @@
 					<h1 id="countdown"> 5 </h1>
 				</div>
 				<div class="current-quiz" hidden>
+					<div class="quiz-extra-area">
+						<div class="quiz-info" style="width: 30%">
+							<h1 class="quiz-info-label"> Time Remaining </h1>
+							<h1 class="quiz-info-details" id="timer"></h1>
+						</div>
+						<div class="quiz-info" style="width: 32%">
+							<h1 class="quiz-info-label"> Number of Submissions </h1>
+							<h1 class="quiz-info-details"> 40 </h1>
+						</div>
+						<button class="btn btn-danger" style="width: 35%; height: 100%; font-size: 35px" id="end-quiz">Finish Quiz</button>
+					</div>
 					<div class="current-quiz-qtn">
 						<div class="quiz-label">
-							<h1 style="margin: 0; font-size: 30px"> Quiz: Lecture 8: Objects and Loops </h1>
+							<h1 style="margin: 0; font-size: 30px"></h1>
 						</div>
 						<div class="quiz-question">
 							<div class="quiz-question-num"> 1
@@ -139,18 +139,6 @@
 								<h1> d) something else </h1>
 							</div>
 						</div>
-					</div>
-
-					<div class="quiz-extra-area">
-						<div class="quiz-info">
-							<h1 class="quiz-info-label" style="font-size: 40px"> Timer </h1>
-							<h1 class="quiz-info-details" id="timer"> 5:00 </h1>
-						</div>
-						<div class="quiz-info">
-							<h1 class="quiz-info-label"> Number of Answers </h1>
-							<h1 class="quiz-info-details"> 40 </h1>
-						</div>
-						<button class="btn btn-danger" style="width: 100%; font-size: 20px" id="end-quiz">Finish Quiz</button>
 					</div>
 				</div>
 			</div>

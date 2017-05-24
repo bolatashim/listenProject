@@ -102,29 +102,50 @@ $(document).ready(function(){
 			document.location.href = './lectures_list_page.html'
 		}
 	})
-
 	$("#start-quiz").on("click", function(){
 		$(".joint-area").hide()
 		$(".quiz-area").show()
 		var curSec = 5
 		var countdown = setInterval(function(){
 			curSec--
-			if(curSec == 0){
+			if(curSec == 4){
 				clearInterval(countdown)
 				$(".counter").hide()
 				$(".current-quiz").show()
+				showQuiz()
 			}else
 				$("#countdown").html(curSec)
 		}, 1000)
 	})
 
 	$("#end-quiz").on("click", function(){
-		$(".quiz-area").hide()
-		$(".joint-area").show()
-		printQuestions()
-		printTags()
+		endQuiz()
 	})
 })
+
+function showQuiz(){
+	var quizSelected = $("#sel-quiz-opt option:selected").text()
+	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
+
+	$(".quiz-label h1").html("Quiz: " + quizSelected)
+	$("#timer").html(Math.floor(time/60) + ":" + (time%60 < 10 ? "0" + time%60 : time%60))
+	var timer = setInterval(function(){
+		time--
+		if(time == 0){
+			clearInterval(timer)
+			endQuiz()
+		}else{
+			$("#timer").html(Math.floor(time/60) + ":" + (time%60 < 10 ? "0" + time%60 : time%60))
+		}
+	}, 1000)
+}
+
+function endQuiz(){
+	$(".quiz-area").hide()
+	$(".joint-area").show()
+	printQuestions()
+	printTags()
+}
 
 lectureRef.on("value", function(snap){
 	var snapshot = snap.child("tags")
