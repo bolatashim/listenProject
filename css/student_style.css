@@ -40,3 +40,16 @@ ul#menu li{
   background-color: #e5efff;
   border: 0px;
 }
+
+.options{
+  width: 100%;
+}
+
+.btn{
+  white-space: normal;
+}
+
+.panel{
+  padding-left: 10px;
+  padding-right: 10px;
+}
