@@ -8,7 +8,7 @@ database = firebase.database();
 /* dynamic data. hardcoded for now */
 var course_code = localStorage.courseCode;
 var lecture_title = localStorage.lectureKey;
-var keyToChecked = new Map();
+var keyToChecked = new Map(); // TODO: Store in localStorage(?)
 
 tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_title}/tags/`);
 
@@ -37,8 +37,8 @@ function setCheckboxListeners() {
 }
 
 function updateSelectAllCheckbox() {
-	numAll = $('.question button[role=checkbox]').length;
-	numChecked = $('.question button[role=checkbox][aria-checked=true]').length;
+	numAll = $('.question button[role=checkbox]:visible').length;
+	numChecked = $('.question button[role=checkbox][aria-checked=true]:visible').length;
 
 	if (numChecked == 0)
 		$('#select-all-action').attr('aria-checked', 'false');
@@ -76,7 +76,7 @@ function setActionButtonListeners() {
 }
 
 function changeAnsweredAction(answered) {
-	$('.question button[role=checkbox][aria-checked=true]').each(function () {
+	$('.question button[role=checkbox][aria-checked=true]:visible').each(function () {
 		questionDiv = $(this).parents('.question');
 
 		if (questionDiv == null) {
@@ -92,7 +92,7 @@ function changeAnsweredAction(answered) {
 
 
 function deleteAction() {
-	$('.question button[role=checkbox][aria-checked=true]').each(function () {
+	$('.question button[role=checkbox][aria-checked=true]:visible').each(function () {
 		questionDiv = $(this).parents('.question');
 		tag = questionDiv.data('tag');
 		key = questionDiv.data('key');
@@ -103,6 +103,9 @@ function deleteAction() {
 }
 
 function setTagFilterListeners() {
+	// TODO: Extract code that filters questions. Also store filter status in localStorage(?).
+	// TODO: Right now updating questions resets/clears filters. Fix that.
+
 	$('body').on('click', '.tags .tag', function() {
 		$(this).toggleClass('selected');
 
@@ -119,6 +122,8 @@ function setTagFilterListeners() {
 		else {
 			$('.question').show();
 		}
+
+		updateSelectAllCheckbox();
 	});
 }
 
