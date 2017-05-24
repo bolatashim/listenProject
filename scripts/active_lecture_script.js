@@ -5,6 +5,7 @@ var lectureTitle = localStorage.lectureTitle
 var tags = []
 var questions = []
 var name = ""
+var quizzes = {}
 
 var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
@@ -20,6 +21,7 @@ var database = firebase.database()
 var courseRef = database.ref("courses/" + courseName)
 var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ lectureName)
 var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
+var quizRef = database.ref("courses/" + courseName + "/quizzes")
 
 var activeRef = database.ref("activeLecture")
 
@@ -102,20 +104,35 @@ $(document).ready(function(){
 			document.location.href = './lectures_list_page.html'
 		}
 	})
+
+	quizRef.once('value').then(function(snapshot){
+		var maxIndex = snapshot.numChildren()
+		for(var i = 0; i<maxIndex; i++){
+			var title = snapshot.child(i).val().title
+			quizzes[title] = snapshot.child(i).val()
+			$("#sel-quiz-opt").append("<option>" + title + "</option>")
+		}
+		$(".progress").hide()
+	})
+
 	$("#start-quiz").on("click", function(){
-		$(".joint-area").hide()
-		$(".quiz-area").show()
-		var curSec = 5
-		var countdown = setInterval(function(){
-			curSec--
-			if(curSec == 4){
-				clearInterval(countdown)
-				$(".counter").hide()
-				$(".current-quiz").show()
-				showQuiz()
-			}else
-				$("#countdown").html(curSec)
-		}, 1000)
+		if($("#sel-quiz-opt option:selected").text() != "Please Choose..." && ($("#sel-quiz-min").val() || $("#sel-quiz-sec").val())){
+			$(".joint-area").hide()
+			$(".quiz-area").show()
+			var curSec = 5
+			var countdown = setInterval(function(){
+				curSec--
+				if(curSec == 0){
+					clearInterval(countdown)
+					$(".counter").hide()
+					$(".current-quiz").show()
+					showQuiz()
+				}else
+					$("#countdown").html(curSec)
+			}, 1000)
+		}else{
+			$("#warning").html("* Select valid quiz or input valid time")
+		}
 	})
 
 	$("#end-quiz").on("click", function(){
@@ -126,6 +143,21 @@ $(document).ready(function(){
 function showQuiz(){
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
+
+	var questions = quizzes[quizSelected].questions
+
+	for(var i = 0; i < questions.length; i++){
+		$(".current-quiz-qtn").append(`<div class="quiz-question">
+								<div class="quiz-question-num"> ${i+1}
+								</div>
+								<div class="quiz-question-ans">
+									<h1> a) ${questions[i].a} </h1>
+									<h1> b) ${questions[i].b} </h1>
+									<h1> c) ${questions[i].c} </h1>
+									<h1> d) ${questions[i].d} </h1>
+								</div>
+							</div>`)
+	}
 
 	$(".quiz-label h1").html("Quiz: " + quizSelected)
 	$("#timer").html(Math.floor(time/60) + ":" + (time%60 < 10 ? "0" + time%60 : time%60))

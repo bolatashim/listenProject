@@ -6,9 +6,15 @@
 	<link href="scripts/jquery/css/ui-lightness/jquery-ui-1.10.0.custom.css" rel="stylesheet" />  
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<link href="css/active_lecture.css" rel="stylesheet" />
+	<link href="css/progress_bar_test.css" rel="stylesheet" />
 </head>
 
 <body>
+
+    <div class="progress">
+      <div class="progress-bar" id="progress-bar1" style="margin-left: 0%; width:50%"></div>
+      <div class="progress-bar" id="progress-bar2" style="margin-left: -100%; width:50%"></div>
+    </div>
 
     <div class="navbar">
         <div class="container">
@@ -56,10 +62,8 @@
 						<h1 class="sel-quiz-label">Start a Quiz</h1>
 						<div class="form-group sel-quiz-form">
 							<label for="sel-quiz-opt">Select a quiz:</label>
-							<select class="form-control" id="sel-quiz-opt">
+							<select class="form-control" id="sel-quiz-opt" required>
 								<option value="" disabled selected hidden>Please Choose...</option>
-								<option> Lecture 8: Objects and Loops </option>
-								<option> Lecture 7: Random </option>
 							</select>
 							<label for="sel-quiz-opt">Time Allowed:</label>
 							<div style="margin-bottom: 10px">
@@ -67,6 +71,8 @@
 								<input class="form-control" id="sel-quiz-sec" placeholder="Sec" type="number" min=0>
 							</div>
 						</div>
+						<h1 id="warning" style="font-size: 15px; color: red; margin: 0; padding: 10px; padding-top: 0">
+						</h1>
 						<div style="text-align: center">
 							<h1 id="start-quiz">Start</h1>
 						</div>
@@ -91,53 +97,13 @@
 						</div>
 						<div class="quiz-info" style="width: 32%">
 							<h1 class="quiz-info-label"> Number of Submissions </h1>
-							<h1 class="quiz-info-details"> 40 </h1>
+							<h1 class="quiz-info-details"> 0 </h1>
 						</div>
 						<button class="btn btn-danger" style="width: 35%; height: 100%; font-size: 35px" id="end-quiz">Finish Quiz</button>
 					</div>
 					<div class="current-quiz-qtn">
 						<div class="quiz-label">
 							<h1 style="margin: 0; font-size: 30px"></h1>
-						</div>
-						<div class="quiz-question">
-							<div class="quiz-question-num"> 1
-							</div>
-							<div class="quiz-question-ans">
-								<h1> a) something </h1>
-								<h1> b) something else </h1>
-								<h1> c) something else </h1>
-								<h1> d) something else </h1>
-							</div>
-						</div>
-						<div class="quiz-question">
-							<div class="quiz-question-num"> 2
-							</div>
-							<div class="quiz-question-ans">
-								<h1> a) something </h1>
-								<h1> b) something else </h1>
-								<h1> c) something else </h1>
-								<h1> d) something else </h1>
-							</div>
-						</div>
-						<div class="quiz-question">
-							<div class="quiz-question-num"> 3
-							</div>
-							<div class="quiz-question-ans">
-								<h1> a) something </h1>
-								<h1> b) something else </h1>
-								<h1> c) something else </h1>
-								<h1> d) something else </h1>
-							</div>
-						</div>
-						<div class="quiz-question">
-							<div class="quiz-question-num"> 4
-							</div>
-							<div class="quiz-question-ans">
-								<h1> a) something </h1>
-								<h1> b) something else </h1>
-								<h1> c) something else </h1>
-								<h1> d) something else </h1>
-							</div>
 						</div>
 					</div>
 				</div>
