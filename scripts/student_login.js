@@ -5,8 +5,7 @@ var config={
 firebase.initializeApp(config);
 var database = firebase.database();
 var activeLectureRef = database.ref("activeLecture");
-var activeLecture = [];
-
+localStorage.clear();
 /*
 var studentRef = database.ref("courses/CS101/students");
 studentRef.update({
@@ -41,8 +40,13 @@ $( document ).ready(function() {
 activeLectureRef.on('child_added', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
-	activeLecture.push({course: value["course"], lecture: value["lecture"]});
-	$("#student_course").append("<option>"+value["course"]+"</option>");
+	$("#student_course").append("<option id="+value["course"]+">"+value["course"]+"</option>");
+});
+
+activeLectureRef.on('child_removed', function(snapshot){
+	var key = snapshot.key;
+	var value = snapshot.val();
+	$("#"+value["course"]).remove();
 });
 
 function find_lecture(course){

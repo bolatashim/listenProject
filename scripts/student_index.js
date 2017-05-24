@@ -6,15 +6,20 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var student_id = localStorage.id;
 var student_email = localStorage.email;
-var student_course = localStorage.course.split(" ")[0];
+var student_course = localStorage.course;
 var student_lecture = localStorage.lecture;
 var lectureRef = database.ref("courses/"+student_course+"/lectures/"+student_lecture);
 var tagRef = database.ref("courses/"+student_course+"/lectures/"+student_lecture+"/tags");
 var tags = [];
 
 $( document ).ready(function(){
+	if(student_id === undefined || student_email === undefined || student_lecture === undefined){
+		alert("Please login first.");
+		document.location.href = 'file:student_login.html';
+	}
+
 	$("#student_profile").text("ID: "+student_id);
-	$("#student_course").text("Course: "+student_course);
+	$("#student_course").text("Course: "+student_course.split(" ")[0]);
 
 	$("#tags").on('click', '.tag',function(){
 		if($(this).text()=="Create tag"){
@@ -28,7 +33,7 @@ $( document ).ready(function(){
 	});
 
 	$("#submit").click(function(){
-		var addtagRef = database.ref("courses/"+student_course+"/lectures/"+student_lecture+"/tags/"+$(".cur_tag").val());
+		var addtagRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture+"/tags/"+$(".cur_tag").val());
 		addtagRef.push({
 			answered: false,
 			asker: student_id,
@@ -38,6 +43,7 @@ $( document ).ready(function(){
 		})
 		alert("Submitted!");
 		$("#inputarea").val("");
+		$("#inputarea").focus();
 	});
 })
 
