@@ -58,6 +58,17 @@ function setActionButtonListeners() {
 		else {
 			$('.question button[role=checkbox]').attr('aria-checked', 'false');
 		}
+
+		// Update keyToChecked
+		$('.question button[role=checkbox]').each(function () {
+			key = $(this).parents('.question').data('key');
+			checked = $(this).attr('aria-checked');
+			keyToChecked.set(key, checked);
+		});
+	});
+
+	$('#forward-action').click(function () {
+		notImplementedYet();
 	});
 
 	$('#delete-action').click(function () {
@@ -135,7 +146,7 @@ function setReplyBoxTogglers() {
 	});
 
 	$('body').on('click', '.send', function () {
-		alert('That doesnt work yet ¯\\_(ツ)_/¯');
+		notImplementedYet();
 	});
 }
 
@@ -184,7 +195,7 @@ function setQuestionsAndTagsUpdater() {
 						<td>
 							<span class="text">${question.text} An automatic table layout algorithm is commonly used by most browsers for table layout. The widths of the table and its cells depend on the content thereof.
 </span>
-							<span class="answered-label">Answered</span>
+							<span class="answered-label">(Answered)</span>
 
 							<span class="reply">Reply <i class="fa fa-angle-down"></i></span>
 							<div class="reply-box">
@@ -200,4 +211,8 @@ function setQuestionsAndTagsUpdater() {
 		// After updating DOM for questions update checkboxes
 		updateSelectAllCheckbox();
 	})
+}
+
+function notImplementedYet() {
+	alert('That doesnt work yet ¯\\_(ツ)_/¯');
 }
