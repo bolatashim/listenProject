@@ -8,16 +8,17 @@ var student_id = localStorage.id;
 var student_email = localStorage.email;
 var student_course = localStorage.course;
 var student_lecture = localStorage.lecture;
+
+if(student_id === undefined || student_email === undefined || student_lecture === undefined){
+	alert("Please login first.");
+	document.location.href = 'file:student_login.html';
+}
+
 var lectureRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture);
 var tagRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture+"/tags");
 var tags = [];
 
 $( document ).ready(function(){
-	if(student_id === undefined || student_email === undefined || student_lecture === undefined){
-		alert("Please login first.");
-		document.location.href = 'file:student_login.html';
-	}
-
 	$("#student_profile").text("ID: "+student_id);
 	$("#student_course").text("Course: "+student_course.split(" ")[0]);
 
