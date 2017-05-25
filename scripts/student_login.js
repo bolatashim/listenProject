@@ -42,7 +42,7 @@ activeLectureRef.on('child_added', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
 	$("#student_course").append("<option id="+value["course"]+">"+value["course"]+"</option>");
-	activeLecture.push({course: value["course"]});
+	activeLecture.push({course: value["course"], lecture: value["lecture"]});
 });
 
 activeLectureRef.on('child_removed', function(snapshot){
