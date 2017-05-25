@@ -311,3 +311,96 @@ button:focus {
 		button[role=checkbox][aria-checked=mixed] {
 			background-image: url('../images/dash-white.png');
 		}
+
+.lecture-title {
+	text-align: center;
+	position: relative;
+	margin-bottom: 25px;
+}
+	#new-lecture-name {
+		text-align: center;
+		width: 400px;
+	}
+
+	.lecture-title .title-action {
+		font-size: .4em;
+		vertical-align: middle;
+		text-transform: uppercase;
+	}
+		#edit-name-action {
+			opacity: 0;
+		}
+			.lecture-title:hover #edit-name-action {
+				opacity: 1;
+			}
+
+		#save-name-action {
+			display: none;
+		}
+
+	.lecture-title .more-actions {
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		font-size: .5em;
+		text-align: right;
+	}
+
+.more-actions {
+	margin-top: 5px;
+}
+	.more-actions .expand {
+		font-size: .8em;
+		background: none;
+		border-radius: 5px;
+		border: none;
+		padding: 10px;
+		margin-bottom: 5px;
+	}
+	.more-actions .actions {
+		display: none;
+		position: relative;
+		min-width: 200px;
+		background: #eee;
+		box-shadow: 0px 0px 30px rgba(0,0,0,.4);
+		border-radius: 2px;
+		padding: 5px;
+	}
+		.more-actions .expandable:before {
+			position: absolute;
+			z-index: 1001;
+			content:"\A";
+			display: block;
+			right: 50px;
+			width: 0px;
+			height: 0px;
+			border-top: none;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			border-bottom: 5px solid #eee;
+			margin-top: -5px;
+		}
+		.more-actions .actions .action {
+			display: block;
+			padding: 10px 5px;
+			margin: 0px;
+			width: 100%;
+			border: none;
+			font-weight: bold;
+			font-size: .7em;
+		}
+			.more-actions .actions .action.dangerous {
+				background: #ff4a4a;
+				color: #fff;
+			}
+				.more-actions .actions .action.dangerous:active {
+					background: #f11212;
+					color: #fff;
+				}
+
+			.more-actions .actions .action:not(:last-child) {
+				margin-bottom: 5px;
+			}
+			.more-actions .actions .action:hover {
+
+			}

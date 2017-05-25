@@ -7,19 +7,25 @@ database = firebase.database();
 
 /* dynamic data. hardcoded for now */
 var course_code = localStorage.courseCode;
-var lecture_title = localStorage.lectureKey;
+var lecture_key = localStorage.lectureKey;
+var lecture_title = null;
 var keyToChecked = new Map(); // TODO: Store in localStorage(?)
 
-tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_title}/tags/`);
+lectureRef = database.ref(`courses/${course_code}/lectures/${lecture_key}`);
+lectureTitleRef = database.ref(`courses/${course_code}/lectures/${lecture_key}/title`);
+tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_key}/tags/`);
 
 $(document).ready(function () {
-	$("#course-code").html(course_code)
-	$("#lecture-name").html(lecture_title)
+	$("#breadcrumb-course-code").html(course_code);
+	$("#breadcrumb-lecture-name").html(lecture_key);
+	setLectureTitleUpdater();
 	setQuestionsAndTagsUpdater();
 	setCheckboxListeners();
 	setActionButtonListeners();
 	setTagFilterListeners();
 	setReplyBoxTogglers();
+	setLectureActionListeners();
+	setMoreActionsListeners();
 });
 
 function setCheckboxListeners() {
@@ -150,8 +156,46 @@ function setReplyBoxTogglers() {
 	});
 }
 
+function setLectureActionListeners() {
+	$('#edit-name-action').click(function () {
+		$('#edit-name-action').toggle();
+		$('#save-name-action').toggle();
+		$('#lecture-name').html(`
+			<input id='new-lecture-name' value='${lecture_title}'>
+		`);
+	});
+
+	$('#save-name-action').click(function () {
+		$('#edit-name-action').toggle();
+		$('#save-name-action').toggle();
+
+		new_lecture_key = $('#new-lecture-name').val();
+		lectureTitleRef.set(new_lecture_key);
+		$('#lecture-name').html(new_lecture_key);
+	});
+}
+
+function setMoreActionsListeners() {
+	$('body').on('click', '.more-actions .expand', function() {
+		$(this).parents('.more-actions').find('.actions').toggle();
+	});
+
+	$('#delete-lecture-action').click(function () {
+		if (confirm('Delete the WHOLE lecture FOREVER?')) {
+			deleteLectureAction();
+		}
+	});
+}
+
+function setLectureTitleUpdater() {
+	lectureTitleRef.on('value', function (snapshot) {
+		lecture_title = snapshot.val();
+		$('#lecture-name').html(lecture_title);
+	})
+}
+
 function setQuestionsAndTagsUpdater() {
-	tagsRef.on('value', function(snapshot) {
+	tagsRef.on('value', function (snapshot) {
 		tags = snapshot.val();
 
 		console.log(tags);
@@ -211,6 +255,11 @@ function setQuestionsAndTagsUpdater() {
 		// After updating DOM for questions update checkboxes
 		updateSelectAllCheckbox();
 	})
+}
+
+function deleteLectureAction() {
+	lectureRef.remove();
+	window.location = 'lectures_list_page.html';
 }
 
 function notImplementedYet() {

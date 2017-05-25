@@ -26,9 +26,25 @@
 	<div class="container">
 		<ol class="breadcrumb" id="breadcrumb">
 			<li><a href="index.html">Home</a> </li>
-			<li><a id="course-code" href="lectures_list_page.html"></a></li>
-			<li id="lecture-name" class="active"></li>
+			<li><a id="breadcrumb-course-code" href="lectures_list_page.html"></a></li>
+			<li id="breadcrumb-lecture-name" class="active"></li>
 		</ol>
+
+		<h2 class="lecture-title">
+			<span id="lecture-name">(Title)</span>
+			<a href="#" class="title-action" id="edit-name-action">edit</a>
+			<button href="#" class="title-action" id="save-name-action">save</button>
+
+			<div class="more-actions">
+				<button class="expand">More lecture actions <i class="fa fa-caret-down"></i></button>
+				<div class="expandable">
+					<div class="actions">
+						<button class="action dangerous" id="delete-lecture-action">Delete Lecture</button>
+					</div>
+				</div>
+			</div>
+			</h2>
+
 		<div class="question-explorer">
 			<div class="actions">
 				<span class="action">
