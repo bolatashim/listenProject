@@ -1,4 +1,5 @@
 var courseName = localStorage.courseCode
+var courseTitle = localStorage.courseTitle
 var lectureName = localStorage.lectureKey
 var lectureTitle = localStorage.lectureTitle
 
@@ -94,10 +95,14 @@ $(document).ready(function(){
 	});
 
 	$(window).unload(function(){
+		localStorage.courseCode = courseName
+		localStorage.courseTitle = courseTitle
 		activeRef.set(null)
 	})
 
 	$("#end-btn").on("click", function(){
+		localStorage.courseCode = courseName
+		localStorage.courseTitle = courseTitle
 		$(window).unbind("beforeunload")
 		if(confirm("Do you really want to end the lecture?")){
 			activeRef.set(null)
