@@ -14,6 +14,15 @@ var keyToChecked = new Map(); // TODO: Store in localStorage(?)
 lectureRef = database.ref(`courses/${course_code}/lectures/${lecture_key}`);
 lectureTitleRef = database.ref(`courses/${course_code}/lectures/${lecture_key}/title`);
 tagsRef = database.ref(`courses/${course_code}/lectures/${lecture_key}/tags/`);
+taRef = database.ref(`courses/${course_code}/taList`);
+
+var taList = []
+
+taRef.once('value').then(function(snapshot){
+	snapshot.val().forEach(function(ta){
+		taList.push(ta)
+	})
+})
 
 $(document).ready(function () {
 	$("#breadcrumb-course-code").html(course_code);
@@ -74,7 +83,29 @@ function setActionButtonListeners() {
 	});
 
 	$('#forward-action').click(function () {
-		notImplementedYet();
+		var mail = ""
+		for(var i = 0; i < taList.length; i++){
+			if(i != taList.length-1){
+				mail += taList[i] + ";"
+			}else{
+				mail += taList[i]
+			}
+		}
+		var subject = ""
+		$('.question button[role=checkbox][aria-checked=true]:visible').each(function () {
+			questionDiv = $(this).parents('.question');
+			var tag = questionDiv.data('tag');
+			var key = questionDiv.data('key');
+			var info = questionDiv.data("asker").split(",")
+			var id = info[0]
+			var email = info[1]
+			var question = $(this).parents('.question').find(".text")
+			question = question.html()
+			question = question.replace(/ /g, "%20")
+			subject += "Student%Number:%20" + id + "%20Email:%20" + email + "%0A" + "Question:%20" + question + "%0A"
+			tagsRef.child(`${tag}/${key}/answered`).set(true);
+		});
+		window.open("mailto:" + mail + "?subject=" + course_code + ":%20Answer%20these%20Questions&body=" + subject)
 	});
 
 	$('#delete-action').click(function () {
@@ -155,10 +186,11 @@ function setReplyBoxTogglers() {
 		var parent = $(this).parent(".reply-box")
 		var text = parent.children("textarea").val()
 		var email = parent.data("email")
-		console.log(email)
-		text = text.replace(" ", "%20")
-		console.log(text)
-		window.open("mailto:" + email + "?subject=" + course_code + ":%20Question%20Answered&body=" + text)
+		text = text.replace(/ /g, "%20")
+		window.open("mailto:" + email + "?subject=" + course_code + ":%20Question%20Answered&body=Answer:%20" + text)
+		var key = $(this).parents('.question').data('key');
+		var tag = $(this).parents('.question').data('tag')
+		tagsRef.child(tag+"/"+key+"/answered").set(true)
 	});
 }
 
@@ -237,19 +269,19 @@ function setQuestionsAndTagsUpdater() {
 				var email = question.email
 				$('.questions').append(`
 					<tr class="question ${question.answered ?'answered' :''}" data-tag="${tag_key}"
-						data-key="${question_key}">
+						data-key="${question_key}" data-asker="${question.asker},${question.email}">
 						<td>
 							<button role="checkbox"
 								aria-checked="${keyToChecked.get(question_key) || 'false'}"></button>
 						</td>
 						<td><span class="tag">${tag_key}</span></td>
 						<td>
-							<span class="text">${question.text} An automatic table layout algorithm is commonly used by most browsers for table layout. The widths of the table and its cells depend on the content thereof.
-								</span>
+							<span class="text">${question.text}</span>
 							<span class="answered-label">(Answered)</span>
 							<br>
 							<span class="reply">Reply <i class="fa fa-angle-down"></i></span>
 							<div class="reply-box" data-email=${email}>
+								To: ${question.email} <br>
 								<textarea placeholder="Your reply message"></textarea>
 								<button class="send">Send</button>
 							</div>
