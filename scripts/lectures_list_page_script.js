@@ -20,16 +20,26 @@ $( document ).ready(function() {
   var lectureKey;
   var qTotal = 0;
   var allStudents = 0;
+  var maxLecture = 0;
+
+
+
+
 
   function setLectureTodayKey() {
     lecturesRef.once("value", function(data) {
-      var prev = 0;
-      $.when(prev = data.numChildren()).done(function() {
-        lectureToday = prev + 1;
-        lectureKey = "Lecture " + lectureToday;
-        setTodayLectureLabel();
-        return;
-      });  
+      $.when(
+        data.forEach(function(lecture) {
+          var thenum = lecture.val().number;
+          if (maxLecture < thenum) {
+            maxLecture = thenum;
+          }
+        })
+        ).done(function() {
+          lectureToday = maxLecture + 1;
+          lectureKey = "Lecture " + lectureToday;
+          setTodayLectureLabel();
+      });
     });
   }
 
@@ -112,7 +122,7 @@ $( document ).ready(function() {
     $("#current-week").text(currweek);
   }
 
-  function setSomeElements() {
+  function setStaticSomeElements() {
     $("#course-title-current").text(localStorage.courseCode + ": " + localStorage.courseTitle);
     $("#breadcode").text(localStorage.courseCode);
     $("#today-lecture-tablehead").text("Today's Lecture (" + todayDateGet() +")");
@@ -143,7 +153,7 @@ $( document ).ready(function() {
 
   setLectureTodayKey();
   setTotalStudentsNum();
-  setSomeElements();
+  setStaticSomeElements();
   displayPrevLectures();
 });
 
