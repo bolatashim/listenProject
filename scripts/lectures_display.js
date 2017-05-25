@@ -135,7 +135,7 @@ $( document ).ready(function() {
       console.log(lectureToday);
       var ltitle = $("#today-lecture-title").val();
       lectureStart(lectureKey, ltitle, lectureToday);
-      localStorage.courseKey = courseKey;
+      localStorage.courseCode = courseKey;
       localStorage.lectureKey = lectureKey;
       localStorage.lectureTitle = ltitle;
       document.location.href = './active_lecture.html';

@@ -5,7 +5,12 @@ var config={
 firebase.initializeApp(config);
 var database = firebase.database();
 var activeLectureRef = database.ref("activeLecture");
-localStorage.clear();
+var activeLecture = [];
+localStorage.removeItem("id");
+localStorage.removeItem("email");
+localStorage.removeItem("course");
+localStorage.removeItem("lecture");
+//localStorage.clear();
 /*
 var studentRef = database.ref("courses/CS101/students");
 studentRef.update({
@@ -41,6 +46,7 @@ activeLectureRef.on('child_added', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
 	$("#student_course").append("<option id="+value["course"]+">"+value["course"]+"</option>");
+	activeLecture.push({course: value["course"], lecture: value["lecture"]});
 });
 
 activeLectureRef.on('child_removed', function(snapshot){

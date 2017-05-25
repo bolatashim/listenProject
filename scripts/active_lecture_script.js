@@ -1,4 +1,4 @@
-var courseName = localStorage.courseKey
+var courseName = localStorage.courseCode
 var lectureName = localStorage.lectureKey
 var lectureTitle = localStorage.lectureTitle
 
