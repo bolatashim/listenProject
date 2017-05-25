@@ -1,11 +1,18 @@
-.progress{
+.progress {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 	height: 5px;
-	margin: 0;
+    background: #fff;
+    width: 100%;
+    z-index: 1001;
 }
 
-.progress-bar{
-	position: absolute;
+.progress-bar {
+    background: #333;
+    position: absolute;
 	height: 5px;
+    z-index: 1002;
 }
 
 #progress-bar1{
@@ -13,7 +20,6 @@
     animation: loading1 2s infinite;
     -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
-    z-index: 2;
 }
 
 #progress-bar2{
@@ -21,7 +27,6 @@
     animation: loading2 2s infinite;
     -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
-    z-index: 1;
 }
 
 @-webkit-keyframes loading1 {
