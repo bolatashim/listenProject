@@ -146,7 +146,13 @@ function setReplyBoxTogglers() {
 	});
 
 	$('body').on('click', '.send', function () {
-		notImplementedYet();
+		var parent = $(this).parent(".reply-box")
+		var text = parent.children("textarea").val()
+		var email = parent.data("email")
+		console.log(email)
+		text = text.replace(" ", "%20")
+		console.log(text)
+		window.open("mailto:" + email + "?subject=" + course_code + ":%20Question%20Answered&body=" + text)
 	});
 }
 
@@ -184,6 +190,7 @@ function setQuestionsAndTagsUpdater() {
 				var question = tag[question_key];
 				console.log(question);
 
+				var email = question.email
 				$('.questions').append(`
 					<tr class="question ${question.answered ?'answered' :''}" data-tag="${tag_key}"
 						data-key="${question_key}">
@@ -198,7 +205,7 @@ function setQuestionsAndTagsUpdater() {
 							<span class="answered-label">(Answered)</span>
 							<br>
 							<span class="reply">Reply <i class="fa fa-angle-down"></i></span>
-							<div class="reply-box">
+							<div class="reply-box" data-email=${email}>
 								<textarea placeholder="Your reply message"></textarea>
 								<button class="send">Send</button>
 							</div>
@@ -214,5 +221,6 @@ function setQuestionsAndTagsUpdater() {
 }
 
 function notImplementedYet() {
+
 	alert('That doesnt work yet ¯\\_(ツ)_/¯');
 }
