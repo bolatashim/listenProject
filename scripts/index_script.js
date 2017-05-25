@@ -1,7 +1,6 @@
 
 $( document ).ready(function() {
 
-
   $(".clickable-course-card").click(function() {
     var code = $(this).children(".course-card-code").text();
     var title = $(this).children(".course-card-title").text();
@@ -17,5 +16,3 @@ $( document ).ready(function() {
   });
 
 });
-
-

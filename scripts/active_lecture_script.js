@@ -1,4 +1,5 @@
 var courseName = localStorage.courseCode
+var courseTitle = localStorage.courseTitle
 var lectureName = localStorage.lectureKey
 var lectureTitle = localStorage.lectureTitle
 
@@ -40,7 +41,7 @@ $(document).ready(function(){
 				del_btn.html("");
 				del_btn.removeClass("q-del-btn").addClass("q-answered-del");
 				var text = $(this).children().first();
-				text.html("Answered").addClass("q-answered-txt").css({"text-align": "center", "border-width": "1px 0px 1px 1px"});
+				text.html("Answered!").addClass("q-answered-txt").css({"text-align": "center", "border-width": "1px 0px 1px 1px"});
 				$(this).animate({'opacity': 1}, 100).delay(300);
 
 				questions[index].answered = true;
@@ -48,6 +49,22 @@ $(document).ready(function(){
 				$(this).fadeOut(200, function(){
 					$(this).remove()
 					tagsRef.child(tag + "/" + id + "/answered").set(true)
+				})
+			})
+		}else{
+			$("#q-" + index).animate({'opacity': 0}, 100, function(){
+				var del_btn = $(this).children().last();
+				del_btn.html("");
+				del_btn.addClass("q-del-btn").removeClass("q-answered-del");
+				var text = $(this).children().first();
+				text.html("Unanswered!").removeClass("q-answered-txt").css({"text-align": "center", "border-width": "1px 0px 1px 1px"});
+				$(this).animate({'opacity': 1}, 100).delay(300);
+
+				questions[index].answered = false;
+
+				$(this).fadeOut(200, function(){
+					$(this).remove()
+					tagsRef.child(tag + "/" + id + "/answered").set(false)
 				})
 			})
 		}
@@ -94,10 +111,14 @@ $(document).ready(function(){
 	});
 
 	$(window).unload(function(){
+		localStorage.courseCode = courseName
+		localStorage.courseTitle = courseTitle
 		activeRef.set(null)
 	})
 
 	$("#end-btn").on("click", function(){
+		localStorage.courseCode = courseName
+		localStorage.courseTitle = courseTitle
 		$(window).unbind("beforeunload")
 		if(confirm("Do you really want to end the lecture?")){
 			activeRef.set(null)
@@ -254,13 +275,13 @@ function printQ(i){
 		if(!questions[i].answered){
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}">
 				<td class="q-txt" data-info="${i},${questions[i].id},${questions[i].tag}">
-				<p class="q-details"> <span style="color:#337ab7">#${questions[i].tag}</span> 
+				<p class="q-details"> Tag: <span style="color:#337ab7">${questions[i].tag}</span> |
 				Time: ${formatTime(questions[i].time)}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}else{
 			$(".question-list").append(`<tr class="question-entry" id="q-${i}" data-answered="true">
 				<td class="q-txt q-answered-txt q-understand" data-info="${i},${questions[i].id},${questions[i].tag}">
-				<p class="q-details" style="color: #efefef"> #${questions[i].tag}
+				<p class="q-details" style="color: #efefef"> [Answered] Tag: ${questions[i].tag} |
 				Time: ${formatTime(questions[i].time)}</p>${questions[i].text}</td>
 				<td class="q-del-btn" data-id="${i}">&#10006;</td></tr>`);
 		}
@@ -274,7 +295,7 @@ function printTags(){
 	$("#tag-list").empty()
 	tags.sort(tagsCompare)
 	tags.forEach(function(tag){
-		$("#tag-list").append(`<h5 class="tag-entry" data-name="${tag.tagName}"><a>#${tag.tagName}</a> <span style="color: orange">(${tag.numQs})</span></h5>`)
+		$("#tag-list").append(`<h5 class="tag-entry" data-name="${tag.tagName}"><a>${tag.tagName}</a> <span style="color: orange">(${tag.numQs})</span></h5>`)
 	})
 }
 
