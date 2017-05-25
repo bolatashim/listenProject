@@ -194,9 +194,9 @@ function setQuestionsAndTagsUpdater() {
 						<td><span class="tag">${tag_key}</span></td>
 						<td>
 							<span class="text">${question.text} An automatic table layout algorithm is commonly used by most browsers for table layout. The widths of the table and its cells depend on the content thereof.
-</span>
+								</span>
 							<span class="answered-label">(Answered)</span>
-
+							<br>
 							<span class="reply">Reply <i class="fa fa-angle-down"></i></span>
 							<div class="reply-box">
 								<textarea placeholder="Your reply message"></textarea>

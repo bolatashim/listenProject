@@ -8,16 +8,17 @@ var student_id = localStorage.id;
 var student_email = localStorage.email;
 var student_course = localStorage.course;
 var student_lecture = localStorage.lecture;
+
+if(student_id === undefined || student_email === undefined || student_lecture === undefined){
+	alert("Please login first.");
+	document.location.href = 'file:student_login.html';
+}
+
 var lectureRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture);
 var tagRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture+"/tags");
 var tags = [];
 
 $( document ).ready(function(){
-	if(student_id === undefined || student_email === undefined || student_lecture === undefined){
-		alert("Please login first.");
-		document.location.href = 'file:student_login.html';
-	}
-
 	$("#student_profile").text("ID: "+student_id);
 	$("#student_course").text("Course: "+student_course.split(" ")[0]);
 
@@ -41,9 +42,15 @@ $( document ).ready(function(){
 			text: $("#inputarea").val(),
 			time: $.now(),
 		})
-		alert("Submitted!");
+		$("#submit").removeClass("btn-default");
+		$("#submit").addClass("btn-success");
+		$("#submit").text("Submitted!")
 		$("#inputarea").val("");
 		$("#inputarea").focus();
+		setTimeout(function(){
+			$("#submit").addClass("btn-default");
+			$("#submit").removeClass("btn-success");
+			$("#submit").text("Submit!");}, 1000);
 	});
 })
 

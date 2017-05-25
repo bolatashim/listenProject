@@ -6,7 +6,11 @@ firebase.initializeApp(config);
 var database = firebase.database();
 var activeLectureRef = database.ref("activeLecture");
 var activeLecture = [];
-localStorage.clear();
+localStorage.removeItem("id");
+localStorage.removeItem("email");
+localStorage.removeItem("course");
+localStorage.removeItem("lecture");
+//localStorage.clear();
 /*
 var studentRef = database.ref("courses/CS101/students");
 studentRef.update({
