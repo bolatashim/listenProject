@@ -41,9 +41,15 @@ $( document ).ready(function(){
 			text: $("#inputarea").val(),
 			time: $.now(),
 		})
-		alert("Submitted!");
+		$("#submit").removeClass("btn-default");
+		$("#submit").addClass("btn-success");
+		$("#submit").text("Submitted!")
 		$("#inputarea").val("");
 		$("#inputarea").focus();
+		setTimeout(function(){
+			$("#submit").addClass("btn-default");
+			$("#submit").removeClass("btn-success");
+			$("#submit").text("Submit!");}, 1000);
 	});
 })
 
