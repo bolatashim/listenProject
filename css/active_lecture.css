@@ -155,14 +155,14 @@ ol > li {
 	cursor: pointer;
 }
 .q-answered-txt {
-	background-color: #0084d9;
+	background-color: #4caf50;
 	color: white;
 }
 .q-answered-del {
 	border-color: #dddddd;
 	border-radius: 0 5px 5px 0; 
 	border-width: 1px 1px 1px 0;
-	background-color: #0084d9;
+	background-color: #4caf50;
 }
 .show-more-btn {
 	margin: auto;
