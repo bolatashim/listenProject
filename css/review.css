@@ -274,10 +274,15 @@ button:focus {
 					right: 15px;
 					padding: 5px 15px;
 					font-size: .7em;
-					font-weight: bold;
+					padding: 5px 15px;
 					border-radius: 2px;
-					border: 1px solid #ddd;
-					background: #fff;
+					background: #444;
+					color: #eee;
+					border: none;
+					border-bottom: 2px solid rgba(0,0,0,.5);
+				}
+				.question .reply-box .send:active {
+					background: #555;
 				}
 
 	button[role=checkbox] {
