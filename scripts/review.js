@@ -101,8 +101,8 @@ function setActionButtonListeners() {
 			var email = info[1]
 			var question = $(this).parents('.question').find(".text")
 			question = question.html()
-			question = encodeURI(question)
-			subject += "Student%Number:%20" + id + "%20Email:%20" + email + "%0A" + "Question:%20" + question + "%0A"
+			question = encodeURIComponent(question)
+			subject += "Student%20Number:%20" + id + "%20Email:%20" + email + "%0A" + "Question:%20" + question + "%0A%0A"
 			tagsRef.child(`${tag}/${key}/answered`).set(true);
 		});
 		if(subject)
@@ -187,7 +187,7 @@ function setReplyBoxTogglers() {
 		var parent = $(this).parent(".reply-box")
 		var text = parent.children("textarea").val()
 		var email = parent.data("email")
-		text = encodeURI(text)
+		text = encodeURIComponent(text)
 		window.open("mailto:" + email + "?subject=" + course_code + ":%20Question%20Answered&body=Answer:%20" + text)
 		var key = $(this).parents('.question').data('key');
 		var tag = $(this).parents('.question').data('tag')
