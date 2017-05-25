@@ -8,8 +8,8 @@ var student_id = localStorage.id;
 var student_email = localStorage.email;
 var student_course = localStorage.course;
 var student_lecture = localStorage.lecture;
-var lectureRef = database.ref("courses/"+student_course+"/lectures/"+student_lecture);
-var tagRef = database.ref("courses/"+student_course+"/lectures/"+student_lecture+"/tags");
+var lectureRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture);
+var tagRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture+"/tags");
 var tags = [];
 
 $( document ).ready(function(){
