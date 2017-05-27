@@ -25,6 +25,13 @@ ol.options-listing > li {
 	color: gray;
 }
 
+/*.new-option-add-area {
+	width: 60%;
+}
+
+.new-option-add-area input {
+	width: 60%;
+}*/
 
 table.options-table tr.option-row td.variant-order {
 	width: 5%;
@@ -37,9 +44,18 @@ table.options-table tr.option-row  td {
 	padding-left: 0px !important;
 }
 
-table.options-table {
-	width: 60%;
+table.options-table{ 
+	/*background-color: blue;*/
+	width: 50%;
+}
 
+.new-option-row {
+	/*background-color: red;*/
+}
+
+.option-text-box {
+	/*background-color: green;*/
+	width: 87%;
 }
 
 .new-quiz-question-name:focus {	
@@ -54,6 +70,7 @@ table.options-table {
 
 .quiz-question-text {
 	font-size: 18px;
+
 }
 
 .new-quiz-option {
@@ -68,7 +85,6 @@ table.options-table {
 .option-add-btn {
 	background-color: #6fbfe0 !important;
 	border-color: gray !important	;
-
 }
 
 .btn-secondary {
@@ -81,7 +97,7 @@ table.options-table {
 	border-top: 0px solid green !important;
 	border-bottom: 2px solid gray !important;
 
-	width: 60%;
+	/*width: 60%;*/
 	padding: 7px;
 	font-size: 16px;
 }
@@ -150,6 +166,10 @@ ol.breadcrumb > li {
 
 .glyphicon-remove:hover {
 	cursor: pointer;
+}
+.quiz-question-line {
+	background-color: #eef7fa;
+	padding: 10px;
 }
 
 .quiz-question-line:hover .question-edit-action {

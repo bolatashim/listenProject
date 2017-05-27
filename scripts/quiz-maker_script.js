@@ -23,16 +23,22 @@ $( document ).ready(function() {
   });
 
 
+  $("body").on("click", ".question-delete-btn", function() {
+    $(this).closest("li").remove();
+
+  });
+
+
 
   var questions = ["What is your name?", "What is more important? testing longer ext", "What is happening here?"]
   function addQuestions() {
     for (var i = questions.length - 1; i >= 0; i--) {
       var qu = questions[i];
       var olli =
-        '<li><div class="quiz-question-line"><span class="quiz-question-text">' + qu + '</span> <a href="#" class="question-edit-action">EDIT</a><button class="quiz-question-save">Save</button></div>' + 
+        '<li><div class="quiz-question-line"><span class="quiz-question-text">' + qu + '</span> <a href="#" class="question-edit-action">EDIT</a><button class="quiz-question-save">Save</button><span class="glyphicon glyphicon-remove question-delete-btn" aria-hidden="true"></span></div>' + 
           '<table class="table options-table">' + 
             '<tr class="new-option-row">' + 
-              '<td class="class-text"><input id="q1-option-1"  class="option-text-box" type="text" name="" placeholder="New option"><button class="btn btn-primary btn-sm option-add-btn" >Add</button></td>' + 
+              '<td class="new-option-add-area"><input id="q1-option-1"  class="option-text-box" type="text" name="" placeholder="New option"><button class="btn btn-primary btn-sm option-add-btn" >Add</button></td>' + 
             '</tr>' + 
           '</table>' + 
         '</li><br />';
@@ -45,7 +51,7 @@ $( document ).ready(function() {
 
   function addMoreQuestion() {
     var olli =
-      '<li><div class="quiz-question-line"><span class="quiz-question-text">' + '</span> <a href="#" class="question-edit-action">EDIT</a><button class="quiz-question-save">Save</button></div>' + 
+      '<li><div class="quiz-question-line"><span class="quiz-question-text">' + '</span> <a href="#" class="question-edit-action">EDIT</a><button class="quiz-question-save">Save</button><span class="glyphicon glyphicon-remove question-delete-btn" aria-hidden="true"></span></div>' + 
         '<table class="table options-table">' + 
           '<tr class="new-option-row">' + 
             '<td class="class-text"><input id="q1-option-1"  class="option-text-box" type="text" name="" placeholder="New option"><button class="btn btn-primary btn-sm option-add-btn" >Add</button></td>' + 
