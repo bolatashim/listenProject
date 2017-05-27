@@ -23,6 +23,7 @@ $( document ).ready(function() {
   });
 
 
+
   var questions = ["What is your name?", "What is more important? testing longer ext", "What is happening here?"]
   function addQuestions() {
     for (var i = questions.length - 1; i >= 0; i--) {
@@ -115,12 +116,11 @@ $( document ).ready(function() {
   });
 
   $("body").on("click", "#addAnotherQuestion", function() {
-    //addMoreQuestion();
-    console.log("funcking pressed");
-  });
-  $("body").on("click", "#showadddeletebtn", function() {
-    console.log("funcking pressed");
     addMoreQuestion();
+  });
+
+  $("body").on("click", "#showadddeletebtn", function() {
+    $(".option-add-btn").toggle();
   });
 
   $("body").on("click", ".option-add-btn", function() {
@@ -150,7 +150,6 @@ $( document ).ready(function() {
       }
     }
   });
-
 
 
   $("body").on("click", ".btn-save-quiz", function(evt) {
