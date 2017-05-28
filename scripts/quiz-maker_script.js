@@ -41,7 +41,7 @@ $( document ).ready(function() {
               '<td class="new-option-add-area"><input id="q1-option-1"  class="option-text-box" type="text" name="" placeholder="New option"><button class="btn btn-primary btn-sm option-add-btn" >Add</button></td>' + 
             '</tr>' + 
           '</table>' + 
-        '</li><br />';
+        '</li>';
 
         $(".questions-ordered-list").append(olli);
     }  
@@ -57,7 +57,7 @@ $( document ).ready(function() {
             '<td class="class-text"><input id="q1-option-1"  class="option-text-box" type="text" name="" placeholder="New option"><button class="btn btn-primary btn-sm option-add-btn" >Add</button></td>' + 
           '</tr>' + 
         '</table>' + 
-      '</li><br />';
+      '</li>';
     $(".questions-ordered-list").append(olli);
     $whatineed = $("li").last().children(".quiz-question-line").children(".question-edit-action");
     $whatineed.trigger("click");
