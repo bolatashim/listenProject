@@ -1,0 +1,382 @@
+{
+  "bolatQuiz" : {
+    "questions" : {
+      "Question 0" : {
+        "options" : {
+          "-KkvWQMaUjgD9ZvjvFrx" : {
+            "correct" : false,
+            "option" : "adsa"
+          },
+          "-KkvWQMicsdtzefxk8kx" : {
+            "correct" : false,
+            "option" : "aef"
+          },
+          "-KkvWQMj6uLfucIHFSoU" : {
+            "correct" : true,
+            "option" : "da"
+          },
+          "-KkvWQMk2D5JXrvUaIio" : {
+            "correct" : false,
+            "option" : "daefeafea"
+          }
+        }
+      },
+      "Question 1" : {
+        "options" : {
+          "-KkvWQMk2D5JXrvUaIip" : {
+            "correct" : false,
+            "option" : "daedae"
+          },
+          "-KkvWQMlFD7wdeZT-hXk" : {
+            "correct" : true,
+            "option" : "daef"
+          },
+          "-KkvWQMmb-S4I7J7nZOJ" : {
+            "correct" : false,
+            "option" : "ada"
+          },
+          "-KkvWQMoIFA5LTIaHPqC" : {
+            "correct" : false,
+            "option" : "ef"
+          },
+          "-KkvWQMp8uC7Vx4gzb_Y" : {
+            "correct" : false,
+            "option" : "ea"
+          }
+        }
+      },
+      "Question 2" : {
+        "options" : {
+          "-KkvWQMspU_K6CL4I8iP" : {
+            "correct" : false,
+            "option" : "daed"
+          },
+          "-KkvWQMt5vRrck6ao_X6" : {
+            "correct" : true,
+            "option" : "ae"
+          },
+          "-KkvWQMw-pb7oJfe4C0G" : {
+            "correct" : false,
+            "option" : "f"
+          },
+          "-KkvWQMxoauqEteOubFs" : {
+            "correct" : false,
+            "option" : "aed"
+          }
+        }
+      }
+    }
+  },
+  "courses" : {
+    "CS101" : {
+      "lectures" : {
+        "Lecture 1" : {
+          "number" : 1,
+          "tags" : {
+            "General" : {
+              "-KkzHfpPX_1ewpPzaL3J" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "is this CS101?",
+                "time" : 1495710481844
+              }
+            },
+            "Recursion" : {
+              "-KkzIWIDlqyLp_U8NpJP" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "When a call recursive functions, how does it end?",
+                "time" : 1495710700834
+              }
+            },
+            "recursive_jokes" : {
+              "-KkzImG76iCSqI8deLJu" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "bolat@kaist.ac.kr",
+                "text" : "PHP (PHP: Hypertext Preprocessor)",
+                "time" : 1495710770336
+              }
+            }
+          },
+          "time" : "May 16, 2017",
+          "title" : "Introduction to Recursion",
+          "totalQuestions" : 3
+        },
+        "Lecture 2" : {
+          "number" : 2,
+          "tags" : {
+            "External_resources" : {
+              "-KkzK1_1CevN6t8mHFH6" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "bolat@kaist.ac.jr",
+                "text" : "Where can I find good examples of Object oriented design?",
+                "time" : 1495711099289
+              }
+            },
+            "General" : {
+              "-KkzKLq2b-PQQzfyYauN" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "bolat@kaist.ac.jr",
+                "text" : "Are all of the concepts we have covered in this lecture considered \"general knowledge\"? It is my first time doing computer science and I am finding it hard to grasp all of these concepts.",
+                "time" : 1495711182298
+              },
+              "-KkzKXgqt8n_4Hj78pPz" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "bolat@kaist.ac.jr",
+                "text" : "I have been sleeping on all of the previous lectures for the topics were so easy. Now I am happy that we are covering something more interesting.",
+                "time" : 1495711230861
+              },
+              "-KkzKplyRoBw3nNEGaXD" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "bolat@kaist.ac.jr",
+                "text" : "Has the HUBO from our homework assignments been implemented using these object oriented concepts? Is the  hubo.turn_left()  thing something similar to the methods you just mentioned?",
+                "time" : 1495711309012
+              }
+            },
+            "definitions" : {
+              "-KkzJh5p2o32JVa32WMg" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "bolat@kaist.ac.jr",
+                "text" : "Do we have a specific guideline on how we need to structure the objects in our projects? I mean, if two teams complete a project using the OOP, then can someone systematically judge which of the projects is better than the other?",
+                "time" : 1495711011338
+              }
+            }
+          },
+          "time" : "May 18, 2017",
+          "title" : "Introduction to OOP",
+          "totalQuestions" : 5
+        },
+        "Lecture 3" : {
+          "number" : 3,
+          "tags" : {
+            "EZ" : {
+              "-KkzMNKcsdK7qnWQN1i0" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "bake@kaist",
+                "text" : "For loops are so easy. I do not understand why we spend one whole week discussing it. Is not it unfair to spend the the same amount of time on recursion as on for loops????",
+                "time" : 1495711712712
+              }
+            },
+            "recursion_withloops" : {
+              "-KkzM7L5SBxevCxv2QJB" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "bake@kaist",
+                "text" : "Is it possible to design such for loops that would solve all of the recursive problems we have covered in our previous lectures? ",
+                "time" : 1495711647207
+              }
+            },
+            "trivial" : {
+              "-KkzLupUDuksMMeizm5n" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "bake@kaist",
+                "text" : "When we say in range from 1 to 10, do we include or exclude 10? ",
+                "time" : 1495711591872
+              }
+            },
+            "while_loops" : {
+              "-KkzLeel9BocHCuXSDVX" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "bake@kaist",
+                "text" : "Why not just use while loops instead of for loops? Is not it the same thing to declare a variable and decrement it with every loop until it is equal to 0 or something? ",
+                "time" : 1495711525649
+              }
+            }
+          },
+          "time" : "May 22, 2017",
+          "title" : "For loops for life",
+          "totalQuestions" : 4
+        },
+        "Lecture 4" : {
+          "number" : 4,
+          "time" : "May 25, 2017",
+          "title" : "Introduction to neat coding ",
+          "totalQuestions" : 0
+        },
+        "Lecture 5" : {
+          "number" : 5,
+          "tags" : {
+            "General" : {
+              "-Kkzorsd8aTcy8AmJALe" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "What is this course about?",
+                "time" : 1495719444037
+              }
+            },
+            "Good?" : {
+              "-KkzovU4koBL3_YqmxwN" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "Am I doing alright?",
+                "time" : 1495719458786
+              }
+            }
+          },
+          "time" : "May 25, 2017",
+          "title" : "Introduction to lecture naming",
+          "totalQuestions" : 2
+        }
+      },
+      "students" : {
+        "20150000" : "hcilisten@gmail.com"
+      },
+      "taList" : [ "random@gmail.com", "random2@gmail.com", "random3@gmail.com" ]
+    },
+    "CS374" : {
+      "lectures" : {
+        "Lecture 1" : {
+          "number" : 1,
+          "tags" : {
+            "General" : {
+              "-KkzPuRZT23VEXGNFf_W" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "ggg@kaist.ac.kr",
+                "text" : "I am super excited about this workshop. Hope I can learn a couple of useful things :D",
+                "time" : 1495712638848
+              },
+              "-KkzQNPU0TR06-0wANpo" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "ggg@kaist.ac.kr",
+                "text" : "Can we not bring our electronic devices for this class?",
+                "time" : 1495712761596
+              }
+            },
+            "Piazza_posts" : {
+              "-KkzQWEh2XO6MlzV24J5" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "ggg@kaist.ac.kr",
+                "text" : "What exactly do we need to post onto our piazza page? Photos? descripttions?",
+                "time" : 1495712797771
+              }
+            },
+            "logistics" : {
+              "-KkzQ6xpNVe4wqP8FoJY" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "ggg@kaist.ac.kr",
+                "text" : "Do we need to bring any writing utensils for this class or are we going to be provided with all of these?",
+                "time" : 1495712694227
+              }
+            }
+          },
+          "time" : "May 20, 2017",
+          "title" : "Design Thinking Workshop",
+          "totalQuestions" : 4
+        },
+        "Lecture 2" : {
+          "number" : 2,
+          "tags" : {
+            "general" : {
+              "-KkzQw8QRJuUkRUxD9cS" : {
+                "answered" : true,
+                "asker" : "20150000",
+                "email" : "bbbb",
+                "text" : "Is it possible to be both efficient and safe at the same time?\n",
+                "time" : 1495712907961
+              }
+            },
+            "nonsense" : {
+              "-KkzRdrd3aUIW-GwV_NV" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "bbbb",
+                "text" : "Unless there is a danger of physical harm on the user, is it okay to design any interface we want?",
+                "time" : 1495713095241
+              }
+            },
+            "safety_treshold" : {
+              "-KkzRTSvrfCDSMgatlh2" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "bbbb",
+                "text" : "",
+                "time" : 1495713048539
+              }
+            }
+          },
+          "time" : "May 24, 2017",
+          "title" : "Efficiency and Safety",
+          "totalQuestions" : 3
+        },
+        "Lecture 3" : {
+          "number" : 3,
+          "time" : "May 25, 2017",
+          "title" : "Wizard of OZ",
+          "totalQuestions" : 0
+        },
+        "Lecture 4" : {
+          "number" : 4,
+          "tags" : {
+            "Computers" : {
+              "-KkzubMEs1PUIUulp_qP" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "Question",
+                "time" : 1495720949307
+              }
+            },
+            "Crowds" : {
+              "-Kkzugd4hHJG7Af-2tY7" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "",
+                "time" : 1495720970931
+              }
+            },
+            "General" : {
+              "-KkzuiLkQUVvDco0Axrg" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "General",
+                "time" : 1495720977950
+              }
+            },
+            "People" : {
+              "-KkzudcoZeO0bQINBHti" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "",
+                "time" : 1495720958626
+              },
+              "-KkzueMBkVmV2hPaOTMB" : {
+                "answered" : false,
+                "asker" : "20150000",
+                "email" : "hcilisten@gmail.com",
+                "text" : "Crowds",
+                "time" : 1495720961594
+              }
+            }
+          },
+          "time" : "May 25, 2017",
+          "title" : "Crowdsourcing",
+          "totalQuestions" : 5
+        }
+      },
+      "students" : {
+        "20150000" : "hcilisten@gmail.com"
+      },
+      "taList" : [ "cs374@kixlab.org", "random@gmail.com", "hcilisten@gmail.com" ]
+    }
+  }
+}
