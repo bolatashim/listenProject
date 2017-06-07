@@ -22,7 +22,7 @@ var database = firebase.database()
 var courseRef = database.ref("courses/" + courseName)
 var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ lectureName)
 var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
-var quizRef = database.ref("courses/" + courseName + "/quizzes")
+var quizRef = database.ref("tsQuiz")
 
 var activeRef = database.ref("activeLecture")
 
@@ -172,6 +172,7 @@ function showQuiz(){
 								<div class="quiz-question-num"> ${i+1}
 								</div>
 								<div class="quiz-question-ans">
+									<h1 style="font-weight: bold"> ${questions[i].title} </h1>
 									<h1> a) ${questions[i].a} </h1>
 									<h1> b) ${questions[i].b} </h1>
 									<h1> c) ${questions[i].c} </h1>
