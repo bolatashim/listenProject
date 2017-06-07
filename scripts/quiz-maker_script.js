@@ -11,26 +11,27 @@ $( document ).ready(function() {
   
   firebase.initializeApp(config);
   var database = firebase.database();
-  var quizRef = database.ref("bolatQuiz");
 
+  var newQuizRef = database.ref("tsQuiz");
 
-  var variants = ["A.", "B.", "C.", "D", "E", "F", "G"];
-
-
+  var newIndex = 0;
+  
+  newQuizRef.once("value", function(data){ newIndex = data.numChildren()});
+  
   $("body").on("click", ".option-delete-btn", function() {
     var row = $(this).closest("tr");
     row.remove();
+    checkToDisplay();
   });
 
 
   $("body").on("click", ".question-delete-btn", function() {
     $(this).closest("li").remove();
-
+    checkToDisplay();
   });
 
+  var questions = [];
 
-
-  var questions = ["What is your name?", "What is more important? testing longer ext", "What is happening here?"]
   function addQuestions() {
     for (var i = questions.length - 1; i >= 0; i--) {
       var qu = questions[i];
@@ -66,11 +67,33 @@ $( document ).ready(function() {
     $whatineed.siblings(".quiz-question-save").toggle();
   }
 
+  $(".quiz-title-save").toggle();
+
+  $("body").on("click", ".title-edit-action", function() {
+    var old_quiz_question = $(this).siblings(".quiz-title-text").text();
+    $(this).toggle();
+    $(this).siblings('.quiz-title-text').html(`
+      <input class='new-quiz-question-name' style="width: 70%;" value='${old_quiz_question}'>
+    `);
+    $(this).siblings('.quiz-title-text').children(".new-quiz-question-name").focus();
+    $(this).siblings('.quiz-title-text').children(".new-quiz-question-name").select();
+    $(this).siblings(".quiz-title-save").toggle();
+    checkToDisplay();
+  });
+
+  $("body").on("click", ".quiz-title-save", function() {
+    $(this).siblings(".title-edit-action").toggle();
+    var new_quiz_question = $(this).siblings("span").children(".new-quiz-question-name").val();
+    $(this).siblings(".quiz-title-text").html(new_quiz_question);
+    //send to firebase
+    $(this).toggle();
+    checkToDisplay();
+  });
+
 
 
 
   $("body").on("click", ".question-edit-action", function() {
-    console.log("he");
     var old_quiz_question = $(this).siblings(".quiz-question-text").text();
     $(this).toggle();
     $(this).siblings('.quiz-question-text').html(`
@@ -79,6 +102,7 @@ $( document ).ready(function() {
     $(this).siblings('.quiz-question-text').children(".new-quiz-question-name").focus();
     $(this).siblings('.quiz-question-text').children(".new-quiz-question-name").select();
     $(this).siblings(".quiz-question-save").toggle();
+    checkToDisplay();
   });
 
   $("body").on("click", ".quiz-question-save", function() {
@@ -87,6 +111,7 @@ $( document ).ready(function() {
     $(this).siblings(".quiz-question-text").html(new_quiz_question);
     //send to firebase
     $(this).toggle();
+    checkToDisplay();
   });
 
 
@@ -100,6 +125,7 @@ $( document ).ready(function() {
     $(this).siblings('.quiz-option-text').children(".new-quiz-option-name").focus();
     $(this).siblings('.quiz-option-text').children(".new-quiz-option-name").select();
     $(this).siblings(".quiz-option-save").css("display", "inline");
+    checkToDisplay();
   });
 
 
@@ -109,6 +135,7 @@ $( document ).ready(function() {
     $(this).siblings(".quiz-option-text").html(new_quiz_option);
     //send to firebase
     $(this).toggle();
+    checkToDisplay();
   });
 
   $("body").on("keydown", ".new-quiz-option-name", function(evt) {
@@ -119,14 +146,17 @@ $( document ).ready(function() {
       //send to firebase
       $(this).parent(".quiz-option-text").html(new_quiz_option);
     }
+    checkToDisplay();
   });
 
   $("body").on("click", "#addAnotherQuestion", function() {
     addMoreQuestion();
+    checkToDisplay();
   });
 
   $("body").on("click", "#showadddeletebtn", function() {
     $(".option-add-btn").toggle();
+    checkToDisplay();
   });
 
   $("body").on("click", ".option-add-btn", function() {
@@ -140,11 +170,11 @@ $( document ).ready(function() {
       alert("Option text is empty");
       $(this).siblings("input").focus();
     }
+    checkToDisplay();
   });
 
   $("body").on("keydown", ".option-text-box", function(evt) {
     if (evt.keyCode == 13) {
-      console.log("enter pressed");
       if(!$(this).val() == "") {
         var optionrow = '<tr class="option-row">  <td  class="option-text">'+ '<input type="checkbox" > &nbsp &nbsp ' + '<span class="quiz-option-text">' +  $(this).val() + '</span>' + ' <a href="#" class="option-edit-action">edit</a><button style="display:none" class="quiz-option-save">Save</button> </td> <td><span class="glyphicon glyphicon-remove option-delete-btn" aria-hidden="true"></span></td>    </tr>'
         $(optionrow).insertBefore($(this).closest("tr"));
@@ -155,28 +185,101 @@ $( document ).ready(function() {
         $(this).focus();
       }
     }
+    checkToDisplay();
   });
 
+
+  $("body").on("click", "#btn-checksave-quiz", function(evt) {
+    saveAll();
+
+  });
 
   $("body").on("click", ".btn-save-quiz", function(evt) {
-
+    saveAll();
+    
     var listItems = $(".questions-ordered-list li");
+
+    var mainquizRef = database.ref("tsQuiz/" + newIndex + "/");
+    var quizTitle = $(".quiz-title-text").text();
+    mainquizRef.set({title: quizTitle, totalStudent: 0});
+    
     listItems.each(function(idx, li) {
         var lis = $(li);
-        var optable = lis.find("table tr");
-        var options = [];
-        var optref = database.ref("bolatQuiz/questions/" + "Question " + idx + "/" + "options");
-        //the last row is the add row
-        for (var i = 0; i < optable.length-1; i++) {
-          var tt = $(optable[i]);
-          var opt = tt.find("td").eq(0).text().trim();
-          var corwrong = tt.find("td").eq(0).find("input").prop("checked");
-          optref.push({option: opt, correct: corwrong});
+        var qion = lis.children(".quiz-question-line").children(".quiz-question-text").text();
+        var optable = lis.find("table tr.option-row");
+        var corrects = "";
+        var quizoptions = [];
+        var newQuestionAdded = database.ref("tsQuiz/" + newIndex + "/questions/" + idx);
+
+        for (var i = 0; i < optable.length; i++) {
+          var optionText = $(optable[i]).find("td").eq(0).children("span.quiz-option-text").text().trim();
+          var correctness = $(optable[i]).find("td").eq(0).find("input").prop("checked");
+          quizoptions.push(optionText);
+          if (correctness) {
+            if (!corrects.length == 0)
+              corrects += ("," + i);
+            else
+              corrects += i
+          }
+        }
+        
+        newQuestionAdded.set({title: qion, answer: corrects});
+        for (var i = 0; i < quizoptions.length; i++) {
+          database.ref("tsQuiz/" + newIndex + "/questions/" + idx + "/options/" + i + "/").set({text: quizoptions[i], numCorrect: 0});
         }
     });
-
+    alert("Quiz has been successfully saved");
+    document.location.href = './lectures_list_page.html'
   });
 
-  addQuestions();
 
+
+  function saveAll() {
+    if ($(".quiz-title-save").is(":visible")) {
+      $(".quiz-title-save").trigger("click");
+    }
+
+    $(".questions-ordered-list").children().each(function(i,li){
+      var litem = $(li);
+      if (litem.children(".quiz-question-line").children("button.quiz-question-save").is(":visible")) {
+        litem.children(".quiz-question-line").children("button.quiz-question-save").trigger("click");
+      }
+      litem.find("table tr").each(function(i, row) { 
+        if ($(row).find("td").eq(0).children("button.quiz-option-save").is(":visible")) {
+          $(row).find("td").eq(0).children("button.quiz-option-save").trigger("click");
+        }
+      });
+    });
+  }
+
+
+  function checkToDisplay() {
+    $(".questions-ordered-list").children().each(function(i,li){
+      var litem = $(li);
+      var optNum = litem.find("table tr").length;
+      if (optNum <= 4) {
+        if (!litem.find("table tr.new-option-row").is(":visible")) {
+          litem.find("table tr.new-option-row").toggle();
+        }
+      } else {
+        if (litem.find("table tr.new-option-row").is(":visible")) {
+          litem.find("table tr.new-option-row").toggle();
+        }
+      }
+    });
+  }
+
+  if (localStorage.quizQuestions)
+    questions = localStorage.quizQuestions;
+
+  if (localStorage.lectureKey && localStorage.courseCode) {
+    var title = localStorage.courseCode + " : " + "Lecture " + localStorage.lectureKey + " Quiz";
+    $(".quiz-title-text").text(title);
+  }
+
+  
+  addQuestions();
+  
+  if (questions.length == 0)
+    addMoreQuestion();
 });
