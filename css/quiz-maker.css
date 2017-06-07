@@ -176,6 +176,25 @@ ol.breadcrumb > li {
 	opacity: 1;
 }
 
+.title-edit-action {
+	opacity: 0;
+}
+
+.quiz-title-line {
+	padding: 10px;
+	margin-bottom: 30px; 
+	text-align: center;
+	
+}
+
+.quiz-title-text {
+	font-size: 36px;
+}
+
+.quiz-title-line:hover .title-edit-action {
+	opacity: 1;
+}
+
 .option-edit-action {
 	opacity: 0;
 }

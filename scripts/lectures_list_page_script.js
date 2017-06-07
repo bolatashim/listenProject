@@ -23,9 +23,6 @@ $( document ).ready(function() {
   var maxLecture = 0;
 
 
-
-
-
   function setLectureTodayKey() {
     lecturesRef.once("value", function(data) {
       $.when(
@@ -148,6 +145,7 @@ $( document ).ready(function() {
       localStorage.courseCode = courseKey;
       localStorage.lectureKey = lectureKey;
       localStorage.lectureTitle = ltitle;
+      database.ref("activeLecture").set({status: "lecture"});
       document.location.href = './active_lecture.html';
   });
 

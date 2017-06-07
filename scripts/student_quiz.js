@@ -8,11 +8,9 @@ var student_id = localStorage.id;
 var student_email = localStorage.email;
 var student_course = localStorage.course;
 var student_lecture = localStorage.lecture;
+var quiz_num = localStorage.quiz_index;
 
-var quiz_num = "0";
-var quiz_title;
-
-var active_quiz_index = -1;
+var activeLectureRef = database.ref("activeLecture");
 var questionRef = database.ref("tsQuiz/" + quiz_num + "/questions");
 var quizRef = database.ref("tsQuiz/" + quiz_num);
 
@@ -20,10 +18,16 @@ var answer = [];
 var user_answer = [];
 var question_num = 1;
 var score = 0;
+var totalStudent;
 
 if(student_id === undefined || student_email === undefined || student_lecture === undefined || student_course === undefined){
 	alert("Please login first.");
 	document.location.href = 'file:student_login.html';
+}
+
+if(localStorage[localStorage.quiz_index] == "true"){
+	alert("You already submitted your answer.");
+	document.location.href = 'file:student_index.html';
 }
 
 $( document ).ready(function(){
@@ -51,11 +55,14 @@ $( document ).ready(function(){
 		for(var i = 0; i < user_answer.length; i ++){
 			for(var j = 0; j < user_answer[i].length; j++){
 				if(answer[i].includes(user_answer[i][j])){
+					database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
+					/*
 					var answerRef = database.ref("tsQuiz/"+quiz_num+"/questions/"+i+"/options/"+user_answer[i][j]);
 					score += 5;
 					answerRef.update({
 						numCorrect: answerRef.numCorrect+1
 					});
+					*/
 				}
 			}
 		}
@@ -65,12 +72,10 @@ $( document ).ready(function(){
 		$("#submit").text("Submitted!")
 		$("#inputarea").val("");
 		$("#inputarea").focus();
-		localStorage.setItem(quiz_title, true);
+		localStorage.setItem(quiz_num, true);
 		document.location.href = 'file:student_index.html';
 	});
-
 });
-
 
 questionRef.on('child_added', function(snapshot){
 	var key = snapshot.key;
@@ -94,15 +99,19 @@ questionRef.on('child_added', function(snapshot){
 	question_num++;
 });
 
-quizRef.on('child_added', function(snapshot){
+activeLectureRef.on('value', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
-	if(key == "title"){
-		quiz_title = value;
-		if(localStorage.getItem(value)){
-			alert("You already submitted your answer.");
-			document.location.href = 'file:student_index.html';
-		}
+	if(value["status"].includes("lecture")){
+		document.location.href = 'file:student_index.html';
 	}
-})
+});
+
+quizRef.on('value', function(snapshot){
+	var key = snapshot.key;
+	var value = snapshot.val();
+	if(value["totalStudent"] != undefined){
+		totalStudent = value["totalStudent"];
+	}
+});
 
