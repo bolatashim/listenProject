@@ -167,8 +167,7 @@ function showQuiz(){
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
 
-	database.ref("activeLecture/status").set("quiz")
-	database.ref("activeLecture/quizIndex").set(quizzes[quizSelected].index)
+	database.ref("activeLecture/status").set("quiz, "+quizzes[quizSelected].index)
 
 	var questions = quizzes[quizSelected].questions
 

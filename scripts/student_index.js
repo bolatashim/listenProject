@@ -14,6 +14,7 @@ if(student_id === undefined || student_email === undefined || student_lecture ==
 	document.location.href = 'file:student_login.html';
 }
 
+var activeLectureRef = database.ref("activeLecture");
 var lectureRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture);
 var tagRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture+"/tags");
 var tags = [];
@@ -59,4 +60,13 @@ tagRef.on('child_added', function(snapshot){
 	var value = snapshot.val();
 	$("#tags").append(" <button class='btn tag'>"+key+"</button>");
 	tags.push(key);
+});
+
+activeLectureRef.on('value', function(snapshot){
+	var key = snapshot.key;
+	var value = snapshot.val();
+	if(value["status"].includes("quiz") && localStorage[localStorage.quiz_index] != "true"){
+		localStorage.setItem("quiz_index", value["status"].split(", ")[1]);
+		document.location.href = 'file:student_quiz.html';
+	}
 });
