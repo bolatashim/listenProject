@@ -19,6 +19,10 @@ studentRef.update({
 	20150002: "hcilisten@gmail.com",
 });
 */
+localStorage.setItem("id", 20150000);
+localStorage.setItem("email", "hcilisten@gmail");
+localStorage.setItem("course", "CS101");
+localStorage.setItem("lecture", "Lecture 1");
 
 $( document ).ready(function() {
 	$("#join").click(function(){
