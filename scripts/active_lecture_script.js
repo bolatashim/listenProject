@@ -22,7 +22,7 @@ var database = firebase.database()
 var courseRef = database.ref("courses/" + courseName)
 var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ lectureName)
 var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
-var quizRef = database.ref("courses/" + courseName + "/quizzes")
+var quizRef = database.ref("tsQuiz")
 
 var activeRef = database.ref("activeLecture")
 
@@ -130,7 +130,9 @@ $(document).ready(function(){
 		var maxIndex = snapshot.numChildren()
 		for(var i = 0; i<maxIndex; i++){
 			var title = snapshot.child(i).val().title
-			quizzes[title] = snapshot.child(i).val()
+			var quiz = snapshot.child(i).val()
+			quiz.index = i
+			quizzes[title] = quiz
 			$("#sel-quiz-opt").append("<option>" + title + "</option>")
 		}
 		$(".progress").hide()
@@ -165,6 +167,9 @@ function showQuiz(){
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
 
+	database.ref("activeLecture/status").set("quiz")
+	database.ref("activeLecture/quizIndex").set(quizzes[quizSelected].index)
+
 	var questions = quizzes[quizSelected].questions
 
 	for(var i = 0; i < questions.length; i++){
@@ -172,6 +177,7 @@ function showQuiz(){
 								<div class="quiz-question-num"> ${i+1}
 								</div>
 								<div class="quiz-question-ans">
+									<h1 style="font-weight: bold"> ${questions[i].title} </h1>
 									<h1> a) ${questions[i].a} </h1>
 									<h1> b) ${questions[i].b} </h1>
 									<h1> c) ${questions[i].c} </h1>
@@ -194,6 +200,9 @@ function showQuiz(){
 }
 
 function endQuiz(){
+	database.ref("activeLecture/status").set("lecture")
+	database.ref("activeLecture/quizIndex").set(null)
+
 	$(".quiz-area").hide()
 	$(".joint-area").show()
 	printQuestions()
