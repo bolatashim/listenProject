@@ -145,7 +145,7 @@ $( document ).ready(function() {
       localStorage.courseCode = courseKey;
       localStorage.lectureKey = lectureKey;
       localStorage.lectureTitle = ltitle;
-      database.ref("activeLecture").set({status: "lecture"});
+      database.ref("activeLecture/status").set("lecture");
       document.location.href = './active_lecture.html';
   });
 

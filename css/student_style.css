@@ -1,3 +1,28 @@
+html, body {
+  font-family: verdana !important;
+}
+
+.navbar{
+  background-color: #15305B;
+  border-radius: 0 !important;  
+}
+
+.fixed-bottom {
+
+}
+.navbar-brand {
+  color: white;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+  text-decoration: none;
+  color: white;
+}
+
+.navbar.navbar-entry {
+  vertical-align: middle;
+}
 .center{
 	position: absolute;
   	margin: auto;
