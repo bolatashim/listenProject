@@ -164,7 +164,7 @@ $(document).ready(function(){
 })
 
 function showQuiz(){
-	var alphabet = ["a", "b", "c", "d"]
+	var alphabet = ["A. ", "B. ", "C. ", "D. "]
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
 
@@ -176,7 +176,7 @@ function showQuiz(){
 		var html = ""
 		var options = questions[i].options
 		for(var j = 0; j < options.length; j++){
-			html = html + "<h1>" + alphabet[j] + ") " + options[j].text + "</h1>"
+			html = html + "<h1>" + alphabet[j] + options[j].text + "</h1>"
 		}
 		$(".current-quiz-qtn").append(`<div class="quiz-question">
 								<div class="quiz-question-num"> ${i+1}
