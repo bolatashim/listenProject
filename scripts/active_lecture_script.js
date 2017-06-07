@@ -164,6 +164,7 @@ $(document).ready(function(){
 })
 
 function showQuiz(){
+	var alphabet = ["a", "b", "c", "d"]
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
 
@@ -173,15 +174,17 @@ function showQuiz(){
 	var questions = quizzes[quizSelected].questions
 
 	for(var i = 0; i < questions.length; i++){
+		var html = ""
+		var options = questions[i].options
+		for(var j = 0; j < options.length; j++){
+			html = html + "<h1>" + alphabet[j] + ") " + options[j].text + "</h1>"
+		}
 		$(".current-quiz-qtn").append(`<div class="quiz-question">
 								<div class="quiz-question-num"> ${i+1}
 								</div>
 								<div class="quiz-question-ans">
-									<h1 style="font-weight: bold"> ${questions[i].title} </h1>
-									<h1> a) ${questions[i].a} </h1>
-									<h1> b) ${questions[i].b} </h1>
-									<h1> c) ${questions[i].c} </h1>
-									<h1> d) ${questions[i].d} </h1>
+									<h1 style="font-weight: bold; border-bottom: solid 1px gray; padding-bottom: 5px"> ${questions[i].title} </h1>
+									${html}
 								</div>
 							</div>`)
 	}
