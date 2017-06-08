@@ -53,25 +53,26 @@ $( document ).ready(function(){
 
 	$("#submit").click(function(){
 		for(var i = 0; i < user_answer.length; i ++){
+			var correct = true;
 			for(var j = 0; j < user_answer[i].length; j++){
-				if(answer[i].includes(user_answer[i][j])){
-					database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
-					/*
-					var answerRef = database.ref("tsQuiz/"+quiz_num+"/questions/"+i+"/options/"+user_answer[i][j]);
-					score += 5;
+				if(answer[i].includes(user_answer[i][j]))				
+					continue;
+				correct = false;
+				break;
+			}
+			if(correct){
+				var answerRef = database.ref("tsQuiz/"+quiz_num+"/questions/"+i);
+				score += 5;
+				answerRef.once('value').then(function(snapshot){
+					var key = snapshot.key;
+					var value = snapshot.val();
 					answerRef.update({
-						numCorrect: answerRef.numCorrect+1
+						correct: value["correct"]+1
 					});
-					*/
-				}
+				})
 			}
 		}
-
-		$("#submit").removeClass("btn-default");
-		$("#submit").addClass("btn-success");
-		$("#submit").text("Submitted!")
-		$("#inputarea").val("");
-		$("#inputarea").focus();
+		database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
 		localStorage.setItem(quiz_num, true);
 		document.location.href = 'file:student_index.html';
 	});
@@ -114,4 +115,3 @@ quizRef.on('value', function(snapshot){
 		totalStudent = value["totalStudent"];
 	}
 });
-
