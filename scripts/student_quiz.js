@@ -54,12 +54,16 @@ $( document ).ready(function(){
 	$("#submit").click(function(){
 		for(var i = 0; i < user_answer.length; i ++){
 			var correct = true;
+			var cnt = 0;
 			for(var j = 0; j < user_answer[i].length; j++){
-				if(answer[i].includes(user_answer[i][j]))				
+				if(answer[i].includes(user_answer[i][j])){	
+					cnt++;			
 					continue;
+				}
 				correct = false;
 				break;
 			}
+			if(cnt != answer[i].length) correct = false;
 			if(correct){
 				var answerRef = database.ref("tsQuiz/"+quiz_num+"/questions/"+i);
 				score += 5;
