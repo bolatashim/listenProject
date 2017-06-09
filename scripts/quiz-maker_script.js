@@ -269,8 +269,10 @@ $( document ).ready(function() {
     });
   }
 
-  if (localStorage.quizQuestions)
-    questions = localStorage.quizQuestions;
+  if (localStorage.quizQuestions) {
+    questions = localStorage.quizQuestions.split('$$$');
+    console.log(questions);
+  }
 
   if (localStorage.lectureKey && localStorage.courseCode) {
     var title = localStorage.courseCode + " : " + "Lecture " + localStorage.lectureKey + " Quiz";

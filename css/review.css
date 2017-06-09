@@ -242,7 +242,7 @@ button:focus {
 				padding: 5px;
 				font-size: .7em;
 				font-weight: bold;
-				/*display: none;*/
+				display: inline-block;
 				opacity: 0;
 				cursor: pointer;
 				-webkit-user-select: none;
@@ -251,20 +251,38 @@ button:focus {
 				        user-select: none;
 
 			}
-			.question:hover .reply {
-				/*display: unset;*/
-				opacity: 1;
-			}
+				.question:hover .reply {
+					/*display: unset;*/
+					opacity: 1;
+				}
+				.question.expanded .reply {
+					/*display: unset;*/
+					opacity: 1;
+					background: rgba(0,0,0,.1);
+				}
 			.question .reply-box {
-				padding: 10px;
+				background: rgba(0,0,0,.1);
 				position: relative;
 				width: 400px;
-				height: 200px;
-				display: none;
+				height: 0px;
+				overflow: hidden;
+				display: block;
+				transition: height .3s;
 			}
+				.question.expanded .reply-box {
+					transition: height .3s;
+					height: 200px;
+				}
+					.question .reply-box-wrapper {
+						padding: 10px;
+						height: 100%;
+					}
+				.question .reply-box .send-to {
+					padding-bottom: 2px;
+				}
 				.question .reply-box textarea {
 					width: 100%;
-					height: 100%;
+					height: 88%;
 					resize: none;
 					border: 1px solid #ddd;
 				}
