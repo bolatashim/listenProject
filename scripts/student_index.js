@@ -22,6 +22,7 @@ var tags = [];
 $( document ).ready(function(){
 	$("#student_profile").text("ID: "+student_id);
 	$("#student_course").text("Course: "+student_course.split(" ")[0]);
+	$(".cur_tag").focus();
 
 	$("#tags").on('click', '.tag',function(){
 		if($(this).text()=="Create tag"){
@@ -35,6 +36,13 @@ $( document ).ready(function(){
 	});
 
 	$("#submit").click(function(){
+		if($(".cur_tag").val() == ""){
+			$(".cur_tag").addClass("btn-danger");
+			$(".cur_tag").focus();
+			setTimeout(function(){
+				$(".cur_tag").removeClass("btn-danger");}, 1000);
+			return;
+		}
 		var addtagRef = database.ref("courses/"+student_course.split(" ")[0]+"/lectures/"+student_lecture+"/tags/"+$(".cur_tag").val());
 		addtagRef.push({
 			answered: false,
@@ -65,8 +73,11 @@ tagRef.on('child_added', function(snapshot){
 activeLectureRef.on('value', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
-	if(value["status"].includes("quiz") && localStorage[localStorage.quiz_index] != "true"){
+	if(value["status"].includes("quiz")){
 		localStorage.setItem("quiz_index", value["status"].split(", ")[1]);
-		document.location.href = 'file:student_quiz.html';
+		if(localStorage[localStorage.quiz_index] != "true"){
+			document.location.href = 'file:student_quiz.html';
+		}
 	}
 });
+
