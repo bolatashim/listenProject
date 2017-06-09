@@ -122,6 +122,20 @@ function setActionButtonListeners() {
 	$('#mark-unanswered-action').click(function () {
 		changeAnsweredAction(false);
 	});
+
+	$('#make-quiz-action').click(function () {
+		var quizQuestions = [];
+
+		$('.question button[role=checkbox][aria-checked=true]:visible').each(function () {
+			var question = $(this).parents('.question').find(".text");
+			question = question.html();
+			quizQuestions.push(question);
+		});
+
+		localStorage.quizQuestions = quizQuestions.join('$$$');
+		console.log(quizQuestions);
+		document.location.href = './quiz_maker.html';
+	});
 }
 
 function changeAnsweredAction(answered) {
@@ -180,7 +194,8 @@ function setReplyBoxTogglers() {
 	$('body').on('click', '.reply', function () {
 		$(this).find('i').toggleClass('fa-angle-up');
 		$(this).find('i').toggleClass('fa-angle-down');
-		$(this).parents('.question').find('.reply-box').toggle(400);
+		$(this).parents('.question').toggleClass('expanded');
+		// $(this).parents('.question').find('.reply-box').toggle(400);
 	});
 
 	$('body').on('click', '.send', function () {
@@ -282,9 +297,11 @@ function setQuestionsAndTagsUpdater() {
 							<br>
 							<span class="reply">Reply <i class="fa fa-angle-down"></i></span>
 							<div class="reply-box" data-email=${email}>
-								To: ${question.email} <br>
-								<textarea placeholder="Your reply message"></textarea>
-								<button class="send">Send</button>
+								<div class="reply-box-wrapper">
+									<div class="send-to"><b>To:</b> ${question.email}</div>
+									<textarea placeholder="Your reply message"></textarea>
+									<button class="send">Send</button>
+								</div>
 							</div>
 						</td>
 					</tr>
