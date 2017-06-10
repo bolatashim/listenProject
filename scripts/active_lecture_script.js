@@ -7,6 +7,7 @@ var tags = []
 var questions = []
 var name = ""
 var quizzes = {}
+var quizStatus = false
 
 var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
@@ -117,6 +118,8 @@ $(document).ready(function(){
 	})
 
 	$("#end-btn").on("click", function(){
+		if(quizStatus)
+			endQuiz()
 		localStorage.courseCode = courseName
 		localStorage.courseTitle = courseTitle
 		$(window).unbind("beforeunload")
@@ -166,6 +169,7 @@ $(document).ready(function(){
 })
 
 function showQuiz(){
+	quizStatus = true
 	var alphabet = ["A. ", "B. ", "C. ", "D. "]
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
@@ -209,6 +213,7 @@ function showQuiz(){
 }
 
 function endQuiz(){
+	quizStatus = false
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	database.ref("activeLecture/status").set("lecture")
 	database.ref("tsQuiz/" + quizzes[quizSelected].index + "/completed").set(true) 

@@ -55,7 +55,7 @@ $( document ).ready(function(){
 		for(var i = 0; i < user_answer.length; i ++){
 			var totalScoreRef = database.ref("tsQuiz/" + quiz_num + "/questions/" + i + "/totalScore")
 			var score = 0;
-			user_answer[i].keys().forEach(function(key){
+			Object.keys(user_answer[i]).forEach(function(key){
 				if(answer[i].includes(key) && user_answer[i][key])
 					score++
 				if(!answer[i].includes(key) && !user_answer[i][key])
@@ -65,7 +65,7 @@ $( document ).ready(function(){
 				if(total)
 					return total + score
 				else
-					return 0
+					return score
 			})
 		}
 
@@ -85,18 +85,20 @@ questionRef.on('child_added', function(snapshot){
 
 	database.ref("tsQuiz/" + quiz_num + "/questions/"+(question_num-1)+"/options").once('value', function(snapshot){
 		var option_num = 0;
+		var obj = {}
 		snapshot.forEach(function(childSnapshot){
+			obj[option_num] = false
 			var childkey = childSnapshot.key;
 			var childvalue = childSnapshot.val();
-			element += "<li><button id='0' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>";
+			element += "<li><button id='" + option_num + "' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>";
 			element += String.fromCharCode(option_num+65)+". "+childvalue.text+"</button></li>";
 			option_num++;
 		})
+		user_answer.push(obj)
 	})
 	answer.push(value["answer"]);
 	element += "</ul></div></div>";
 	$('#questions').append(element);
-	user_answer.push({0: false, 1: false, 2: false, 3: false});
 	question_num++;
 });
 
