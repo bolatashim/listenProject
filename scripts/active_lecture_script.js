@@ -7,6 +7,7 @@ var tags = []
 var questions = []
 var name = ""
 var quizzes = {}
+var quizStatus = false
 
 var config = {
     apiKey: "AIzaSyCxnL1UyMBU51tJU5MAKmCxHPAaMpb2veY",
@@ -117,6 +118,8 @@ $(document).ready(function(){
 	})
 
 	$("#end-btn").on("click", function(){
+		if(quizStatus)
+			endQuiz()
 		localStorage.courseCode = courseName
 		localStorage.courseTitle = courseTitle
 		$(window).unbind("beforeunload")
@@ -129,11 +132,13 @@ $(document).ready(function(){
 	quizRef.once('value').then(function(snapshot){
 		var maxIndex = snapshot.numChildren()
 		for(var i = 0; i<maxIndex; i++){
-			var title = snapshot.child(i).val().title
-			var quiz = snapshot.child(i).val()
-			quiz.index = i
-			quizzes[title] = quiz
-			$("#sel-quiz-opt").append("<option>" + title + "</option>")
+			if(!snapshot.child(i).val().completed){
+				var title = snapshot.child(i).val().title
+				var quiz = snapshot.child(i).val()
+				quiz.index = i
+				quizzes[title] = quiz
+				$("#sel-quiz-opt").append("<option>" + title + "</option>")	
+			}
 		}
 		$(".progress").hide()
 	})
@@ -164,11 +169,17 @@ $(document).ready(function(){
 })
 
 function showQuiz(){
+	quizStatus = true
 	var alphabet = ["A. ", "B. ", "C. ", "D. "]
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	var time = $("#sel-quiz-min").val()*60 + $("#sel-quiz-sec").val()*1
 
 	database.ref("activeLecture/status").set("quiz, "+quizzes[quizSelected].index)
+
+	var totalStudentRef = database.ref("tsQuiz/" + quizzes[quizSelected].index + "/totalStudent")
+	totalStudentRef.on("value", function(snapshot){
+		$("#totalStudent").html(snapshot.val())
+	})
 
 	var questions = quizzes[quizSelected].questions
 
@@ -202,11 +213,14 @@ function showQuiz(){
 }
 
 function endQuiz(){
+	quizStatus = false
+	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	database.ref("activeLecture/status").set("lecture")
-	database.ref("activeLecture/quizIndex").set(null)
+	database.ref("tsQuiz/" + quizzes[quizSelected].index + "/completed").set(true) 
 
 	$(".quiz-area").hide()
 	$(".joint-area").show()
+	$(".sel-quiz-area").hide()
 	printQuestions()
 	printTags()
 }

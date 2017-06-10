@@ -13,6 +13,7 @@ var quiz_num = localStorage.quiz_index;
 var activeLectureRef = database.ref("activeLecture");
 var questionRef = database.ref("tsQuiz/" + quiz_num + "/questions");
 var quizRef = database.ref("tsQuiz/" + quiz_num);
+var answersRef = database.ref("tsQuiz/" + quiz_num + "/answers")
 
 var answer = [];
 var user_answer = [];
@@ -40,40 +41,37 @@ $( document ).ready(function(){
 			$(this).removeClass("btn-default");
 			$(this).addClass("btn-success");
 			$(this).attr("val", "true");
-			user_answer[($(this).attr("question")-1)].push($(this).attr("id"));
+			user_answer[($(this).attr("question")-1)][$(this).attr("id")] = true;
 		}
 		else{
 			$(this).addClass("btn-default");
 			$(this).removeClass("btn-success");
 			$(this).attr("val", "false");
-			var index = user_answer[($(this).attr("question")-1)].indexOf($(this).attr("id"));
-			user_answer[($(this).attr("question")-1)].splice(index, 1);
+			user_answer[($(this).attr("question")-1)][$(this).attr("id")] = false;
 		}
 	});
 
 	$("#submit").click(function(){
 		for(var i = 0; i < user_answer.length; i ++){
-			var correct = true;
-			for(var j = 0; j < user_answer[i].length; j++){
-				if(answer[i].includes(user_answer[i][j]))				
-					continue;
-				correct = false;
-				break;
-			}
-			if(correct){
-				var answerRef = database.ref("tsQuiz/"+quiz_num+"/questions/"+i);
-				score += 5;
-				answerRef.once('value').then(function(snapshot){
-					var key = snapshot.key;
-					var value = snapshot.val();
-					answerRef.update({
-						correct: value["correct"]+1
-					});
-				})
-			}
+			var totalScoreRef = database.ref("tsQuiz/" + quiz_num + "/questions/" + i + "/totalScore")
+			var score = 0;
+			Object.keys(user_answer[i]).forEach(function(key){
+				if(answer[i].includes(key) && user_answer[i][key])
+					score++
+				if(!answer[i].includes(key) && !user_answer[i][key])
+					score++
+			})
+			totalScoreRef.transaction(function(total){
+				if(total)
+					return total + score
+				else
+					return score
+			})
 		}
+
 		database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
 		localStorage.setItem(quiz_num, true);
+		localStorage.setItem("quiz_index", "none");
 		document.location.href = 'file:student_index.html';
 	});
 });
@@ -83,20 +81,24 @@ questionRef.on('child_added', function(snapshot){
 	var value = snapshot.val();
 
 	var question = value["title"];
-	var op1 = value["options"]["0"]["text"];
-	var op2 = value["options"]["1"]["text"];
-	var op3 = value["options"]["2"]["text"];
-	var op4 = value["options"]["3"]["text"];
-	answer.push(value["answer"]);
-
 	var element = "<div class='panel panel-default'><h4>Q"+question_num+" "+question+"</h4><div><ul style='list-style: none;'>"
-	+"<li><button id='0' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>A. "+op1+"</button></li>"
-	+"<li><button id='1' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>B. "+op2+"</button></li>"
-	+"<li><button id='2' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>C. "+op3+"</button></li>"
-	+"<li><button id='3' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>D. "+op4+"</button></li>"
-	+"</ul></div></div>"
+
+	database.ref("tsQuiz/" + quiz_num + "/questions/"+(question_num-1)+"/options").once('value', function(snapshot){
+		var option_num = 0;
+		var obj = {}
+		snapshot.forEach(function(childSnapshot){
+			obj[option_num] = false
+			var childkey = childSnapshot.key;
+			var childvalue = childSnapshot.val();
+			element += "<li><button id='" + option_num + "' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>";
+			element += String.fromCharCode(option_num+65)+". "+childvalue.text+"</button></li>";
+			option_num++;
+		})
+		user_answer.push(obj)
+	})
+	answer.push(value["answer"]);
+	element += "</ul></div></div>";
 	$('#questions').append(element);
-	user_answer.push([]);
 	question_num++;
 });
 
