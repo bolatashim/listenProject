@@ -89,10 +89,22 @@ $( document ).ready(function() {
     var all = [];
     lecturesRef.once("value", function(data) {
       $.when(
-        data.forEach(function(lecture) {
-          var q = lecture.val().totalQuestions;
+        data.forEach(function(snapshot) {
+          var lecture = snapshot.val();
+          var q = 0;
+          
+          for (var key in lecture.tags) {
+            tag = lecture.tags[key];
+            q += Object.keys(tag).length;
+          }
+
           qTotal += q;
-          all.push({num: lecture.val().number, title: lecture.val().title, date: lecture.val().time, questions: q});
+          all.push({
+            num: lecture.number,
+            title: lecture.title,
+            date: lecture.time,
+            questions: q
+          });
         })
         ).done(function() {
         $("#questions-asked").text(qTotal);

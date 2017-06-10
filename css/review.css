@@ -135,13 +135,21 @@ button:focus {
 			background: #444;
 			color: #eee;
 			border: none;
-			border-bottom: 2px solid rgba(0,0,0,.5);
+			border-bottom: 2px solid rgba(0,0,0,.3);
 		}
-
-		.actions .action button:not([role=checkbox]):active {
-			background: #555;
+			.actions .action button:not([role=checkbox]):active {
+				background: #555;
+			}
+			.actions .action button[disabled]:not([role=checkbox]) {
+				background: #999;
+			}
+		.actions .action.advanced button:not([role=checkbox]) {
+			background: #00896B;
+			color: #fff;
 		}
-
+			.actions .action.advanced button:not([role=checkbox]):active {
+				background: #006048;
+			}
 	.tags {
 		padding: 5px 10px;
 		background: #eee;
