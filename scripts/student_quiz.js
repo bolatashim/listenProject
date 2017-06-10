@@ -71,6 +71,7 @@ $( document ).ready(function(){
 
 		database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
 		localStorage.setItem(quiz_num, true);
+		localStorage.setItem("quiz_index", "none");
 		document.location.href = 'file:student_index.html';
 	});
 });
@@ -80,18 +81,20 @@ questionRef.on('child_added', function(snapshot){
 	var value = snapshot.val();
 
 	var question = value["title"];
-	var op1 = value["options"]["0"]["text"];
-	var op2 = value["options"]["1"]["text"];
-	var op3 = value["options"]["2"]["text"];
-	var op4 = value["options"]["3"]["text"];
-	answer.push(value["answer"]);
-
 	var element = "<div class='panel panel-default'><h4>Q"+question_num+" "+question+"</h4><div><ul style='list-style: none;'>"
-	+"<li><button id='0' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>A. "+op1+"</button></li>"
-	+"<li><button id='1' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>B. "+op2+"</button></li>"
-	+"<li><button id='2' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>C. "+op3+"</button></li>"
-	+"<li><button id='3' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>D. "+op4+"</button></li>"
-	+"</ul></div></div>"
+
+	database.ref("tsQuiz/" + quiz_num + "/questions/"+(question_num-1)+"/options").once('value', function(snapshot){
+		var option_num = 0;
+		snapshot.forEach(function(childSnapshot){
+			var childkey = childSnapshot.key;
+			var childvalue = childSnapshot.val();
+			element += "<li><button id='0' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>";
+			element += String.fromCharCode(option_num+65)+". "+childvalue.text+"</button></li>";
+			option_num++;
+		})
+	})
+	answer.push(value["answer"]);
+	element += "</ul></div></div>";
 	$('#questions').append(element);
 	user_answer.push({0: false, 1: false, 2: false, 3: false});
 	question_num++;
