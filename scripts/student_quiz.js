@@ -13,6 +13,7 @@ var quiz_num = localStorage.quiz_index;
 var activeLectureRef = database.ref("activeLecture");
 var questionRef = database.ref("tsQuiz/" + quiz_num + "/questions");
 var quizRef = database.ref("tsQuiz/" + quiz_num);
+var answersRef = database.ref("tsQuiz/" + quiz_num + "/answers")
 
 var answer = [];
 var user_answer = [];
@@ -40,38 +41,34 @@ $( document ).ready(function(){
 			$(this).removeClass("btn-default");
 			$(this).addClass("btn-success");
 			$(this).attr("val", "true");
-			user_answer[($(this).attr("question")-1)].push($(this).attr("id"));
+			user_answer[($(this).attr("question")-1)][$(this).attr("id")] = true;
 		}
 		else{
 			$(this).addClass("btn-default");
 			$(this).removeClass("btn-success");
 			$(this).attr("val", "false");
-			var index = user_answer[($(this).attr("question")-1)].indexOf($(this).attr("id"));
-			user_answer[($(this).attr("question")-1)].splice(index, 1);
+			user_answer[($(this).attr("question")-1)][$(this).attr("id")] = false;
 		}
 	});
 
 	$("#submit").click(function(){
 		for(var i = 0; i < user_answer.length; i ++){
-			var correct = true;
-			for(var j = 0; j < user_answer[i].length; j++){
-				if(answer[i].includes(user_answer[i][j]))				
-					continue;
-				correct = false;
-				break;
-			}
-			if(correct){
-				var answerRef = database.ref("tsQuiz/"+quiz_num+"/questions/"+i);
-				score += 5;
-				answerRef.once('value').then(function(snapshot){
-					var key = snapshot.key;
-					var value = snapshot.val();
-					answerRef.update({
-						correct: value["correct"]+1
-					});
-				})
-			}
+			var totalScoreRef = database.ref("tsQuiz/" + quiz_num + "/questions/" + i + "/totalScore")
+			var score = 0;
+			user_answer[i].keys().forEach(function(key){
+				if(answer[i].includes(key) && user_answer[i][key])
+					score++
+				if(!answer[i].includes(key) && !user_answer[i][key])
+					score++
+			})
+			totalScoreRef.transaction(function(total){
+				if(total)
+					return total + score
+				else
+					return 0
+			})
 		}
+
 		database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
 		localStorage.setItem(quiz_num, true);
 		document.location.href = 'file:student_index.html';
@@ -96,7 +93,7 @@ questionRef.on('child_added', function(snapshot){
 	+"<li><button id='3' question='"+question_num+"' class='options btn btn-default' val='false' style='text-align: left; white-space: normal;'>D. "+op4+"</button></li>"
 	+"</ul></div></div>"
 	$('#questions').append(element);
-	user_answer.push([]);
+	user_answer.push({0: false, 1: false, 2: false, 3: false});
 	question_num++;
 });
 
