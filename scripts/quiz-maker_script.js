@@ -12,7 +12,7 @@ $( document ).ready(function() {
   firebase.initializeApp(config);
   var database = firebase.database();
 
-  var newQuizRef = database.ref("tsQuiz");
+  var newQuizRef = database.ref("courses/"+localStorage.courseCode+"/Quiz");
 
   var newIndex = 0;
   
@@ -199,7 +199,7 @@ $( document ).ready(function() {
     
     var listItems = $(".questions-ordered-list li");
 
-    var mainquizRef = database.ref("tsQuiz/" + newIndex + "/");
+    var mainquizRef = database.ref("courses/"+localStorage.courseCode+"/Quiz/" + newIndex + "/");
     var quizTitle = $(".quiz-title-text").text();
     mainquizRef.set({title: quizTitle, totalStudent: 0});
     
@@ -209,7 +209,7 @@ $( document ).ready(function() {
         var optable = lis.find("table tr.option-row");
         var corrects = "";
         var quizoptions = [];
-        var newQuestionAdded = database.ref("tsQuiz/" + newIndex + "/questions/" + idx);
+        var newQuestionAdded = database.ref("courses/"+localStorage.courseCode+"/Quiz/" + newIndex + "/questions/" + idx);
 
         for (var i = 0; i < optable.length; i++) {
           var optionText = $(optable[i]).find("td").eq(0).children("span.quiz-option-text").text().trim();
@@ -225,7 +225,7 @@ $( document ).ready(function() {
         
         newQuestionAdded.set({title: qion, answer: corrects});
         for (var i = 0; i < quizoptions.length; i++) {
-          database.ref("tsQuiz/" + newIndex + "/questions/" + idx + "/options/" + i + "/").set({text: quizoptions[i], numCorrect: 0});
+          database.ref("courses/"+localStorage.courseCode+"/Quiz/" + newIndex + "/questions/" + idx + "/options/" + i + "/").set({text: quizoptions[i], numCorrect: 0});
         }
     });
     alert("Quiz has been successfully saved");

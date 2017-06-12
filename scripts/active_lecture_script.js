@@ -23,7 +23,7 @@ var database = firebase.database()
 var courseRef = database.ref("courses/" + courseName)
 var lectureRef = database.ref("courses/" + courseName + "/" + "lectures" + "/"+ lectureName)
 var tagsRef = database.ref("courses/" + courseName + "/lectures/" + lectureName + "/tags")
-var quizRef = database.ref("tsQuiz")
+var quizRef = database.ref("courses/"+localStorage.courseCode+"/Quiz")
 
 var activeRef = database.ref("activeLecture")
 
@@ -176,7 +176,7 @@ function showQuiz(){
 
 	database.ref("activeLecture/status").set("quiz, "+quizzes[quizSelected].index)
 
-	var totalStudentRef = database.ref("tsQuiz/" + quizzes[quizSelected].index + "/totalStudent")
+	var totalStudentRef = database.ref("courses/"+localStorage.courseCode+"/Quiz/" + quizzes[quizSelected].index + "/totalStudent")
 	totalStudentRef.on("value", function(snapshot){
 		$("#totalStudent").html(snapshot.val())
 	})
@@ -216,7 +216,7 @@ function endQuiz(){
 	quizStatus = false
 	var quizSelected = $("#sel-quiz-opt option:selected").text()
 	database.ref("activeLecture/status").set("lecture")
-	database.ref("tsQuiz/" + quizzes[quizSelected].index + "/completed").set(true) 
+	database.ref("courses/"+localStorage.courseCode+"/Quiz/" + quizzes[quizSelected].index + "/completed").set(true) 
 
 	$(".quiz-area").hide()
 	$(".joint-area").show()
