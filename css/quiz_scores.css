@@ -1,0 +1,183 @@
+html, body {
+  position: relative;
+  min-height: 100%;
+  height: 100%;
+  font-family: Helvetica;
+}
+
+
+.quickstart-lecture{
+	border-top: 6px solid #328432;
+	margin-bottom: 20px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  	background-color: white;	
+}
+
+
+
+
+
+.table th {
+	border-bottom: 2px solid #15305B !important;
+	color: #15305B;
+}
+
+ol > li > a {
+	/*color:#15305B*/
+	color:   white
+}
+ol > li > a:hover {
+	text-decoration: none;
+}
+
+
+.lectures-table {
+  	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  	background-color: white;
+  	margin-bottom: 50px;	
+}
+
+
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #eff7fb;
+  /*color: ;*/
+}
+
+.course-title {
+/*text-align: center;*/
+	color: #15305B;
+}
+
+.section-title{
+	margin: 0;
+	padding-left: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	border-bottom: solid 2px #15305b
+}
+
+.edit-today-lecture {
+	float: right;
+}
+
+.lecture-start-button {
+	padding: 5px 10px;
+	font-size: 20px;
+	float: right;
+	margin: 15px 0;*/
+	text-align: center;
+	/*background-color: green;*/
+	/*border-radius: 2px;*/
+}
+.qnum-col,
+.date-col,
+.number-col,
+.title-col{
+	font-weight: 600;
+}
+
+.number-col {
+	width: 5%;
+}
+.lNumber {
+	/*text-align: center;*/
+}
+
+.lQuestions,
+.lDate{
+	color: gray;
+	font-weight: 200;
+}
+
+.lTitle {
+	font-weight: 500;
+	min-width: 60%;	
+}
+
+
+table tr th{
+	padding: 16px !important;
+	font-size: 16px;
+}
+
+table tr td{
+	padding-top: 14px !important;
+	padding-bottom: 14px !important;
+	padding-right: 16px !important;
+	padding-left: 16px !important;
+	font-size: 16px;
+}
+
+table tr td {
+	cursor: pointer;
+}
+
+
+/* quizzes */
+.quiz-title{
+	margin-top: 0;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.quiz-score{
+	margin-top: 5px;
+	font-size: 25px;
+}
+
+.avg-score{
+	color: #5cb85c;
+}
+
+.total-score{
+	color: #afafaf;
+}
+
+.total-students {
+	color: #15305b;
+}
+
+.percentage-score{
+	border: solid 2px #e2e2e2;
+	border-radius: 5px;
+	height: 20px;
+	padding: 0;
+}
+
+.avg-percentage{
+	height: 99%;
+	border: 0;
+	display: inline-block;
+	float: left;
+	margin: 0;
+	background-color: #5cb85c;
+}
+
+.total-percentage{
+	height: 100%;
+	border: 0;
+	float: right;
+	display: inline-block;
+	margin: 0;
+	background-color: #afafaf;
+}
+
+.question-title{
+	margin-top: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.option-list{
+	margin-left: 2%;
+	font-size: 12px;
+}
+
+.question-entry {
+	margin: 5px;
+	border-top: solid 1px #eceff1;
+	border-bottom: solid 1px #eceff1;
+}
