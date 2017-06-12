@@ -11,6 +11,7 @@ localStorage.removeItem("id");
 localStorage.removeItem("email");
 localStorage.removeItem("course");
 localStorage.removeItem("lecture");
+
 //localStorage.clear();
 /*
 var studentRef = database.ref("courses/CS101/students");
@@ -41,9 +42,9 @@ $( document ).ready(function() {
 				localStorage.setItem("course", course);
 				localStorage.setItem("lecture", find_lecture(course));
 				if(quiz_mode)
-					document.location.href = 'file:student_quiz.html';
+					document.location.href = './student_quiz.html';
 				else
-					document.location.href = 'file:student_index.html';
+					document.location.href = './student_index.html';
   			}
   			else{
   				alert("We are sorry! Currently, you cannot join course "+course+". The course is not activated yet, or you are not registered in the course");

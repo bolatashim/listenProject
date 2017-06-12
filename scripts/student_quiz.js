@@ -23,12 +23,12 @@ var totalStudent;
 
 if(student_id === undefined || student_email === undefined || student_lecture === undefined || student_course === undefined){
 	alert("Please login first.");
-	document.location.href = 'file:student_login.html';
+	document.location.href = './student_login.html';
 }
 
 if(localStorage[localStorage.quiz_index] == "true"){
 	alert("You already submitted your answer.");
-	document.location.href = 'file:student_index.html';
+	document.location.href = './student_index.html';
 }
 
 $( document ).ready(function(){
@@ -72,7 +72,7 @@ $( document ).ready(function(){
 		database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
 		localStorage.setItem(quiz_num, true);
 		localStorage.setItem("quiz_index", "none");
-		document.location.href = 'file:student_index.html';
+		document.location.href = './student_index.html';
 	});
 });
 
@@ -106,7 +106,7 @@ activeLectureRef.on('value', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
 	if(value["status"].includes("lecture")){
-		document.location.href = 'file:student_index.html';
+		document.location.href = './student_index.html';
 	}
 });
 
