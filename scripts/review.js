@@ -254,9 +254,19 @@ function setMoreActionsListeners() {
 	});
 
 	$('#delete-lecture-action').click(function () {
-		if (confirm('Delete the WHOLE lecture FOREVER?')) {
-			deleteLectureAction();
-		}
+		$.confirm({
+		    title: 'Delete Lecture?',
+		    content: 'Delete the WHOLE lecture FOREVER?',
+		    buttons: {
+		        delete: {
+		        	action: function () {
+			            deleteLectureAction();
+			        },
+			        btnClass: 'dangerous'
+			    },
+		        cancel: function () { }
+		    }
+		});
 	});
 }
 

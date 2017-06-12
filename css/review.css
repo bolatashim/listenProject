@@ -13,6 +13,7 @@ body {
 	min-height: 100%;
 }
 
+
 .table th {
 	border-bottom: 2px solid #15305B !important;
 	color: #15305B;
@@ -435,3 +436,14 @@ button:focus {
 			.more-actions .actions .action:hover {
 
 			}
+
+/* jquery.confirm */
+.btn.dangerous {
+	background: #ff4a4a;
+	color: #fff;
+}
+.btn.dangerous:hover,
+.btn.dangerous:active {
+	background: #f11212;
+	color: #fff;
+}
