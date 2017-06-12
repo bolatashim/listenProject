@@ -56,7 +56,7 @@ $( document ).ready(function() {
                       <h2 class="quiz-score">Average Score: <span class="avg-score">${avgScore}</span>/<span class="total-score">${totalScore}</span></h2>
                     </div>
                     <div style="display: inline-block; width: 49%">
-                      <h2 class="quiz-score">Total Students: <span class="total-students">${totalStudents}</span> <i style="font-size: 30px"class="fa fa-angle-down"></i></h2>
+                      <h2 class="quiz-score">Total Students: <span class="total-students">${totalStudents}</span></h2>
                     </div>
                   </div>
                   <div class="percentage-score">

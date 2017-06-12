@@ -1,8 +1,70 @@
 html, body {
   position: relative;
-  min-height: 100%;
-  height: 100%;
-  font-family: Helvetica;
+  font-family: verdana !important;
+  background-color: #eceff1 !important;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	min-height: 100%;
+}
+
+
+
+.table th {
+	border-bottom: 2px solid #15305B !important;
+	color: #15305B;
+}
+
+.breadcrumb {
+	background-color: #6FBFE0 !important;
+	border-radius: 0 !important;
+}
+
+ol > li > a {
+	/*color:#15305B*/
+	color:   white; /*#EA5B23;*/
+}
+ol > li > a:hover {
+	text-decoration: none;
+	/*color: #EA5B23;*/
+	color:   white
+}
+ol > li {
+	text-decoration: none;
+	/*color: #15305B !important;*/
+	/*color: #EA5B23;*/
+	color:   white !important;
+}
+
+.breadcrumb > li + li:before {
+	/*color: #15305B !important;	*/
+	color:   white !important;
+}
+
+.navbar{
+	background-color: #15305B;
+	border-radius: 0 !important;	
+}
+
+.fixed-bottom {
+
+}
+.navbar-brand {
+	color: white;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus {
+	text-decoration: none;
+	color: white;
+}
+
+.navbar.navbar-entry {
+	vertical-align: middle;
 }
 
 
@@ -13,10 +75,6 @@ html, body {
   	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
   	background-color: white;	
 }
-
-
-
-
 
 .table th {
 	border-bottom: 2px solid #15305B !important;
@@ -39,12 +97,6 @@ ol > li > a:hover {
   	margin-bottom: 50px;	
 }
 
-
-
-.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-  background-color: #eff7fb;
-  /*color: ;*/
-}
 
 .course-title {
 /*text-align: center;*/
@@ -109,10 +161,6 @@ table tr td{
 	padding-right: 16px !important;
 	padding-left: 16px !important;
 	font-size: 16px;
-}
-
-table tr td {
-	cursor: pointer;
 }
 
 
