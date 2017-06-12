@@ -35,6 +35,7 @@ $(document).ready(function () {
 	setReplyBoxTogglers();
 	setLectureActionListeners();
 	setMoreActionsListeners();
+	// updateActionButtonAvailability();
 });
 
 function setCheckboxListeners() {
@@ -47,13 +48,14 @@ function setCheckboxListeners() {
 		key = $(this).parents('.question').data('key');
 		checked = $(this).attr('aria-checked');
 		keyToChecked.set(key, checked);
+
 		updateSelectAllCheckbox();
 	});
 }
 
 function updateSelectAllCheckbox() {
-	numAll = $('.question button[role=checkbox]:visible').length;
-	numChecked = $('.question button[role=checkbox][aria-checked=true]:visible').length;
+	var numAll = $('.question button[role=checkbox]:visible').length;
+	var numChecked = $('.question button[role=checkbox][aria-checked=true]:visible').length;
 
 	if (numChecked == 0)
 		$('#select-all-action').attr('aria-checked', 'false');
@@ -61,6 +63,8 @@ function updateSelectAllCheckbox() {
 		$('#select-all-action').attr('aria-checked', 'true');
 	else
 		$('#select-all-action').attr('aria-checked', 'mixed');
+
+	updateActionButtonAvailability();
 }
 
 function setActionButtonListeners() {
@@ -80,6 +84,8 @@ function setActionButtonListeners() {
 			checked = $(this).attr('aria-checked');
 			keyToChecked.set(key, checked);
 		});
+
+		updateActionButtonAvailability();
 	});
 
 	$('#forward-action').click(function () {
@@ -136,6 +142,19 @@ function setActionButtonListeners() {
 		console.log(quizQuestions);
 		document.location.href = './quiz_maker.html';
 	});
+}
+
+function updateActionButtonAvailability() {
+	var numChecked = $('.question button[role=checkbox][aria-checked=true]:visible').length;
+
+	var disabled = (numChecked == 0);
+	$('#forward-action').prop('disabled', disabled);
+	$('#delete-action').prop('disabled', disabled);
+	$('#mark-answered-action').prop('disabled', disabled);
+	$('#mark-unanswered-action').prop('disabled', disabled);
+
+	var make_quiz_text = (numChecked == 0 ?"New Quiz" :"Add to New Quiz");
+	$('#make-quiz-action').html(make_quiz_text);
 }
 
 function changeAnsweredAction(answered) {

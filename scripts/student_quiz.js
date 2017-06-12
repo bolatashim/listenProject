@@ -11,9 +11,9 @@ var student_lecture = localStorage.lecture;
 var quiz_num = localStorage.quiz_index;
 
 var activeLectureRef = database.ref("activeLecture");
-var questionRef = database.ref("tsQuiz/" + quiz_num + "/questions");
-var quizRef = database.ref("tsQuiz/" + quiz_num);
-var answersRef = database.ref("tsQuiz/" + quiz_num + "/answers")
+var questionRef = database.ref("courses/"+localStorage.course.split(" ")[0]+"/Quiz/" + quiz_num + "/questions");
+var quizRef = database.ref("courses/"+localStorage.course.split(" ")[0]+"/Quiz/" + quiz_num);
+var answersRef = database.ref("courses/"+localStorage.course.split(" ")[0]+"/Quiz" + quiz_num + "/answers")
 
 var answer = [];
 var user_answer = [];
@@ -23,12 +23,12 @@ var totalStudent;
 
 if(student_id === undefined || student_email === undefined || student_lecture === undefined || student_course === undefined){
 	alert("Please login first.");
-	document.location.href = 'file:student_login.html';
+	document.location.href = './student_login.html';
 }
 
 if(localStorage[localStorage.quiz_index] == "true"){
 	alert("You already submitted your answer.");
-	document.location.href = 'file:student_index.html';
+	document.location.href = './student_index.html';
 }
 
 $( document ).ready(function(){
@@ -53,7 +53,7 @@ $( document ).ready(function(){
 
 	$("#submit").click(function(){
 		for(var i = 0; i < user_answer.length; i ++){
-			var totalScoreRef = database.ref("tsQuiz/" + quiz_num + "/questions/" + i + "/totalScore")
+			var totalScoreRef = database.ref("courses/"+localStorage.course.split(" ")[0]+"/Quiz/" + quiz_num + "/questions/" + i + "/totalScore")
 			var score = 0;
 			Object.keys(user_answer[i]).forEach(function(key){
 				if(answer[i].includes(key) && user_answer[i][key])
@@ -69,10 +69,10 @@ $( document ).ready(function(){
 			})
 		}
 
-		database.ref("tsQuiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
+		database.ref("courses/"+localStorage.course.split(" ")[0]+"/Quiz/"+quiz_num+"/totalStudent").set(totalStudent+1);
 		localStorage.setItem(quiz_num, true);
 		localStorage.setItem("quiz_index", "none");
-		document.location.href = 'file:student_index.html';
+		document.location.href = './student_index.html';
 	});
 });
 
@@ -83,7 +83,7 @@ questionRef.on('child_added', function(snapshot){
 	var question = value["title"];
 	var element = "<div class='panel panel-default'><h4>Q"+question_num+" "+question+"</h4><div><ul style='list-style: none;'>"
 
-	database.ref("tsQuiz/" + quiz_num + "/questions/"+(question_num-1)+"/options").once('value', function(snapshot){
+	database.ref("courses/"+localStorage.course.split(" ")[0]+"/Quiz/" + quiz_num + "/questions/"+(question_num-1)+"/options").once('value', function(snapshot){
 		var option_num = 0;
 		var obj = {}
 		snapshot.forEach(function(childSnapshot){
@@ -106,7 +106,7 @@ activeLectureRef.on('value', function(snapshot){
 	var key = snapshot.key;
 	var value = snapshot.val();
 	if(value["status"].includes("lecture")){
-		document.location.href = 'file:student_index.html';
+		document.location.href = './student_index.html';
 	}
 });
 
