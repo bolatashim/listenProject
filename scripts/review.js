@@ -35,7 +35,7 @@ $(document).ready(function () {
 	setReplyBoxTogglers();
 	setLectureActionListeners();
 	setMoreActionsListeners();
-	// updateActionButtonAvailability();
+	updateActionButtonAvailability();
 });
 
 function setCheckboxListeners() {
@@ -115,6 +115,17 @@ function setActionButtonListeners() {
 			window.open("mailto:" + mail + "?subject=" + course_code + ":%20Answer%20these%20Questions&body=" + subject)
 	});
 
+	$("#reply-all-action").click(function () {
+		$("#reply-all-box-outer").toggleClass("expanded");
+		$("html, body").animate({ scrollTop: $("html").height() }, 500);
+
+		$("#reply-all-box textarea").focus();
+	});
+
+	$("#reply-all-cancel-action").click(function () {
+		$("#reply-all-box-outer").toggleClass("expanded");
+	});
+
 	$('#delete-action').click(function () {
 		if (confirm('Delete selected questions FOREVER?\n')) {
 			deleteAction();
@@ -149,6 +160,7 @@ function updateActionButtonAvailability() {
 
 	var disabled = (numChecked == 0);
 	$('#forward-action').prop('disabled', disabled);
+	$('#reply-all-action').prop('disabled', disabled);
 	$('#delete-action').prop('disabled', disabled);
 	$('#mark-answered-action').prop('disabled', disabled);
 	$('#mark-unanswered-action').prop('disabled', disabled);
@@ -311,7 +323,8 @@ function setQuestionsAndTagsUpdater() {
 				var question = tag[question_key];
 				console.log(question);
 
-				var email = question.email
+				var email = question.email;
+
 				$('.questions').append(`
 					<tr class="question ${question.answered ?'answered' :''}" data-tag="${tag_key}"
 						data-key="${question_key}" data-asker="${question.asker},${question.email}">
@@ -324,12 +337,12 @@ function setQuestionsAndTagsUpdater() {
 							<span class="text">${question.text}</span>
 							<span class="answered-label">(Answered)</span>
 							<br>
-							<span class="reply">Reply <i class="fa fa-angle-down"></i></span>
+							<span class="reply">Reply this <i class="fa fa-angle-down"></i></span>
 							<div class="reply-box" data-email=${email}>
 								<div class="reply-box-wrapper">
 									<div class="send-to"><b>To:</b> ${question.email}</div>
 									<textarea placeholder="Your reply message"></textarea>
-									<button class="send">Send</button>
+									<button class="send">Send mail</button>
 								</div>
 							</div>
 						</td>
